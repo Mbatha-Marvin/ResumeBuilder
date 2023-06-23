@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "fastapibackend"
+version = "0.1.0"
+description = "FastApi Backend APP for a Resume Builder Application"
+authors = ["Mbatha-Marvin <mbathamarvin597@gmail.com>"]
+license = "Apache License 2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.98.0"
+sqlmodel = "^0.0.8"
+uvicorn = "^0.22.0"
+python-dotenv = "^1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+pytest = "^7.4.0"
+pytest-asyncio = "^0.21.0"
+httpx = "^0.24.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
