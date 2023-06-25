@@ -1,14 +1,8 @@
 import uvicorn
 from fastapi import FastAPI
 
-from core.models import HealthCheck
-
-from dotenv import load_dotenv
-from core.config import Settings
-
-load_dotenv()
-settings = Settings()
-
+from app import settings
+from app.core.models import HealthCheck
 
 app = FastAPI(
     title=settings.project_name,
