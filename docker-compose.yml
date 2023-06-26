@@ -3,29 +3,61 @@ name: resume-builder
 
 services:  
 # Fast Api Backend
-  fastapi_backend:
+  resume-bulder-fastapi_backend:
     build: ./FastApiBackend
     image: resume-bulder-fastapi_backend
-    container_name: fastapi_app
+    container_name: resume-bulder-fastapi_backend
+    restart: unless-stopped
     expose:
       - 5000
     ports:
       - 5000:5000
     volumes:
-      - ./FastApiBackend:/usr/src/app/
-
-    command: uvicorn src.main:app --reload --host 0.0.0.0 --port 5000
-
-  vue_frontend:
-    build: ./VueFrontend
-    image: resume-bulder-vue_frontend
-    container_name: vue_frontend
-    command: npm run dev
-    ports:
-      - 8080:8080
-    volumes:
-      - ./VueFrontend:/app
-      - /app/node_modules
-
+      - ./FastApiBackend:/FastApiBackend/
     depends_on:
-      - fastapi_backend
+      - resume_builder_db
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 5000
+
+
+  # vue_frontend:
+    # build: ./VueFrontend
+    # image: resume-bulder-vue_frontend
+    # container_name: vue_frontend
+    # command: npm run dev
+    # restart: unless-stopped
+    # ports:
+    #   - 5173:5173
+    # volumes:
+    #   - ./VueFrontend:/app
+    #   - /app/node_modules
+    # depends_on:
+    #   - fastapi_backend
+    #   - resume_builder_db
+
+
+  resume_builder_db:
+    image: postgres:15.3-alpine3.18
+    container_name: resume_builder_db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - resume-builder-postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  resume_builder_pgadmin:
+    container_name: resume_builder_pgadmin
+    image: dpage/pgadmin4:7
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
+    ports:
+      - 5050:80
+    depends_on:
+      - resume_builder_db
+
+volumes:
+  resume-builder-postgres-data:
