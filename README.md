@@ -1,7 +1,7 @@
 Resume Builder
 ==========
 
-This is a resume builder Open source founded by [RONALD KIMELI][ronaldkimeli],[MARVIN MBATHA][marvinmbatha] and [ROBERT KIMAIYO][robertkimaiyo] who are aspiring to bring a new phase of Resume builder techs into unlocking jobs with brilliant Resumes. Your contribution is great inspiration and it is highly invited.
+This is a resume builder Open source founded by [Ronald Kimeli][ronaldkimeli],[Marvin Mbatha][marvinmbatha] and [Robert Kimaiyo][robertkimaiyo] who are aspiring to bring a new phase of Resume builder techs into unlocking jobs with brilliant Resumes. Your contribution is great inspiration and it is highly encouraged.
 
 Fronted Git branches
 -----------------
