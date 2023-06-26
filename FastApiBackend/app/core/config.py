@@ -10,4 +10,4 @@ class Settings(BaseSettings):
     description: str
 
     # Database
-    db_async_connection_str: str
+    db_connection_str: str
