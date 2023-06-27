@@ -74,6 +74,16 @@ def update_user(
     return db_user_instance
 
 
+@app.delete("/users/{user_id}")
+def delete_user(*, session: Session = Depends(get_db_session), user_id: int):
+    user = session.get(User, user_id)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not Found")
+    session.delete(user)
+    session.commit()
+    return {"ok": True}
+
+
 if __name__ == "__main__":
     uvicorn.run(
         "main:app",
