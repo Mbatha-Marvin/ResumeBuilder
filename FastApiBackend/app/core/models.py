@@ -26,11 +26,26 @@ class User(UserBase, table=True):
 
 
 class UserCreate(UserBase):
-    pass
+    class Config:
+        schema_extra = {
+            "example": {
+                "name": "UserName",
+                "password": "Password",
+            }
+        }
 
 
 class UserRead(UserBase):
     id: int
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "name": "UserName - type(string)",
+                "password": "Password  - type(string)",
+                "id": "user_id - type(int)",
+            }
+        }
 
 
 class UserUpdate(UserBase):
