@@ -185,7 +185,7 @@ class UserContactBase(SQLModel):
 class UserContact(UserContactBase, table=True):
     id: int = Field(default=None, primary_key=True)
 
-    user_id: int = Field(foreign_key=True)
+    user_id: int = Field(foreign_key="user.id")
     user: List[User] = Relationship(back_populates="user_contact_details")
 
 

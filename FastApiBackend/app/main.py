@@ -10,7 +10,6 @@ from app.core.db import get_db_session, initialize_db
 app = FastAPI(
     title=settings.project_name,
     version=settings.version,
-    openapi_url=f"{settings.api_v1_prefix}/openapi.json",
     debug=settings.debug,
 )
 
@@ -74,7 +73,7 @@ def update_user(
     return db_user_instance
 
 
-@app.delete("/users/{user_id}")
+@app.delete("/users/{user_id}", tags=["Users"])
 def delete_user(*, session: Session = Depends(get_db_session), user_id: int):
     user = session.get(User, user_id)
     if not user:
