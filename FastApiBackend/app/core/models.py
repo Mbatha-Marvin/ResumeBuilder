@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from sqlmodel import SQLModel, Field, Relationship
+from sqlmodel import Column, SQLModel, Field, Relationship, ARRAY, String
 import datetime
 from typing import Optional, List
 
@@ -52,6 +52,14 @@ class UserUpdate(UserBase):
     name: Optional[str] = None
     password: Optional[str] = None
 
+    class Config:
+        schema_extra = {
+            "example": {
+                "name": "New UserName",
+                "password": "New Password",
+            }
+        }
+
 
 class EducationBase(SQLModel):
     card_title: str
@@ -65,18 +73,50 @@ class EducationBase(SQLModel):
 
 
 class Education(EducationBase, table=True):
-    id: int = Field(default=None, primary_key=True)
-    user_id: int = Field(foreign_key="user.id")
+    education_id: int = Field(default=None, primary_key=True)
 
+    user_id: int = Field(foreign_key="user.id")
     user: Optional[User] = Relationship(back_populates="education_details")
 
 
 class EducationCreate(EducationBase):
-    pass
+    user_id: int
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "card_title": "Card Title",
+                "school_name": "School Name",
+                "education_level": "Education Level",
+                "course_title": "Course Title",
+                "location": "Location",
+                "final_grade": "Final Grade",
+                "start_date": "2023-06-29",
+                "finish_date": "2023-06-29",
+                "user_id": 0,
+            }
+        }
 
 
 class EducationRead(EducationBase):
-    id: int
+    user_id: int
+    education_id: int
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "card_title": "Card Title",
+                "school_name": "School Name",
+                "education_level": "Education Level",
+                "course_title": "Course Title",
+                "location": "Location",
+                "final_grade": "Final Grade",
+                "start_date": "2023-06-29",
+                "finish_date": "2023-06-29",
+                "user_id": 0,
+                "education_id": 0,
+            }
+        }
 
 
 class EducationUpdate(SQLModel):
@@ -89,6 +129,21 @@ class EducationUpdate(SQLModel):
     start_date: Optional[datetime.date] = None
     finish_date: Optional[datetime.date] = None
 
+    class Config:
+        schema_extra = {
+            "example": {
+                "card_title": "Card Title",
+                "school_name": "School Name",
+                "education_level": "Education Level",
+                "course_title": "Course Title",
+                "location": "Location",
+                "final_grade": "Final Grade",
+                "start_date": "2023-06-29",
+                "finish_date": "2023-06-29",
+                "user_id": 0,
+            }
+        }
+
 
 class ExperienceBase(SQLModel):
     card_title: str
@@ -97,24 +152,58 @@ class ExperienceBase(SQLModel):
     company_url: str
     location: str
     job_description_title: str
-    job_descriptions: List[str]
+    job_descriptions: List[str] = Field(default=None, sa_column=Column(ARRAY(String())))
     start_date: datetime.date
     end_date: datetime.date
 
 
 class Experience(ExperienceBase, table=True):
-    id: int = Field(primary_key=True, default=None)
+    experience_id: int = Field(primary_key=True, default=None)
 
     user_id: int = Field(foreign_key="user.id")
     user: Optional[User] = Relationship(back_populates="experience_details")
 
 
 class ExperienceCreate(ExperienceBase):
-    pass
+    user_id: int
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "card_title": "Card Title",
+                "job_title": "Job title",
+                "company_name": "Company Name",
+                "company_url": "Company URL",
+                "location": "Location",
+                "job_description_title": "Job Description Title",
+                "job_descriptions": ["Description 1", "Description 2"],
+                "start_date": "2023-06-29",
+                "end_date": "2023-06-29",
+                "user_id": 0,
+            }
+        }
 
 
 class ExperienceRead(ExperienceBase):
-    id: int
+    user_id: int
+    experience_id: int
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "card_title": "Card Title",
+                "job_title": "Job title",
+                "company_name": "Company Name",
+                "company_url": "Company URL",
+                "location": "Location",
+                "job_description_title": "Job Description Title",
+                "job_descriptions": ["Description 1", "Description 2"],
+                "start_date": "2023-06-29",
+                "end_date": "2023-06-29",
+                "user_id": 0,
+                "experience_id": 0,
+            }
+        }
 
 
 class ExperienceUpdate(SQLModel):
@@ -128,6 +217,22 @@ class ExperienceUpdate(SQLModel):
     start_date: Optional[datetime.date] = None
     end_date: Optional[datetime.date] = None
 
+    class Config:
+        schema_extra = {
+            "example": {
+                "card_title": "Card Title",
+                "job_title": "Job title",
+                "company_name": "Company Name",
+                "company_url": "Company URL",
+                "location": "Location",
+                "job_description_title": "Job Description Title",
+                "job_descriptions": ["Description 1", "Description 2"],
+                "start_date": "2023-06-29",
+                "end_date": "2023-06-29",
+                "user_id": 0,
+            }
+        }
+
 
 class LanguageBase(SQLModel):
     card_title: str
@@ -136,24 +241,56 @@ class LanguageBase(SQLModel):
 
 
 class Language(LanguageBase, table=True):
-    id: int = Field(default=None, primary_key=True)
+    language_id: int = Field(default=None, primary_key=True)
 
     user_id: int = Field(foreign_key="user.id")
     user: List[User] = Relationship(back_populates="language_details")
 
 
 class LanguageCreate(LanguageBase):
-    pass
+    user_id: int
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "card_title": "Card Title",
+                "language_name": "Language Name",
+                "profeciency_level": 5,
+                "user_id": 0,
+            }
+        }
 
 
 class LanguageRead(LanguageBase):
-    id: int
+    user_id: int
+    language_id: int
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "card_title": "Card Title",
+                "language_name": "Language Name",
+                "profeciency_level": 5,
+                "user_id": 0,
+                "language_id": 0,
+            }
+        }
 
 
 class LanguageUpdate(SQLModel):
     card_title: Optional[str] = None
     language_name: Optional[str] = None
     profeciency_level: Optional[int] = None
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "card_title": "Card Title",
+                "language_name": "Language Name",
+                "profeciency_level": 5,
+                "user_id": 0,
+            }
+        }
 
 
 class ProjectBase(SQLModel):
@@ -165,18 +302,42 @@ class ProjectBase(SQLModel):
 
 
 class Project(ProjectBase, table=True):
-    id: int = Field(default=None, primary_key=True)
+    project_id: int = Field(default=None, primary_key=True)
 
     user_id: int = Field(foreign_key="user.id")
     user: List[User] = Relationship(back_populates="project_details")
 
 
 class ProjectCreate(ProjectBase):
-    pass
+    user_id: int
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "card_title": "Card Title",
+                "project_name": "Project Name",
+                "project_description_title": "Project Description Title",
+                "project_description": ["Description 1", "Description 2"],
+                "user_id": 0,
+            }
+        }
 
 
 class ProjectRead(ProjectBase):
-    id: int
+    user_id: int
+    project_id: int
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "card_title": "Card Title",
+                "project_name": "Project Name",
+                "project_description_title": "Project Description Title",
+                "project_description": ["Description 1", "Description 2"],
+                "user_id": 0,
+                "project_id": 0,
+            }
+        }
 
 
 class ProjectUpdate(SQLModel):
@@ -185,6 +346,17 @@ class ProjectUpdate(SQLModel):
     project_description_title: Optional[str] = None
     project_description: Optional[List[str]] = None
     project_url: Optional[str] = None
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "card_title": "Card Title",
+                "project_name": "Project Name",
+                "project_description_title": "Project Description Title",
+                "project_description": ["Description 1", "Description 2"],
+                "user_id": 0,
+            }
+        }
 
 
 class UserContactBase(SQLModel):
@@ -198,18 +370,48 @@ class UserContactBase(SQLModel):
 
 
 class UserContact(UserContactBase, table=True):
-    id: int = Field(default=None, primary_key=True)
+    user_contact_id: int = Field(default=None, primary_key=True)
 
     user_id: int = Field(foreign_key="user.id")
     user: List[User] = Relationship(back_populates="user_contact_details")
 
 
 class UserContactCreate(UserContactBase):
-    pass
+    user_id: int
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "email": "Uesr Email",
+                "personal_website": "personal_website",
+                "city": "City",
+                "country": "Country of residence",
+                "phone_number": "Phone Number",
+                "user_work_title": "User Work Title",
+                "user_summary": "User Summary",
+                "user_id": 0,
+            }
+        }
 
 
 class UserContactRead(UserContactBase):
-    id: int
+    user_id: int
+    user_contact_id: int
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "email": "Uesr Email",
+                "personal_website": "personal_website",
+                "city": "City",
+                "country": "Country of residence",
+                "phone_number": "Phone Number",
+                "user_work_title": "User Work Title",
+                "user_summary": "User Summary",
+                "user_id": 0,
+                "user_contact_id": 0,
+            }
+        }
 
 
 class UserContactUpdate(SQLModel):
@@ -220,3 +422,17 @@ class UserContactUpdate(SQLModel):
     phone_number: Optional[str] = None
     user_work_title: Optional[str] = None
     user_summary: Optional[str] = None
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "email": "Uesr Email",
+                "personal_website": "personal_website",
+                "city": "City",
+                "country": "Country of residence",
+                "phone_number": "Phone Number",
+                "user_work_title": "User Work Title",
+                "user_summary": "User Summary",
+                "user_id": 0,
+            }
+        }
