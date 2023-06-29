@@ -4,6 +4,7 @@ from app.routers import users, experience, education, language, project, user_co
 
 from app import settings
 from app.core.models import HealthCheck
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.db import initialize_db
 
@@ -11,6 +12,19 @@ app = FastAPI(
     title=settings.project_name,
     version=settings.version,
     debug=settings.debug,
+)
+
+origins = [
+    "http://localhost:5713",
+    "http://localhost:3000",
+    "http://localhost:8080",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(users.router)
