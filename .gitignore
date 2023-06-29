@@ -2,7 +2,7 @@
 
 # pyenv
 .python-version
-alembic.ini
+*alembic.ini
 
 # mkdocs documentation
 /site
