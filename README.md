@@ -3,7 +3,7 @@ Resume Builder
 
 This is a resume builder Open source program founded by [Marvin Mbatha][marvinmbatha], [Ronald Kimeli][ronaldkimeli] and [Robert Kimaiyo][robertkimaiyo] who are aspiring to bring a new phase of Resume builder techs into unlocking jobs with brilliant Resumes. Your contribution is great inspiration and it is highly encouraged.
 
-Fronted Git branches
+Frontend Git branches
 -----------------
 
 * AngularFrontend - Based on angular framework.
