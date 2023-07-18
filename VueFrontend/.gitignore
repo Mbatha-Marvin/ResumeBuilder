@@ -5,6 +5,10 @@
 .cache
 dist
 
+# Resume example
+VueFrontend/MarvinMbithiMbathaResume.pdf
+
+
 # Node dependencies
 node_modules
 
