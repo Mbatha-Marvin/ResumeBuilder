@@ -2,13 +2,15 @@
    <div class="child summary">
       <div id="section-title">
         <h4><strong>Summary</strong></h4>
-        <hr class="border border-black border-2 opacity-75">
+        <Helpers.Bold_hr />
       </div>
       <span class="summary description">
-                Passionate web developer with more than 2 years of working experience
-                working as a Full-Stack developer and a graduate of Computer Science.
-                Always ready to learn and explore technology to provide the best
-                services on both Back-end and Front-End technologies.
+        Computer scientist graduate with over 2 years experience working  as a 
+        Full Stack Web Developer (PHP/Laravel & React | Vue Developer) with great understanding using Python. 
+        Passionate about offering high performing and high quality websites to my clients. 
+        Integrating systems through API, building full stack web application, system upgrades and optimization, 
+        Bug fixing, Dockerization and deploying applications with consideration of new and fast technologies. Seeking an opportunity into offering quality 
+        services, exploring new technologies and developing more scalable websites.
       </span>
     </div>
 </template>
@@ -18,24 +20,8 @@
 </script>
 
 <style scoped>
-
-
 .summary{
     text-align: left !important;
 }
 
-.parent{
-    columns: 2;
-    gap: 10px;
-    padding: 5px;
-    margin: 0 auto;
-  }
-  
-  .child{
-    padding: 10px;
-    background-color: white;
-    display: inline-block;
-    width: 100%;  
-    margin-bottom: 5px;
-  }
 </style>

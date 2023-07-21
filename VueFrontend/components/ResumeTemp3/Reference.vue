@@ -2,25 +2,25 @@
     <div class="child reference">
       <div id="section-title">
         <h4><strong>Reference</strong></h4>
-        <hr class="border border-black border-2 opacity-75">
+        <Helpers.Bold_hr />
       </div>
       <div class="row referencerow">
       <div class="iconic-section">
-        <span><strong>Name :</strong> Testing Jacobs</span>
+        <span><strong>Name :</strong> Gichui Victor</span>
       </div>
       <div class="iconic-section">
-        <span><strong>Institution :</strong> Testing org centre</span>
+        <span><strong>Institution :</strong> Masterclass Solutions</span>
       </div>
       <div class="iconic-section">
-        <span><strong>Role :</strong> Web Dev</span>
+        <span><strong>Role :</strong> Laravel Web Developer</span>
       </div>
       <div class="iconic-section">
         <span><strong>Email :</strong>
-        test@gmail.com</span>
+        gichuivictor@gmail.com</span>
       </div>
       <div class="iconic-section">
         <span><strong>Phone :</strong>
-        254 798 298 834</span>
+        254 748 071 065</span>
       </div>
       </div>
     </div>
@@ -31,26 +31,8 @@
 </script>
 
 <style lang="scss" scoped>
-
-
 .reference {
     text-align: left !important;
 }
 
-
-
-.parent{
-    columns: 2;
-    gap: 10px;
-    padding: 5px;
-    margin: 0 auto;
-  }
-  
-  .child{
-    padding: 10px;
-    background-color: white;
-    display: inline-block;
-    width: 100%;  
-    margin-bottom: 5px;
-  }
 </style>

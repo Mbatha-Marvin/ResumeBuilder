@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-md-4 iconic-sectionTitle">
           <i class="bi bi-telephone"></i>
-          <span><strong>25798298834</strong></span>
+          <span><strong>254 798 298834</strong></span>
         </div>
         <div class="col-md-4 iconic-sectionTitle">
           <i class="bi bi-envelope-at"></i>
@@ -22,7 +22,7 @@
         </div>
         <div class="col-md-4 iconic-sectionTitle">
           <i class="bi bi-linkedin"></i>
-          <span><strong>https://www.linkedin.com/in/ronald-kimeli/</strong></span>
+          <span><strong>https://www.linkedin.com/in/ronald-kimeli</strong></span>
         </div>
         <div class="col-md-4 iconic-sectionTitle">
           <i class="bi bi-link-45deg"></i>

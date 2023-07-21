@@ -1,15 +1,15 @@
 <template>
   <div class="child languages">
-    <div id="section-title">
-      <h4><strong>Languages</strong></h4>
+    <div   id="section-title">
+      <h4><strong>Operating Systems</strong></h4>
       <Helpers.Bold_hr />
     </div>
     <div class="language">
       <div class="iconic-section">
-        <span><strong>English :</strong> Profesional</span>
+        <span><strong>Linux(Ubuntu) :</strong> Expert</span>
       </div>
       <div class="iconic-section">
-        <span><strong>Kiswahili :</strong> Native</span>
+        <span><strong>Windows :</strong> Expert</span>
       </div>
     </div>
   </div>

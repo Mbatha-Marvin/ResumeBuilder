@@ -14,8 +14,8 @@
 <style scoped>
 .mains {
     background: #ffffff !important;
-    margin-bottom: 20px !important;
-    margin-top: 20px !important;
+    /* margin: 20px !important;
+    padding: 20px !important; */
 }
 </style>
   

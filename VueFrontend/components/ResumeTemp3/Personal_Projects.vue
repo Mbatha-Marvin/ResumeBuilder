@@ -2,37 +2,38 @@
   <div class="child personal-projects">
     <div id="section-title">
       <h4><strong>Personal Projects</strong></h4>
-      <hr class="border border-black border-2 opacity-75">
+      <Helpers.Bold_hr />
     </div>
     <div class="projects">
-      <div class="company-title">
-        <span><strong>Title :</strong> Leave management app</span>
+      <div class="iconic-section">
+        <span><strong>Title :</strong><i>Leave management system app</i></span>
       </div>
       <div class="iconic-section">
-        <span><strong>Skills :</strong> React js && Laravel</span>
+        <span><strong>Skills :</strong>PHP, MySQL, HTML5, CSS3 and Bootstrap</span>
       </div>
       <div class="iconic-section">
         <i class="bi bi-link-45deg mr-2"></i>
         <span><strong>https://leave-managent-system.great-site.net</strong></span>
       </div>
       <div class="iconic-section">
-        <span><strong>Description :</strong> Online leave management system</span>
+        <span><strong>Description :</strong>This is an online leave management system,
+           where a user can apply for leave through this online platform.</span>
       </div>
     </div>
     <Helpers.Dotted_hr />
     <div class="projects">
-      <div class="company-title">
-        <span><strong>Title :</strong> Leave management app</span>
+      <div class="iconic-section">
+        <span><strong>Title :</strong><i>News Aggregator</i></span>
       </div>
       <div class="iconic-section">
-        <span><strong>Skills :</strong> React js && Laravel</span>
+        <span><strong>Skills :</strong>React js, HTML5, CSS3 and Bootstrap</span>
       </div>
       <div class="iconic-section">
         <i class="bi bi-link-45deg mr-2"></i>
-        <span><strong>https://leave-managent-system.great-site.net</strong></span>
+        <span><strong>https://github.com/KimelirR/react-news-app.git</strong></span>
       </div>
       <div class="iconic-section">
-        <span><strong>Description :</strong> Online leave management system</span>
+        <span><strong>Description :</strong>This a front-end for news aggreggator</span>
       </div>
     </div>
   </div>
@@ -47,20 +48,4 @@
   text-align: left !important;
 }
 
-
-
-.parent {
-  columns: 2;
-  gap: 10px;
-  padding: 5px;
-  margin: 0 auto;
-}
-
-.child {
-  padding: 10px;
-  background-color: white;
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 5px;
-}
 </style>
