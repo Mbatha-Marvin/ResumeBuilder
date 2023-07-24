@@ -70,14 +70,17 @@ export default {
 
         const widthRatio = pdfWidth / imgProps.width;
         const heightRatio = pdfHeight / imgProps.height;
+        
         const ratio = Math.min(widthRatio, heightRatio);
 
         const w = imgProps.width * ratio;
         const h = imgProps.height * ratio;
 
         pdf.addImage(imageData, "PNG", x, y, w, h);
-        // pdf.setFont('Garamond', 'normal');
-        // pdf.setFontSize(12);
+        
+        pdf.setFont('Garamond', 'normal');
+        pdf.setFontSize(12);
+        
         pdf.save('kimeli_ronald_resume.pdf');
 
       } catch (error) {
@@ -89,7 +92,6 @@ export default {
     },
   },
 };
-
 
 useHead({
   title: 'ResumeBuilder',

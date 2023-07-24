@@ -41,6 +41,10 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+
+const { data: products } = await useFetch('https://fakestoreapi.com/products')
+console.log(products.value);
+</script>
 
 <style scoped></style>
