@@ -6,7 +6,7 @@
       </div>
       <div class="row skillsrow">       
         <div class="col-md-6 iconic-section">
-          <i class="bi bi-dot"></i><span>Full-Stack Web Development</span>
+          <i class="bi bi-dot"></i><span>Full Stack Web Development</span>
         </div>
         <div class="col-md-6 iconic-section">
           <i class="bi bi-dot"></i><span>Database management and designing</span>
@@ -30,7 +30,7 @@
           <i class="bi bi-dot"></i><span>Project Management</span>
         </div>
         <div class="col-md-6 iconic-section">
-          <i class="bi bi-dot"></i><span>Front-end and Back-end Web Development</span>
+          <i class="bi bi-dot"></i><span>Frontend and Backend Web Development</span>
         </div>
         <div class="col-md-6 iconic-section">
           <i class="bi bi-dot"></i><span>Website Management, optimization and bug fixing</span>

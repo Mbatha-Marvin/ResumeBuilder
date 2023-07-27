@@ -56,7 +56,7 @@
     
     <div class="experience">
       <div id="experience-title">
-        <h5><strong>Web Developer(probationary contract)</strong></h5>
+        <h5><strong>Backend Web Developer(probationary contract)</strong></h5>
       </div>
       <div class="company-title">
         <img class="masterclass" src="/assets/img/masterclass.jpeg" alt="logo" />
@@ -110,7 +110,7 @@
     
     <div class="experience">
       <div id="experience-title">
-        <h5><strong>Internship</strong></h5>
+        <h5><strong>Assistant System Administrator(Internship)</strong></h5>
       </div>
       <div class="company-title">
         <img class="masterclass" src="/assets/img/kisii.jpg" alt="logo" />

@@ -76,7 +76,7 @@ export default {
         const w = imgProps.width * ratio;
         const h = imgProps.height * ratio;
 
-        pdf.addImage(imageData, "PNG", x, y, w, h);
+        pdf.addImage(imageData, "PNG", x, y, w, h, undefined, 'FAST');
         
         pdf.setFont('Garamond', 'normal');
         pdf.setFontSize(12);
@@ -106,6 +106,8 @@ useHead({
 definePageMeta({
   layout: "template3",
 })
+
+
 </script>
 
 <style scoped></style>

@@ -20,20 +20,35 @@ services:
 
 
   # vue_frontend:
-    # build: ./VueFrontend
-    # image: resume-bulder-vue_frontend
-    # container_name: vue_frontend
-    # command: npm run dev
-    # restart: unless-stopped
-    # ports:
-    #   - 5173:5173
-    # volumes:
-    #   - ./VueFrontend:/app
-    #   - /app/node_modules
-    # depends_on:
-    #   - fastapi_backend
-    #   - resume_builder_db
-
+  #   build: ./VueFrontend
+  #   image: resume-bulder-vue_frontend
+  #   container_name: vue_frontend
+  #   command: npm run dev
+  #   restart: unless-stopped
+  #   ports:
+  #     - 5173:5173
+  #   volumes:
+  #     - ./VueFrontend:/app
+  #     - /app/node_modules
+  #   depends_on:
+  #     - fastapi_backend
+  #     - resume_builder_db
+      
+  vue_frontend:
+    build:
+      context: ./VueFrontend
+    image: vuefrontend
+    container_name: vue_frontend
+    restart: unless-stopped
+    ports:
+      - 5173:5173
+      - 24678:24678
+    tty: true
+    volumes:
+      - ./VueFrontend:/app
+    depends_on:
+      - resume-bulder-fastapi_backend
+      - resume_builder_db
 
   resume_builder_db:
     image: postgres:15.3-alpine3.18
