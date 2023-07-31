@@ -43,8 +43,9 @@
 
 <script setup>
 
-const { data: products } = await useFetch('http://localhost:5000/users/?offset=0&limit=100')
-console.log(products.value);
+const { data: products } = await useFetch('https://fakestoreapi.com/products')
+console.log(typeof(products));
+
 </script>
 
 <style scoped></style>

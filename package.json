@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "vue-html2pdf": "^1.8.0"
+  }
+}
