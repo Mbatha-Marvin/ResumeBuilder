@@ -95,3 +95,4 @@ dist/
 .DS_Store
 coverage/
 .vscode/
+docker.txt
