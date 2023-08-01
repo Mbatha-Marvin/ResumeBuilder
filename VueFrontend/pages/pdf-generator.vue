@@ -1,11 +1,23 @@
 <template>
-  <div>
-    <!-- Your page content goes here -->
-    <h1>Hello, this is the main page content</h1>
-    <p>This is some sample text in the main page.</p>
-
-    <!-- Add a button to generate PDF -->
-    <button @click="generatePDF">Generate PDF</button>
+   <div class="template3">
+    <ResumeTemp3.Title />
+    <div class="parent">
+      <ResumeTemp3.Summary />
+      <ResumeTemp3.Skills />
+      <ResumeTemp3.Experience />
+      <ResumeTemp3.Education />
+      <ResumeTemp3.Certification />
+      <ResumeTemp3.Frameworks />
+      <ResumeTemp3.Programming />
+      <ResumeTemp3.Languages />
+      <ResumeTemp3.OperatingSystems />
+      <ResumeTemp3.Hobbies />
+      <ResumeTemp3.Personal_Projects />
+      <ResumeTemp3.Reference />
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto mb-3">
+      <button ref="pdfButton" @click="generatePDF" class="btn btn-success">Download PDF</button>
+    </div>
   </div>
 </template>
 
@@ -16,7 +28,7 @@ export default {
   methods: {
     generatePDF() {
       // Get the content from the "index.vue" template
-      const content = this.$options.template;
+      const content = this.$el;
 
       // Create a new jsPDF instance
       const pdf = new jsPDF();

@@ -30,4 +30,7 @@ export default defineNuxtConfig({
     }
   },
   css: ['~/assets/css/main.css', '~/assets/scss/styles.scss'],
+  runtimeConfig: {
+    resumeBaseUrl: process.env.RESUME_BASE_URL
+  }
 })

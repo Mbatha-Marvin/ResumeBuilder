@@ -1,5 +1,5 @@
 <template>
-<nav class="navbar sticky-top  navbar-expand-lg bg-success">
+<nav class="navbar sticky-top  navbar-expand-lg bg-success shadow">
   <div class="container">
     <NuxtLink class="navbar-brand" :to="'/'">
         <img src="/assets/img/svg/bootstrap.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
