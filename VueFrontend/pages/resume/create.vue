@@ -1,6 +1,6 @@
 <template>
    <div class="container">
-      <div class="row align-items-center">
+      <div class="row">
          <div class="col-md-3 text-center">
             <NuxtLink class="prev-link" :to="'/'">Previous</NuxtLink>
          </div>
@@ -20,7 +20,7 @@
             </div>
          </div>
          <div class="col-md-3 text-center">
-            <NuxtLink class="next-link" :to="'/draggable'">Next</NuxtLink>
+            <NuxtLink class="next-link" :to="'/about'">Next</NuxtLink>
          </div>
       </div>
    </div>
@@ -28,11 +28,19 @@
  
 <script>
 export default {
-   // ... (your script)
+   // ...
 };
 </script>
  
 <style>
+.col-md-3,
+.col-md-6 {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+/* For desktop view */
 .prev-link,
 .next-link {
    display: inline-block;
@@ -41,6 +49,7 @@ export default {
    border: 2px solid green;
    color: white;
    text-decoration: none;
+   border-radius: 10px;
    transition: background-color 0.3s, border-color 0.3s;
 }
 
@@ -48,13 +57,27 @@ export default {
 .next-link:hover {
    background-color: purple;
    border-color: gold;
+   border-radius: 10px;
 }
 
-.col-md-3,
-.col-md-6 {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+/* For mobile view */
+@media (max-width: 767.98px) {
+
+   .col-md-3,
+   .col-md-6 {
+      display: block;
+   }
+
+   .prev-link,
+   .next-link {
+      display: block;
+      margin: 10px auto;
+      text-align: center;
+   }
+
+   .prev-link {
+      order: -1;
+   }
 }
 </style>
  

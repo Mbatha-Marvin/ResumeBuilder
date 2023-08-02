@@ -96,3 +96,5 @@ dist/
 coverage/
 .vscode/
 docker.txt
+.env
+package-lock.json

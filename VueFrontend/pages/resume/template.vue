@@ -1,26 +1,28 @@
 <template>
-  <div class="template3">
-    <ResumeTemp3.Title />
-    <div class="parent">
-      <ResumeTemp3.Summary />
-      <ResumeTemp3.Skills />
-      <ResumeTemp3.Experience />
-      <ResumeTemp3.Education />
-      <ResumeTemp3.Certification />
-      <ResumeTemp3.Frameworks />
-      <ResumeTemp3.Programming />
-      <ResumeTemp3.Languages />
-      <ResumeTemp3.OperatingSystems />
-      <ResumeTemp3.Hobbies />
-      <ResumeTemp3.Personal_Projects />
-      <ResumeTemp3.Reference />
-    </div>
-    <div class="d-grid gap-2 col-6 mx-auto mb-3">
-      <button ref="pdfButton" @click="generatePDF" class="btn btn-success">Download PDF</button>
+  <div class="container">
+    <div class="template3">
+      <ResumeTemp3.Title />
+      <div class="parent">
+        <ResumeTemp3.Summary />
+        <ResumeTemp3.Skills />
+        <ResumeTemp3.Experience />
+        <ResumeTemp3.Education />
+        <ResumeTemp3.Certification />
+        <ResumeTemp3.Frameworks />
+        <ResumeTemp3.Programming />
+        <ResumeTemp3.Languages />
+        <ResumeTemp3.OperatingSystems />
+        <ResumeTemp3.Hobbies />
+        <ResumeTemp3.Personal_Projects />
+        <ResumeTemp3.Reference />
+      </div>
+      <div class="d-grid gap-2 col-6 mx-auto mb-3">
+        <button ref="pdfButton" @click="generatePDF" class="btn btn-success">Download PDF</button>
+      </div>
     </div>
   </div>
 </template>
-
+  
 <script >
 
 import jsPDF from 'jspdf';
@@ -44,20 +46,6 @@ export default {
 
         // Add canvas image to the PDF
         const imageData = canvas.toDataURL('image/png');
-        // pdf.addImage(imageData, 'PNG', 15, 15, 180, 0);
-
-        // Save the PDF
-        // pdf.save('kimeli_ronald_resume.pdf');
-
-        // pdf.setFont('Arial');
-        // pdf.getFontSize(11);
-        // pdf.addImage(imageData, 'PNG', 0, 0, width, height);
-        // pdf.save();
-
-        // const pdfWidth = pdf.internal.pageSize.getWidth();
-        // const pdfHeight = pdf.internal.pageSize.getHeight();
-        // pdf.addImage(imageData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        // pdf.save('download.pdf');
 
         const imgProps = pdf.getImageProperties(imageData);
         const margin = 0;
@@ -111,10 +99,6 @@ useHead({
   ],
 })
 
-definePageMeta({
-  layout: "template3",
-})
-
 </script>
-
+  
 <style scoped></style>

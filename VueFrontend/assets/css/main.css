@@ -10,10 +10,11 @@
   max-width: inherit !important;
 }
 
-body {
+/* body {
     background: #8a8383 !important;
-    /* background-color: white; */   
-}
+    background-color: #42428a !important;
+    background-color: white;   
+} */
 
 a {
     text-decoration: none !important;
@@ -136,4 +137,3 @@ a {
         box-shadow: 0 !important;
     }
 } */
-

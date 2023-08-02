@@ -43,8 +43,6 @@
 
 <script setup>
 
-const { data: products } = await useFetch('http://localhost:5000/users/?offset=0&limit=100')
-console.log(products.value);
 </script>
 
 <style scoped></style>

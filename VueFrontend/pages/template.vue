@@ -44,21 +44,7 @@ export default {
 
         // Add canvas image to the PDF
         const imageData = canvas.toDataURL('image/png');
-        // pdf.addImage(imageData, 'PNG', 15, 15, 180, 0);
-
-        // Save the PDF
-        // pdf.save('kimeli_ronald_resume.pdf');
-
-        // pdf.setFont('Arial');
-        // pdf.getFontSize(11);
-        // pdf.addImage(imageData, 'PNG', 0, 0, width, height);
-        // pdf.save();
-
-        // const pdfWidth = pdf.internal.pageSize.getWidth();
-        // const pdfHeight = pdf.internal.pageSize.getHeight();
-        // pdf.addImage(imageData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        // pdf.save('download.pdf');
-
+       
         const imgProps = pdf.getImageProperties(imageData);
         const margin = 0;
 
