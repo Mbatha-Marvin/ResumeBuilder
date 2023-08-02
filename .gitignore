@@ -98,3 +98,6 @@ coverage/
 docker.txt
 .env
 package-lock.json
+VueFrontend/package-lock.json
+VueFrontend/pages/users/index copy.vue
+VueFrontend/store/
