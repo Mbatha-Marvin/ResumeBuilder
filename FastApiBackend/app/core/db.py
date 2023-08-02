@@ -21,6 +21,7 @@ def upgrade_to_alembic_head():
 
 
 def initialize_db():
+    time.sleep(10)
     SQLModel.metadata.create_all(bind=engine)
 
 
