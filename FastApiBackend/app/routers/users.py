@@ -3,12 +3,7 @@ from app.core.db import get_db_session
 from typing import List
 from sqlmodel import Session, select
 
-from app.core.models import (
-    UserRead,
-    User,
-    UserCreate,
-    UserUpdate,
-)
+from app.core.models import UserRead, User, UserCreate, UserUpdate, UserProfileRead
 
 router = APIRouter(prefix="/users", tags=["Users"])
 
@@ -38,13 +33,27 @@ def read_user(
     return user
 
 
-@router.post("/{user_id}", response_model=UserRead)
+@router.get("/{user_id}/profile", response_model=UserProfileRead)
+def read_user_profile(
+    *,
+    session: Session = Depends(get_db_session),
+    user_id: int,
+):
+    user = session.get(User, user_id)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not Found")
+
+    return user
+
+
+@router.post("/", response_model=UserRead)
 def create_user(
     *,
     session: Session = Depends(get_db_session),
     user: UserCreate,
 ):
     db_user = User.from_orm(user)
+    print(db_user)
 
     session.add(db_user)
     session.commit()

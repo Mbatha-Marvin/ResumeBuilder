@@ -6,7 +6,7 @@ from app import settings
 from app.core.models import HealthCheck
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.core.db import initialize_db
+from app.core.db import initialize_db, upgrade_to_alembic_head
 
 app = FastAPI(
     title=settings.project_name,
@@ -38,6 +38,7 @@ app.include_router(user_contact.router)
 @app.on_event("startup")
 def on_startup():
     initialize_db()
+    upgrade_to_alembic_head()
 
 
 @app.get("/", response_model=HealthCheck, tags=["Status"])
