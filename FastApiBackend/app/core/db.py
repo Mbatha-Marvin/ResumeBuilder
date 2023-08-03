@@ -10,7 +10,7 @@ engine = create_engine(url=DATABASE_URL, echo=True)
 
 
 def upgrade_to_alembic_head():
-    time.sleep(5)
+    time.sleep(2)
     result = subprocess.run(
         ["alembic", "upgrade", "head"],
         shell=True,
@@ -21,7 +21,7 @@ def upgrade_to_alembic_head():
 
 
 def initialize_db():
-    time.sleep(10)
+    time.sleep(5)
     SQLModel.metadata.create_all(bind=engine)
 
 

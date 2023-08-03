@@ -31,6 +31,14 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/css/main.css', '~/assets/scss/styles.scss'],
   runtimeConfig: {
-    resumeBaseUrl: process.env.RESUME_BASE_URL
+    // Private keys are only available on the server
+    apiSecret: 'null',
+    
+    resumeBaseUrl: process.env.RESUME_BASE_URL,
+
+    // Public keys that are exposed to the client
+    public: {
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api'
+    }
   }
 })
