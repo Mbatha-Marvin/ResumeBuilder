@@ -1,5 +1,5 @@
 import './App.css'
-
+import Footer from './components/Footer'
 
 //import './components/Home/Home.css'
 //import 'bootstrap/dist/css/bootstrap.min.css';
@@ -25,9 +25,6 @@ function App() {
       <div className='row main-app-container .float-start'>
 
         <div className='col-md-4'>
-
-
-
           <ul>
             <li ><a href="#home">Home</a></li>
             <li ><a href="#education">Education</a></li>
@@ -43,9 +40,7 @@ function App() {
           </div>
         </div>
       </div>
-
 <Footer />
-
     </div>
   )
 }
