@@ -1,19 +1,48 @@
 import uvicorn
 from fastapi import FastAPI
+from app.routers import users, experience, education, language, project, user_contact
 
 from app import settings
 from app.core.models import HealthCheck
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.core.db import initialize_db, upgrade_to_alembic_head
 
 app = FastAPI(
     title=settings.project_name,
     version=settings.version,
-    openapi_url=f"{settings.api_v1_prefix}/openapi.json",
     debug=settings.debug,
 )
 
+origins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "http://localhost:8080",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-@app.get("/", response_model=HealthCheck, tags=["status"])
-async def health_check() -> dict:
+app.include_router(users.router)
+app.include_router(experience.router)
+app.include_router(education.router)
+app.include_router(language.router)
+app.include_router(project.router)
+app.include_router(user_contact.router)
+
+
+@app.on_event("startup")
+def on_startup():
+    initialize_db()
+    upgrade_to_alembic_head()
+
+
+@app.get("/", response_model=HealthCheck, tags=["Status"])
+def health_check() -> dict:
     return {
         "name": settings.project_name,
         "version": settings.version,
