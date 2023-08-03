@@ -57,8 +57,8 @@ def create_dummy_user(user_id: int):
             "some job description entry 1",
             "some job description entry 2",
             "some job description entry 3 that is slightly lengthy for variety",
-            "some job description entry 4 that is longer than the rest to test text wrapping in the cards"
-            "some job description entry 5 just for fun",
+            "some job description entry 4 that is longer than the rest to test text wrapping in the cards",
+            "some job description entry 5 ",
         ],
         start_date=start_date,
         end_date=end_date,
@@ -75,7 +75,7 @@ def create_dummy_user(user_id: int):
             "some job description entry 1",
             "some job description entry 2",
             "some job description entry 3 that is slightly lengthy for variety",
-            "some job description entry 4 that is longer than the rest to test text wrapping in the cards"
+            "some job description entry 4 that is longer than the rest to test text wrapping in the cards",
             "some job description entry 5 just for fun",
         ],
         start_date=start_date,
@@ -123,8 +123,8 @@ def create_dummy_user(user_id: int):
             "Project description entry 1",
             "Project description entry 2",
             "Project description entry 3 that is slightly lengthy for variety",
-            "Project description entry 4 that is longer than the rest to test text wrapping in the cards"
-            "Project description entry 5 just for fun",
+            "Project description entry 4 that is longer than the rest to test text wrapping in the cards",
+            "Project description entry 5 ",
         ],
         project_url="some_github_url.com",
         user_id=user_id,
@@ -137,8 +137,8 @@ def create_dummy_user(user_id: int):
             "Project description entry 1",
             "Project description entry 2",
             "Project description entry 3 that is slightly lengthy for variety",
-            "Project description entry 4 that is longer than the rest to test text wrapping in the cards"
-            "Project description entry 5 just for fun",
+            "Project description entry 4 that is longer than the rest to test text wrapping in the cards",
+            "Project description entry 5 ",
         ],
         project_url="some_gitlab_url.com",
         user_id=user_id,
