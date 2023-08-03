@@ -7,21 +7,27 @@
         </h4>
       </div>
       <div class="card-body">
-        <form @submit.prevent="createUser">
+
+        <form @submit.prevent="submitForm" class="needs-validation" novalidate>
           <div class="form-group">
-            <label for="name">Name:</label>
+            <label for="name" class="form-label">Name:</label>
             <input v-model="newUser.name" type="text" id="name" class="form-control" required />
+            <span class="invalid-feedback">Name is required</span>
           </div>
           <div class="form-group">
-            <label for="email">Email:</label>
+            <label for="email" class="form-label">Email:</label>
             <input v-model="newUser.email" type="email" id="email" class="form-control" required />
+            <span class="invalid-feedback">Email is required</span>
+            <span v-if="errorMessage" class="error-message">{{ errorMessage }}</span>
           </div>
           <div class="form-group">
-            <label for="password">Password:</label>
+            <label for="password" class="form-label">Password:</label>
             <input v-model="newUser.password" type="password" id="password" class="form-control" required />
+            <span class="invalid-feedback">Password is required</span>
           </div>
-          <button type="submit" class="btn btn-primary mt-2">Submit</button>
+          <button @click="toggleAlert" type="submit" class="btn btn-primary mt-2">Submit</button>
         </form>
+
       </div>
     </div>
   </div>
@@ -34,24 +40,50 @@ import { useRouter } from 'vue-router';
 export default defineComponent({
   name: 'CreateUser',
   setup() {
+
     const newUser = ref({ name: '', email: '', password: '' });
+    const errorMessage = ref('');
 
     const router = useRouter();
 
     const BASE_URL = "http://localhost:5000";
 
     const createUser = async () => {
-      try {
-        await useFetch(`${BASE_URL}/users`, {
+      const form = document.querySelector('.needs-validation');
+      if (form.checkValidity()) {
+
+        const response = await useFetch(`${BASE_URL}/users`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newUser.value),
         });
-        router.push('/users');
-      } catch (error) {
-        console.error('Error creating user:', error);
-      }
+
+        if (response.status.value === "error") {
+          errorMessage.value = 'Email already taken';
+        }
+        // console.log('Form submission successful');
+        // router.push('/users');
+      } else {
+        form.classList.add('was-validated');
+      };
     };
+
+    onMounted(() => {
+      const forms = document.querySelectorAll('.needs-validation');
+
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          if (!form.checkValidity()) {
+            form.classList.add('was-validated');
+          } else {
+            createUser();
+          }
+        }, false);
+      });
+    });
 
     return {
       newUser,
@@ -60,4 +92,3 @@ export default defineComponent({
   },
 });
 </script>
-  
