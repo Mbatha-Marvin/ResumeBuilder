@@ -6,7 +6,15 @@ from app import settings
 from app.core.models import HealthCheck
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.core.db import initialize_db, upgrade_to_alembic_head
+from app.core.db import initialize_db
+from app.helpers.database.alembic_migrations import AlembicMigrations
+from app.helpers.database.dummy_data import create_dummy_user
+from pathlib import Path
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+ALEMBIC_CONFIG_FILE = BASE_DIR / "alembic.ini"
+
 
 app = FastAPI(
     title=settings.project_name,
@@ -38,7 +46,9 @@ app.include_router(user_contact.router)
 @app.on_event("startup")
 def on_startup():
     initialize_db()
-    upgrade_to_alembic_head()
+    alembic_instance = AlembicMigrations(config_path=str(ALEMBIC_CONFIG_FILE))
+    alembic_instance.upgrade_to_alembic_head()
+    create_dummy_user(user_id=1)
 
 
 @app.get("/", response_model=HealthCheck, tags=["Status"])

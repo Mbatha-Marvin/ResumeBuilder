@@ -1,23 +1,11 @@
 # db refers to database in this file
-
 from app import settings
-import subprocess, time
+import time
 from sqlmodel import create_engine, SQLModel, Session
 
 
 DATABASE_URL = settings.db_connection_str
 engine = create_engine(url=DATABASE_URL, echo=True)
-
-
-def upgrade_to_alembic_head():
-    time.sleep(2)
-    result = subprocess.run(
-        ["alembic", "upgrade", "head"],
-        shell=True,
-        capture_output=True,
-        text=True,
-    )
-    print(result.stdout)
 
 
 def initialize_db():
