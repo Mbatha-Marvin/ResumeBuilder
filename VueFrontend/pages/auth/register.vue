@@ -1,30 +1,34 @@
 <template>
   <div class="container mt-4">
     <div class="card shadow rounded">
-      <div class="card-header">
-        <h4 class="d-inline">Add User
-          <NuxtLink to="/users" class="btn btn-outline-success float-end">Users</NuxtLink>
-        </h4>
-      </div>
       <div class="card-body">
+        
+      <div>
+          <h4 class="text-center bold">Register</h4>
+          <hr class="border border-success border-2 opacity-75">
+      </div>
+
         <form @submit.prevent="submitForm" class="needs-validation" novalidate>
           <div class="form-group">
-            <label for="name" class="form-label">Name:</label>
-            <input v-model="newUser.name" type="text" id="name" class="form-control" required />
+            <label for="name" class="form-label">Username:</label>
+            <input v-model="newUser.name" type="text" id="name" class="form-control" placeholder="Enter Username"  required />
             <span class="invalid-feedback">Name is required</span>
           </div>
           <div class="form-group">
             <label for="email" class="form-label">Email:</label>
-            <input v-model="newUser.email" type="email" id="email" :class="isError" required />
+            <input v-model="newUser.email" type="email" id="email" :class="isError" placeholder="Enter Email"  required />
             <span class="invalid-feedback">Email is required</span>
             <span v-if="errorMessage" class="form-text error-text">{{ errorMessage }}</span>
           </div>
           <div class="form-group">
             <label for="password" class="form-label">Password:</label>
-            <input v-model="newUser.password" type="password" id="password" class="form-control" required />
+            <input v-model="newUser.password" type="password" id="password" class="form-control" placeholder="Enter Password"  required />
             <span class="invalid-feedback">Password is required</span>
           </div>
-          <button @click="toggleAlert" type="submit" class="btn btn-primary mt-2">Submit</button>
+          <div class="d-inline">
+          <button type="submit" class="btn btn-success mt-2">Submit</button>
+          <NuxtLink to="/auth/login" class="btn btn-primary float-end mt-2">Login</NuxtLink>
+          </div>
         </form>
       </div>
     </div>
@@ -34,6 +38,7 @@
 <script>
 import { defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import Bold_hr from '../../components/Helpers/Bold_hr.vue';
 
 export default defineComponent({
   name: 'CreateUser',
@@ -61,7 +66,7 @@ export default defineComponent({
           errorMessage.value = 'Email already taken';
           isError.value = 'form-control border-danger';
         } else {
-          console.log('Form submission successful');
+          console.log('Registration successful');
           errorMessage.value = '';
           isError.value = 'form-control';
           router.push('/users');

@@ -3,7 +3,7 @@
     <div class="childtitle Title">
       <div id="title_name">
         <h1>
-          <span><strong>Ronald Kimeli</strong></span>
+          <span><strong>{{ resume }}</strong></span>
         </h1>
       </div>
       <div id="title_description_job">

@@ -1,34 +1,38 @@
 <template>
-    <nav class="navbar sticky-top navbar-expand-lg bg-success shadow">
-      <div class="container">
-        <NuxtLink class="navbar-brand" :to="'/'">
-          <img src="/assets/img/svg/bootstrap.svg" alt="Logo" width="30" height="24"
-            class="d-inline-block align-text-top">
-          ResumeBuilder
-        </NuxtLink>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <NuxtLink class="nav-link text-dark" :to="'/'">Home</NuxtLink>
-            </li>
-            <li class="nav-item">
-              <NuxtLink class="nav-link text-dark" :to="'/resume/template'">Templates</NuxtLink>
-            </li>
-            <li class="nav-item">
-              <NuxtLink class="nav-link text-dark" :to="'/resume/create'">Free Trial</NuxtLink>
-            </li>
-            <li class="nav-item">
-              <NuxtLink class="nav-link text-dark" :to="'/users'">Users</NuxtLink>
-            </li>
-          </ul>
+  <nav class="navbar sticky-top navbar-expand-lg bg-success shadow">
+    <div class="container">
+      <NuxtLink class="navbar-brand" :to="'/'">
+        <img src="/assets/img/svg/bootstrap.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+        ResumeBuilder
+      </NuxtLink>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <NuxtLink class="nav-link text-dark" :to="'/'">Home</NuxtLink>
+          </li>
+          <li class="nav-item">
+            <NuxtLink class="nav-link text-dark" :to="'/resume/template'">Templates</NuxtLink>
+          </li>
+          <li class="nav-item">
+            <NuxtLink class="nav-link text-dark" :to="'/resume/create'">Free Trial</NuxtLink>
+          </li>
+          <!-- <li class="nav-item">
+            <NuxtLink class="nav-link text-dark" :to="'/users'">Users</NuxtLink>
+          </li> -->
+          <li class="nav-item d-grid gap-2 d-md-flex">
+              <NuxtLink class="btn btn-primary me-md-2 text-dark" :to="'/auth/register'">Register</NuxtLink>
+              <NuxtLink class="btn btn-danger me-md-2 text-dark" :to="'/auth/login'">Login</NuxtLink>
+          </li>
 
-        </div>
+        </ul>
+
       </div>
-    </nav>
+    </div>
+  </nav>
 </template>
   
 <script>
