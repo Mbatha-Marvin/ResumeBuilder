@@ -1,79 +1,81 @@
 <template>
-    <div>
-      <h1>Users</h1>
-      <ul>
-        <li v-for="user in users" :key="user.id">
-          {{ user.name }} - {{ user.password }}
-          <button @click="deleteUser(user.id)">Delete</button>
-        </li>
-      </ul>
-      <form @submit.prevent="addUser">
-        <div>
-          <label for="name">Name:</label>
-          <input v-model="newUser.name" type="text" id="name" required />
+  <div class="container mt-4">
+    <div class="card shadow rounded">
+      <div class="card-header">
+        <h4 class="d-inline">User List
+          <NuxtLink to="/users/create" class="btn btn-outline-success float-end">Create User</NuxtLink>
+        </h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive-md table-responsive-sm table-responsive-lg table-responsive-xl table-responsive-xxl">
+          <table class="table table-striped table-bordered rounded">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(user, index) in users" :key="index">
+                <td>{{ user.user_id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                  <div class="btn-group" role="group" aria-label="Third group">
+                    <NuxtLink :to="`/users/${user.user_id}`" class="btn btn-sm btn-primary mx-2">Edit</NuxtLink>
+                    <button @click="deleteUser(user.user_id)" class="btn btn-sm btn-danger mx-2">Delete</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div>
-          <label for="password">password:</label>
-          <input v-model="newUser.password" type="password" id="password" required />
-        </div>
-        <button type="submit">Add User</button>
-      </form>
+      </div>
     </div>
-  </template>
-  
-  <script>
-  
- const resumeBaseUrl = "http://localhost:5000";
-  
-  export default {
-    data() {
-      return {
-        users: [],
-        newUser: {
-          name: '',
-          password: '',
-        },
-      };
-    },
-    async users() {
-      await this.fetchUsers();
-    },
-    methods: {
-      async fetchUsers() {
-        try {
-          const response = await $fetch(`${resumeBaseUrl}/users`);
-          this.users = await response.json();
-        } catch (error) {
-          console.error('Error fetching users:', error);
-        }
-      },
-      async addUser() {
-        try {
-          const response = await $fetch(`${resumeBaseUrl}/users`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(this.newUser),
-          });
-          const newUser = await response.json();
-          this.users.push(newUser);
-          this.newUser = { name: '', password: '' };
-        } catch (error) {
-          console.error('Error adding user:', error);
-        }
-      },
-      async deleteUser(userId) {
-        try {
-          await $fetch(`${resumeBaseUrl}/users/${userId}`, {
-            method: 'DELETE',
-          });
-          this.users = this.users.filter((user) => user.id !== userId);
-        } catch (error) {
-          console.error('Error deleting user:', error);
-        }
-      },
-    },
-  };
-  </script>
-  
+  </div>
+</template>
+
+<script>
+import { defineComponent, ref, onMounted } from 'vue';
+
+
+export default defineComponent({
+  name: 'UserList',
+  setup() {
+    const users = ref({ user_id: '', name: '', email: '' });
+
+    const BASE_URL = "http://localhost:5000";
+
+    const fetchUsers = async () => {
+      try {
+        const { data } = await useFetch(`${BASE_URL}/users`);
+        const response = data.value;
+        users.value = await response;
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    };
+
+    const deleteUser = async (userId) => {
+      try {
+        await useFetch(`${BASE_URL}/users/${userId}`, { method: 'DELETE' });
+        console.log(userId);
+        await fetchUsers();
+      } catch (error) {
+        console.error('Error deleting user:', error);
+      }
+    };
+
+    onMounted(() => {
+      fetchUsers();
+    });
+
+    return {
+      users,
+      deleteUser,
+    };
+  },
+});
+</script>
