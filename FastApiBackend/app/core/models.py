@@ -341,7 +341,9 @@ class ProjectBase(SQLModel):
     card_title: str
     project_name: str
     project_description_title: str
-    project_description: List[str]
+    project_description: List[str] = Field(
+        default=None, sa_column=Column(ARRAY(String()))
+    )
     project_url: Optional[str]
 
 
@@ -365,6 +367,7 @@ class ProjectCreate(ProjectBase):
                 "project_name": "Project Name",
                 "project_description_title": "Project Description Title",
                 "project_description": ["Description 1", "Description 2"],
+                "project_url": "project_url.com",
                 "user_id": "valid id",
             }
         }
@@ -383,6 +386,7 @@ class ProjectRead(ProjectBase):
                 "project_name": "Project Name",
                 "project_description_title": "Project Description Title",
                 "project_description": ["Description 1", "Description 2"],
+                "project_url": "project_url.com",
                 "user_id": "valid id",
                 "project_id": 0,
             }
@@ -405,6 +409,7 @@ class ProjectUpdate(SQLModel):
                 "project_name": "Project Name",
                 "project_description_title": "Project Description Title",
                 "project_description": ["Description 1", "Description 2"],
+                "project_url": "project_url.com",
                 "user_id": "valid id",
             }
         }
