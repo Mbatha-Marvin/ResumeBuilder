@@ -1,23 +1,23 @@
 <template>
-  <div class="template3" v-if="users" v-for="res in users" key="res.name">
-    <ResumeTemp3.Title :resume="res" />
+  <div class="template3" v-for="(user, index) in users" :key="index">
+    <ResumeTemp3.Title :resume="user" />
     <div class="parent">
-      <ResumeTemp3.Summary />
+      <ResumeTemp3.Summary :resume="user"/>
+      <ResumeTemp3.Experience :experience="user.experience_details" />
+      <ResumeTemp3.Education :education="user.education_details" />
       <ResumeTemp3.Skills />
-      <ResumeTemp3.Experience />
-      <ResumeTemp3.Education />
       <ResumeTemp3.Certification />
       <ResumeTemp3.Frameworks />
       <ResumeTemp3.Programming />
-      <ResumeTemp3.Languages />
-      <ResumeTemp3.OperatingSystems />
+      <ResumeTemp3.Languages :languages="user.language_details" />
+      <ResumeTemp3.Operating_Systems />
       <ResumeTemp3.Hobbies />
-      <ResumeTemp3.Personal_Projects />
+      <ResumeTemp3.Personal_Projects :projects="user.project_details" />
       <ResumeTemp3.Reference />
     </div>
     <div class="d-grid gap-2 col-6 mx-auto mb-3">
-      <button class="btn btn-success">Download PDF</button>
-    </div>
+        <button class="btn btn-success">Download PDF</button>
+      </div>
   </div>
 </template>
 
@@ -34,7 +34,7 @@ export default defineComponent({
         const response = await useFetch('http://localhost:5000/users/1/profile');
         if (response.status.value == "success") {
           const usersData = response.data.value;
-          users.value = usersData;
+          users.value = [usersData];
           console.log(response);
         } else {
           console.log(response);

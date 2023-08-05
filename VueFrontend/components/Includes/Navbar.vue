@@ -20,9 +20,9 @@
           <li class="nav-item">
             <NuxtLink class="nav-link text-dark" :to="'/resume/create'">Free Trial</NuxtLink>
           </li>
-          <!-- <li class="nav-item">
-            <NuxtLink class="nav-link text-dark" :to="'/users'">Users</NuxtLink>
-          </li> -->
+          <li class="nav-item">
+            <NuxtLink class="nav-link text-dark" :to="'/template'">MainTemplate</NuxtLink>
+          </li>
           <li class="nav-item d-grid gap-2 d-md-flex">
               <NuxtLink class="btn btn-primary me-md-2 text-dark" :to="'/auth/register'">Register</NuxtLink>
               <NuxtLink class="btn btn-danger me-md-2 text-dark" :to="'/auth/login'">Login</NuxtLink>

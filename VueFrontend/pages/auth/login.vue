@@ -1,30 +1,35 @@
 <template>
-    <div class="container mt-4">
-        <div class="card shadow rounded">
-            <div class="card-body">
+    <div class="container">
 
-                <div>
+        <!-- <div>
                     <h4 class="text-center bold">Login</h4>
                     <hr class="border border-success border-2 opacity-75">
-                </div>
+                </div> -->
 
+        <div class="card mb-2">
+            <div class="card-body rounded">
+                <h4 class="text-center text-uppercase bold">Login</h4>
+            </div>
+        </div>
+        <div class="card shadow rounded">
+            <div class="card-body">
                 <form @submit.prevent="loginUser" class="needs-validation" novalidate>
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email:</label>
+                    <div class="form-group mb-2">
+                        <label for="email" class="form-label">Email</label>
                         <input v-model="loggedUser.email" type="email" id="email" class="form-control"
                             placeholder="Enter Email" required />
                         <span class="invalid-feedback">Email is required</span>
                         <span v-if="errorMessage" class="form-text error-text">{{ errorMessage }}</span>
                     </div>
-                    <div class="form-group">
-                        <label for="password" class="form-label">Password:</label>
+                    <div class="form-group mb-2">
+                        <label for="password" class="form-label">Password</label>
                         <input v-model="loggedUser.password" type="password" id="password" class="form-control"
                             placeholder="Enter Password" required />
                         <span class="invalid-feedback">Password is required</span>
                     </div>
-                    <div class="d-inline">
-                        <button type="submit" class="btn btn-success mt-2">Submit</button>
-                        <NuxtLink to="/auth/register" class="btn btn-primary float-end mt-2">Register</NuxtLink>
+                    <div class="d-inline align-baseline mt-2">
+                        <button type="submit" class="btn btn-success mt-2">Login</button>
+                        <NuxtLink to="/auth/register" class="float-end text-center mt-2">New user? register</NuxtLink>
                     </div>
                 </form>
             </div>
@@ -56,7 +61,7 @@ export default defineComponent({
                 errorMessage.value = '';
                 const response = await useFetch(`${BASE_URL}/users/${route.params.id}`);
                 loggedUser.value = await response;
-                
+
                 if (response.status.value === "error") {
                     errorMessage.value = 'Email already taken';
                     isError.value = 'form-control border-danger';

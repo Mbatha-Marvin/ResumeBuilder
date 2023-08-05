@@ -4,17 +4,18 @@
       <h4><strong>Languages</strong></h4>
       <Helpers.Bold_hr />
     </div>
-    <div v-for="(item, index) in languages" :key="index" class="language">
+    <div class="language">
       <div class="iconic-section">
-        <span><strong>{{ item.language_name }} :</strong> {{ item.profeciency_level }}</span>
+        <span><strong>English :</strong> Profesional</span>
+      </div>
+      <div class="iconic-section">
+        <span><strong>Kiswahili :</strong> Native</span>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-
-const { languages } = defineProps(['languages'])
 
 </script>
 

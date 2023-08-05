@@ -1,33 +1,34 @@
 <template>
-  <div class="container mt-4">
+  <div class="container">
+    <div class="card mb-2">
+      <div class="card-body">
+        <h4 class="text-center text-uppercase bold">Register</h4>
+      </div>
+    </div>
     <div class="card shadow rounded">
       <div class="card-body">
-        
-      <div>
-          <h4 class="text-center bold">Register</h4>
-          <hr class="border border-success border-2 opacity-75">
-      </div>
-
         <form @submit.prevent="submitForm" class="needs-validation" novalidate>
           <div class="form-group">
-            <label for="name" class="form-label">Username:</label>
-            <input v-model="newUser.name" type="text" id="name" class="form-control" placeholder="Enter Username"  required />
+            <label for="name" class="form-label">Username</label>
+            <input v-model="newUser.name" type="text" id="name" class="form-control" placeholder="Enter Username"
+              required />
             <span class="invalid-feedback">Name is required</span>
           </div>
           <div class="form-group">
-            <label for="email" class="form-label">Email:</label>
-            <input v-model="newUser.email" type="email" id="email" :class="isError" placeholder="Enter Email"  required />
+            <label for="email" class="form-label">Email</label>
+            <input v-model="newUser.email" type="email" id="email" :class="isError" placeholder="Enter Email" required />
             <span class="invalid-feedback">Email is required</span>
             <span v-if="errorMessage" class="form-text error-text">{{ errorMessage }}</span>
           </div>
           <div class="form-group">
-            <label for="password" class="form-label">Password:</label>
-            <input v-model="newUser.password" type="password" id="password" class="form-control" placeholder="Enter Password"  required />
+            <label for="password" class="form-label">Password</label>
+            <input v-model="newUser.password" type="password" id="password" class="form-control"
+              placeholder="Enter Password" required />
             <span class="invalid-feedback">Password is required</span>
           </div>
-          <div class="d-inline">
-          <button type="submit" class="btn btn-success mt-2">Submit</button>
-          <NuxtLink to="/auth/login" class="btn btn-primary float-end mt-2">Login</NuxtLink>
+          <div class="d-inline mt-2 align-baseline mt-2">
+            <button type="submit" class="btn btn-success mt-2">Register</button>
+            <NuxtLink to="/auth/login" class="float-end text-center mt-2">Already registered? login</NuxtLink>
           </div>
         </form>
       </div>
@@ -78,7 +79,7 @@ export default defineComponent({
 
     onMounted(() => {
       const forms = document.querySelectorAll('.needs-validation');
-      
+
       Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
           event.preventDefault();
@@ -111,18 +112,19 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
-.form-control .border-danger  {
+.form-control .border-danger {
   border: 2px solid #921f1f !important;
   background-color: #921f1f !important;
   content: "!";
-        position: absolute;
-        top: 50%;
-        right: 10px; /* Adjust the spacing as needed */
-        transform: translateY(-50%);
-        color: red;
-        font-weight: bold;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  /* Adjust the spacing as needed */
+  transform: translateY(-50%);
+  color: red;
+  font-weight: bold;
 }
+
 .error {
   border: 1px solid red;
 }
