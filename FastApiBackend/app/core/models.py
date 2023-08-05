@@ -64,11 +64,13 @@ class UserUpdate(UserBase):
     password: Optional[str] = None
 
     class Config:
+        exclude = {"user_id"}
         schema_extra = {
             "example": {
                 "name": "New UserName",
                 "password": "New Password",
-                "user_id": "User_id",
+                "email": "valid_email",
+                # "user_id": "User_id",
             }
         }
 
@@ -153,6 +155,7 @@ class EducationUpdate(SQLModel):
     finish_date: Optional[datetime.date] = None
 
     class Config:
+        exclude = {"user_id"}
         schema_extra = {
             "example": {
                 "card_title": "Card Title",
@@ -163,7 +166,7 @@ class EducationUpdate(SQLModel):
                 "final_grade": "Final Grade",
                 "start_date": "2023-06-29",
                 "finish_date": "2023-06-29",
-                "user_id": "valid id",
+                # "user_id": "valid id",
             }
         }
 
@@ -251,6 +254,7 @@ class ExperienceUpdate(SQLModel):
     end_date: Optional[datetime.date] = None
 
     class Config:
+        exclude = {"user_id"}
         schema_extra = {
             "example": {
                 "card_title": "Card Title",
@@ -262,7 +266,7 @@ class ExperienceUpdate(SQLModel):
                 "job_descriptions": ["Description 1", "Description 2"],
                 "start_date": "2023-06-29",
                 "end_date": "2023-06-29",
-                "user_id": "valid id",
+                # "user_id": "valid id",
             }
         }
 
@@ -325,12 +329,13 @@ class LanguageUpdate(SQLModel):
     profeciency_level: Optional[int] = None
 
     class Config:
+        exclude = {"user_id"}
         schema_extra = {
             "example": {
                 "card_title": "Card Title",
                 "language_name": "Language Name",
                 "profeciency_level": 5,
-                "user_id": "valid id",
+                # "user_id": "valid id",
             }
         }
 
@@ -403,6 +408,7 @@ class ProjectUpdate(SQLModel):
     project_url: Optional[str] = None
 
     class Config:
+        exclude = {"user_id"}
         schema_extra = {
             "example": {
                 "card_title": "Card Title",
@@ -410,7 +416,7 @@ class ProjectUpdate(SQLModel):
                 "project_description_title": "Project Description Title",
                 "project_description": ["Description 1", "Description 2"],
                 "project_url": "project_url.com",
-                "user_id": "valid id",
+                # "user_id": "valid id",
             }
         }
 
@@ -477,6 +483,7 @@ class UserContactUpdate(SQLModel):
     user_summary: Optional[str] = None
 
     class Config:
+        exclude = {"user_id"}
         schema_extra = {
             "example": {
                 "personal_website": "personal_website",
@@ -485,7 +492,7 @@ class UserContactUpdate(SQLModel):
                 "phone_number": "Phone Number",
                 "user_work_title": "User Work Title",
                 "user_summary": "User Summary",
-                "user_id": "valid id",
+                # "user_id": "valid id",
             }
         }
 
