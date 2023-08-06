@@ -95,7 +95,6 @@ dist/
 .DS_Store
 coverage/
 .vscode/
-docker.txt
 .env
 package-lock.json
 VueFrontend/package-lock.json

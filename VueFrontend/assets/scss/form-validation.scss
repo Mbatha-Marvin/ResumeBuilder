@@ -1,0 +1,18 @@
+.form-control {
+    position: relative;
+  
+    &.has-error {
+      border-color: red;
+  
+      &:after {
+        content: "!";
+        position: absolute;
+        top: 50%;
+        right: 10px; /* Adjust the spacing as needed */
+        transform: translateY(-50%);
+        color: red;
+        font-weight: bold;
+      }
+    }
+  }
+  

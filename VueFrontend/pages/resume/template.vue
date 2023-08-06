@@ -1,20 +1,20 @@
 <template>
   <div class="container">
     <div class="template3">
-      <ResumeTemp3.Title />
+      <ResumeTemp4.Title />
       <div class="parent">
-        <ResumeTemp3.Summary />
-        <ResumeTemp3.Skills />
-        <ResumeTemp3.Experience />
-        <ResumeTemp3.Education />
-        <ResumeTemp3.Certification />
-        <ResumeTemp3.Frameworks />
-        <ResumeTemp3.Programming />
-        <ResumeTemp3.Languages />
-        <ResumeTemp3.OperatingSystems />
-        <ResumeTemp3.Hobbies />
-        <ResumeTemp3.Personal_Projects />
-        <ResumeTemp3.Reference />
+        <ResumeTemp4.Summary />
+        <ResumeTemp4.Skills />
+        <ResumeTemp4.Experience />
+        <ResumeTemp4.Education />
+        <ResumeTemp4.Certification />
+        <ResumeTemp4.Frameworks />
+        <ResumeTemp4.Programming />
+        <ResumeTemp4.Languages />
+        <ResumeTemp4.OperatingSystems />
+        <ResumeTemp4.Hobbies />
+        <ResumeTemp4.Personal_Projects />
+        <ResumeTemp4.Reference />
       </div>
       <div class="d-grid gap-2 col-6 mx-auto mb-3">
         <button ref="pdfButton" @click="generatePDF" class="btn btn-success">Download PDF</button>
@@ -97,6 +97,10 @@ useHead({
       content: "This is a resume builder"
     },
   ],
+})
+
+definePageMeta({
+  layout: "template3",
 })
 
 </script>
