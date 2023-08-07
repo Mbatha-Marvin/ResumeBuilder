@@ -39,6 +39,7 @@
 <script>
 import { defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import axios from 'axios';
 import Bold_hr from '../../components/Helpers/Bold_hr.vue';
 
 export default defineComponent({
@@ -58,20 +59,24 @@ export default defineComponent({
       const form = document.querySelector('.needs-validation');
       if (form.checkValidity()) {
         errorMessage.value = '';
-        const response = await useFetch(`${BASE_URL}/users`, {
-          method: 'POST',
+        await axios({
+          method: 'post',
+          url: `${BASE_URL}/users`,
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(newUser.value),
-        });
-        if (response.status.value === "error") {
-          errorMessage.value = 'Email already taken';
-          isError.value = 'form-control border-danger';
-        } else {
-          console.log('Registration successful');
-          errorMessage.value = '';
-          isError.value = 'form-control';
-          router.push('/users');
-        }
+          data: JSON.stringify(newUser.value),
+        })
+          .then(function (response) {
+            console.log('Registration successful');
+            errorMessage.value = '';
+            isError.value = 'form-control';
+            router.push('/users');
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+            errorMessage.value = error.response.data.detail;
+            isError.value = 'form-control border-danger';
+          });
       } else {
         form.classList.add('was-validated');
       };

@@ -1,0 +1,8 @@
+[
+    {
+        "icons": {
+            "card_title": "string",
+            "icon_location": "string"
+        }
+    }
+]

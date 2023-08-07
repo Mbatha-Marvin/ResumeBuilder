@@ -1,7 +1,7 @@
 <template>
     <div class="child reference">
       <div id="section-title">
-        <h4><strong>Reference</strong></h4>
+        <h4><strong>Referees</strong></h4>
         <Helpers.Bold_hr />
       </div>
       <div class="row referencerow">

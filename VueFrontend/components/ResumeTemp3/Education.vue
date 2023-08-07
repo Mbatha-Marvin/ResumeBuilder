@@ -7,20 +7,20 @@
 
     <div v-for="(item, index) in education" :key="index" class="enrolment">
       <div class="iconic-section">
-        <span>Level : <strong>{{ item.education_level }}</strong></span>
+        <span><strong>Level : </strong> {{ item.education_level }}</span>
       </div>
       <div class="iconic-section">
-        <span>Course : <strong>{{ item.course_title }}</strong></span>
+        <span><strong>Course : </strong> {{ item.course_title }}</span>
       </div>
       <div class="iconic-section">
-        <span>Institution : <strong>{{ item.school_name }}</strong></span>
+        <span><strong>Institution : </strong> {{ item.school_name }}</span>
       </div>
       <div class="row">
         <div class="col-md-6 iconic-section">
-          <span>Start Date : <strong>{{ item.start_date }}</strong></span>
+          <span><strong>Start Date:</strong> {{ item.start_date }}</span>
         </div>
         <div class="col-md-6 iconic-section">
-          <span>End Date : <strong>{{ item.finish_date }}</strong></span>
+          <span><strong>End Date:</strong> {{ item.finish_date }}</span>
         </div>
       </div>
       <Helpers.Dotted_hr v-if="index < education.length - 1" />

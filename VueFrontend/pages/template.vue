@@ -6,6 +6,7 @@
       <ResumeTemp3.Experience :experience="user.experience_details" />
       <ResumeTemp3.Education :education="user.education_details" />
       <ResumeTemp3.Skills />
+      <ResumeTemp3.Objective />
       <ResumeTemp3.Certification />
       <ResumeTemp3.Frameworks />
       <ResumeTemp3.Programming />

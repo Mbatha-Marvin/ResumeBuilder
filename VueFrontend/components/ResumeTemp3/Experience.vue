@@ -10,7 +10,7 @@
         <h5><strong>{{ item.job_title }} </strong></h5>
       </div>
       <div class="company-title">
-        <img class="masterclass" src="/assets/img/masterclass.jpeg" alt="logo" />
+        <img class="masterclass" src="~/assets/img/masterclass.jpeg" alt="logo" />
         <span><strong>{{ item.company_name }}</strong></span>
       </div>
       <div class="iconic-section">
@@ -23,10 +23,10 @@
       </div>
       <div class="row rowdates">
         <div class="col-md-6 iconic-section">
-          <span>Start Date: <strong>{{ item.start_date }}</strong></span>
+          <span><strong>Start Date:</strong> {{ item.start_date }}</span>
         </div>
         <div class="col-md-6 iconic-section">
-          <span>End Date: <strong>{{ item.end_date }}</strong></span>
+          <span><strong>End Date:</strong> {{ item.end_date }}</span>
         </div>
       </div>
       <div class="achievements mt-2">
