@@ -1,3 +1,4 @@
+from pydantic import EmailStr
 from sqlmodel import create_engine, SQLModel, Session
 from app.core.db import engine
 from datetime import date
@@ -8,21 +9,27 @@ from app.core.models import (
     EducationCreate,
     Experience,
     ExperienceCreate,
-    UserContact,
-    UserContactCreate,
+    Profile,
+    ProfileCreate,
     Language,
     LanguageCreate,
     ProjectCreate,
     Project,
+    Certification,
+    CertificationCreate,
+    Referee,
+    RefereeCreate,
 )
 
 start_date = date(year=2022, month=9, day=21)
 end_date = date(year=2023, month=3, day=21)
 
 
-def create_dummy_user(user_id: int):
+def create_dummy_user(user_id: int, phone_number: str, email: EmailStr):
     dummy_user = UserCreate(
-        name="Test User", password="TestPass", email="test@email.com"
+        password="TestPass",
+        email=email,
+        phone_number=phone_number,
     )
     dummy_education_1 = EducationCreate(
         card_title="Education",
@@ -82,14 +89,41 @@ def create_dummy_user(user_id: int):
         end_date=end_date,
         user_id=user_id,
     )
-    dummy_user_contact = UserContactCreate(
-        personal_website="personal_website.com",
-        city="Some City",
-        country="Some Country",
-        phone_number="+12345678909",
-        user_work_title="A short and concise profession title",
+    dummy_user_contact = ProfileCreate(
+        first_name="first_name",
+        last_name="last_name",
+        middle_name="middle_name",
+        image_url="image_url.com",
+        linkedin_url="linkedin_url.com",
+        github_url="github_url.com",
+        personal_website="personal_website_url.com",
+        city="some city",
+        country="some country",
+        address="some address",
+        skills=[
+            "skill 1",
+            "skill 2",
+            "skill 3",
+            "skill 4",
+            "skill 5",
+            "skill 6",
+            "skill 7 slighly longer",
+            "skill 8",
+        ],
+        hobbies=[
+            "hobby 1",
+            "hobby 2",
+            "hobby 3",
+            "hobby 4",
+            "hobby 5",
+            "hobby 6",
+            "hobby 7 slighly longer",
+            "hobby 8",
+        ],
+        user_work_title="some work title",
         user_id=user_id,
-        user_summary="This is a summary of your skills strengths, things you think are important for the recruiter to see in a glipmes. An ideal length is two paragraphs",
+        user_summary="some user summary description that is longer than the rest to test text wrapping in the cards",
+        objectives="some user objective description that is longer than the rest to test text wrapping in the cards",
     )
     dummy_language_1 = LanguageCreate(
         card_title="Language",
@@ -141,6 +175,45 @@ def create_dummy_user(user_id: int):
             "Project description entry 5 ",
         ],
         project_url="some_gitlab_url.com",
+        user_id=user_id,
+    )
+    dummy_certification_1 = CertificationCreate(
+        card_title="Certification",
+        school_name="Maseno",
+        school_type="University",
+        certified_on="Engineering",
+        start_date="2023-06-29",
+        end_date="2023-06-29",
+        user_id=user_id,
+    )
+    dummy_certification_2 = CertificationCreate(
+        card_title="Certification",
+        school_name="Moringa",
+        school_type="BootCamp",
+        certified_on="Software Engineering",
+        start_date="2023-07-29",
+        end_date="2023-10-29",
+        user_id=user_id,
+    )
+
+    dummy_referee_1 = RefereeCreate(
+        card_title="Referee",
+        full_name=f"Full_Name_1",
+        email=f"referee_1@email.com",
+        phone_number="A phone number",
+        company_name=f"Some_Company_Name_1",
+        occupation=f"Some_Job_Title_1",
+        address=f"Some_Address_1",
+        user_id=user_id,
+    )
+    dummy_referee_2 = RefereeCreate(
+        card_title="Referee",
+        full_name=f"Full_Name_2",
+        email=f"referee_2@email.com",
+        phone_number="A phone number",
+        company_name=f"Some_Company_Name_2",
+        occupation=f"Some_Job_Title_2",
+        address=f"Some_Address_2",
         user_id=user_id,
     )
     with Session(engine) as session:
@@ -208,11 +281,41 @@ def create_dummy_user(user_id: int):
             session.refresh(user_language_db_create_4)
 
             # Add user_contact fields to user
-            user_user_contact_db_create_1 = UserContact.from_orm(dummy_user_contact)
+            user_user_contact_db_create_1 = Profile.from_orm(dummy_user_contact)
             session.add(user_user_contact_db_create_1)
             session.commit()
             session.refresh(user_user_contact_db_create_1)
 
+            # Add Certification fields to user
+            user_certification_db_create_1 = Certification.from_orm(
+                dummy_certification_1
+            )
+            session.add(user_certification_db_create_1)
+            session.commit()
+            session.refresh(user_certification_db_create_1)
+
+            user_certification_db_create_2 = Certification.from_orm(
+                dummy_certification_2
+            )
+            session.add(user_certification_db_create_2)
+            session.commit()
+            session.refresh(user_certification_db_create_2)
+
+            # Add Referee fields to user
+            user_referee_db_create_1 = Referee.from_orm(dummy_referee_1)
+            session.add(user_referee_db_create_1)
+            session.commit()
+            session.refresh(user_referee_db_create_1)
+
+            user_referee_db_create_2 = Referee.from_orm(dummy_referee_2)
+            session.add(user_referee_db_create_2)
+            session.commit()
+            session.refresh(user_referee_db_create_2)
+
             return "Dummy_user with user_id {user_id} successfully created"
         else:
             return "Dummy_user or User with user_id {user_id} already exists"
+
+
+# if __name__ == "__main__":
+#     create_dummy_user(user_id=3)

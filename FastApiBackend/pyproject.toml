@@ -17,6 +17,7 @@ psycopg2-binary = "^2.9.6"
 python-multipart = "^0.0.6"
 alembic = "^1.11.1"
 pydantic = {extras = ["email"], version = "^1.10.10"}
+phonenumbers = "^8.13.18"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"

@@ -1,6 +1,15 @@
 import uvicorn
 from fastapi import FastAPI
-from app.routers import users, experience, education, language, project, user_contact
+from app.routers import (
+    users,
+    experience,
+    education,
+    language,
+    project,
+    profile,
+    certification,
+    referee,
+)
 
 from app import settings
 from app.core.models import HealthCheck
@@ -40,15 +49,31 @@ app.include_router(experience.router)
 app.include_router(education.router)
 app.include_router(language.router)
 app.include_router(project.router)
-app.include_router(user_contact.router)
+app.include_router(profile.router)
+app.include_router(certification.router)
+app.include_router(referee.router)
 
 
 @app.on_event("startup")
 def on_startup():
     initialize_db()
-    alembic_instance = AlembicMigrations(config_path=str(ALEMBIC_CONFIG_FILE))
-    alembic_instance.upgrade_to_alembic_head()
-    create_dummy_user(user_id=1)
+    # alembic_instance = AlembicMigrations(config_path=str(ALEMBIC_CONFIG_FILE))
+    # alembic_instance.upgrade_to_alembic_head()
+    print(
+        create_dummy_user(
+            user_id=1, phone_number="+254711215654", email="test_1@email.com"
+        )
+    )
+    print(
+        create_dummy_user(
+            user_id=2, phone_number="+254711215655", email="test_2@email.com"
+        )
+    )
+    print(
+        create_dummy_user(
+            user_id=3, phone_number="+254711215634", email="test_3@email.com"
+        )
+    )
 
 
 @app.get("/", response_model=HealthCheck, tags=["Status"])
