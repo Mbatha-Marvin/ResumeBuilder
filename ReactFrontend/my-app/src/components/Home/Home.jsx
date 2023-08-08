@@ -1,12 +1,7 @@
 import { useState } from "react";
 
 function Home() {
-  const [formData, setFormData] = useState({
-    name: "",
-    location: "",
-    profilePicture: "",
-    websiteLink: "",
-  });
+  const [formData, setFormData] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;

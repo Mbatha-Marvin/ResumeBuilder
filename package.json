@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "formik": "^2.4.3",
     "vue-html2pdf": "^1.8.0"
   }
 }
