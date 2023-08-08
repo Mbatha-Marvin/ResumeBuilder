@@ -2,6 +2,8 @@ from pydantic import BaseModel, EmailStr, validator
 from sqlmodel import Column, SQLModel, Field, Relationship, ARRAY, String
 import datetime
 from typing import Optional, List
+from phonenumbers.phonenumber import PhoneNumber
+import phonenumbers
 
 
 class HealthCheck(BaseModel):
@@ -12,9 +14,24 @@ class HealthCheck(BaseModel):
 
 # The class `UserBase` represents a user with attributes such as name, password, and email.
 class UserBase(SQLModel):
-    name: str = Field(index=True)
-    password: str = Field(index=True, nullable=False)
     email: EmailStr = Field(nullable=False, unique=True, index=True)
+    password: str = Field(index=True, nullable=False)
+    phone_number: str = Field(index=True, nullable=False, unique=True)
+
+    @validator("phone_number")
+    def phone_number_is_valid_number(cls, v):
+        phone_number = phonenumbers.parse(v, None)
+        if phonenumbers.is_valid_number(phone_number):
+            return v
+        else:
+            raise ValueError("Not a valid Phone Number")
+
+    @validator("phone_number")
+    def phone_number_starts_with_country_code(cls, v: str):
+        if v.startswith("+"):
+            return v
+        else:
+            raise ValueError("Phone Number should start with country code")
 
 
 # The User class represents a user with various details such as education, experience, language,
@@ -25,7 +42,9 @@ class User(UserBase, table=True):
     experience_details: List["Experience"] = Relationship(back_populates="user")
     language_details: List["Language"] = Relationship(back_populates="user")
     project_details: List["Project"] = Relationship(back_populates="user")
-    user_contact_details: List["UserContact"] = Relationship(back_populates="user")
+    profile_details: List["Profile"] = Relationship(back_populates="user")
+    certification_details: List["Certification"] = Relationship(back_populates="user")
+    referee_details: List["Referee"] = Relationship(back_populates="user")
 
 
 # The `UserCreate` class is a subclass of `UserBase` and includes a `Config` class with an `example`
@@ -34,9 +53,9 @@ class UserCreate(UserBase):
     class Config:
         schema_extra = {
             "example": {
-                "name": "UserName",
-                "password": "Password",
                 "email": "Email",
+                "password": "Password",
+                "phone_number": "valid_phone_number",
             }
         }
 
@@ -49,9 +68,9 @@ class UserRead(UserBase):
     class Config:
         schema_extra = {
             "example": {
-                "name": "UserName - type(string)",
-                "password": "Password  - type(string)",
                 "email": "user_email - type(email)",
+                "password": "Password  - type(string)",
+                "phone_number": "valid_phone_number",
                 "user_id": "user_id",
             }
         }
@@ -67,9 +86,9 @@ class UserUpdate(UserBase):
         exclude = {"user_id"}
         schema_extra = {
             "example": {
-                "name": "New UserName",
-                "password": "New Password",
                 "email": "valid_email",
+                "password": "New Password",
+                "phone_number": "valid_phone_number",
                 # "user_id": "User_id",
             }
         }
@@ -284,7 +303,7 @@ class Language(LanguageBase, table=True):
     language_id: int = Field(default=None, primary_key=True)
 
     user_id: int = Field(foreign_key="user.user_id")
-    user: List[User] = Relationship(back_populates="language_details")
+    user: Optional[User] = Relationship(back_populates="language_details")
 
 
 # The `LanguageCreate` class is a subclass of `LanguageBase` that includes a `user_id` attribute and a
@@ -358,7 +377,7 @@ class Project(ProjectBase, table=True):
     project_id: int = Field(default=None, primary_key=True)
 
     user_id: int = Field(foreign_key="user.user_id")
-    user: List[User] = Relationship(back_populates="project_details")
+    user: Optional[User] = Relationship(back_populates="project_details")
 
 
 # The `ProjectCreate` class is a subclass of `ProjectBase` and includes a `user_id` attribute.
@@ -421,87 +440,296 @@ class ProjectUpdate(SQLModel):
         }
 
 
-# The class `UserContactBase` represents a user's contact information and work details.
-class UserContactBase(SQLModel):
+# The class `ProfileBase` represents a user's contact information and work details.
+class ProfileBase(SQLModel):
+    first_name: str
+    last_name: str
+    middle_name: str
+    image_url: Optional[str]
+    linkedin_url: Optional[str]
+    github_url: Optional[str]
     personal_website: Optional[str]
     city: str
     country: str
-    phone_number: str
+    address: Optional[str]
     user_work_title: str
     user_summary: str
+    objectives: Optional[str]
+    skills: List[str] = Field(default=None, sa_column=Column(ARRAY(String())))
+    hobbies: List[str] = Field(default=None, sa_column=Column(ARRAY(String())))
 
 
-class UserContact(UserContactBase, table=True):
-    user_contact_id: int = Field(default=None, primary_key=True)
+class Profile(ProfileBase, table=True):
+    profile_id: int = Field(default=None, primary_key=True)
 
     user_id: int = Field(foreign_key="user.user_id")
-    user: List[User] = Relationship(back_populates="user_contact_details")
+    user: Optional[User] = Relationship(back_populates="profile_details")
 
 
-class UserContactCreate(UserContactBase):
+class ProfileCreate(ProfileBase):
     user_id: int
 
     class Config:
+        # exclude = {"user_id"}
         schema_extra = {
             "example": {
+                "first_name": "First Name",
+                "last_name": "Last Name",
+                "middle_name": "Middle Name",
+                "image_url": "image_url",
+                "linkedin_url": "valid_url",
+                "github_url": "valid_url",
                 "personal_website": "personal_website",
                 "city": "City",
                 "country": "Country of residence",
-                "phone_number": "Phone Number",
+                "address": "address",
+                "skills": ["Description 1", "Description 2"],
+                "hobbies": ["Description 1", "Description 2"],
                 "user_work_title": "User Work Title",
                 "user_summary": "User Summary",
+                "objectives": "objective summary",
                 "user_id": "valid id",
             }
         }
 
 
-class UserContactRead(UserContactBase):
+class ProfileRead(ProfileBase):
     user_id: int
-    user_contact_id: int
+    profile_id: int
 
     class Config:
         schema_extra = {
             "example": {
+                "first_name": "First Name",
+                "last_name": "Last Name",
+                "middle_name": "Middle Name",
+                "image_url": "image_url",
+                "linkedin_url": "valid_url",
+                "github_url": "valid_url",
                 "personal_website": "personal_website",
                 "city": "City",
                 "country": "Country of residence",
-                "phone_number": "Phone Number",
+                "address": "address",
+                "skills": ["Description 1", "Description 2"],
+                "hobbies": ["Description 1", "Description 2"],
                 "user_work_title": "User Work Title",
                 "user_summary": "User Summary",
+                "objectives": "objective summary",
                 "user_id": "valid id",
-                "user_contact_id": 0,
+                "profile_id": "valid id",
             }
         }
 
 
-class UserContactUpdate(SQLModel):
+class ProfileUpdate(SQLModel):
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
+    middle_name: Optional[str] = None
+    image_url: Optional[str]
+    linkedin_url: Optional[str] = None
+    github_url: Optional[str] = None
     personal_website: Optional[str] = None
     city: Optional[str] = None
     country: Optional[str] = None
-    phone_number: Optional[str] = None
+    address: Optional[str] = None
+    skills: Optional[List[str]] = None
+    hobbies: Optional[List[str]] = None
     user_work_title: Optional[str] = None
     user_summary: Optional[str] = None
+    objectives: Optional[str] = None
 
     class Config:
         exclude = {"user_id"}
         schema_extra = {
             "example": {
+                "first_name": "First Name",
+                "last_name": "Last Name",
+                "middle_name": "Middle Name",
+                "image_url": "image_url",
+                "linkedin_url": "valid_url",
+                "github_url": "valid_url",
                 "personal_website": "personal_website",
                 "city": "City",
                 "country": "Country of residence",
-                "phone_number": "Phone Number",
+                "address": "address",
+                "skills": ["Description 1", "Description 2"],
+                "hobbies": ["Description 1", "Description 2"],
                 "user_work_title": "User Work Title",
                 "user_summary": "User Summary",
+                "objectives": "objective summary",
                 # "user_id": "valid id",
             }
         }
 
 
-# The class UserProfileRead is a subclass of UserBase and represents a user profile with optional
-# education, experience, language, project, and contact details.
-class UserProfileRead(UserBase):
-    education_details: Optional[List[EducationBase]] = None
-    experience_details: Optional[List[Experience]] = None
-    language_details: Optional[List[Language]] = None
-    project_details: Optional[List[Project]] = None
-    user_contact_details: Optional[List[UserContact]] = None
+# The above class represents a base model for a Certification with attributes such as card title, Certification
+# name, and proficiency level.
+class CertificationBase(SQLModel):
+    card_title: str
+    school_name: str
+    school_type: str
+    certified_on: str
+    start_date: datetime.date
+    end_date: datetime.date
+
+
+# The `Certification` class represents a programming Certification and its relationship with a user.
+class Certification(CertificationBase, table=True):
+    certification_id: int = Field(default=None, primary_key=True)
+
+    user_id: int = Field(foreign_key="user.user_id")
+    user: Optional[User] = Relationship(back_populates="certification_details")
+
+
+# The `CertificationCreate` class is a subclass of `CertificationBase` that includes a `user_id` attribute and a
+# `Config` class with an example schema.
+class CertificationCreate(CertificationBase):
+    user_id: int
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "card_title": "Certification",
+                "school_name": "School_Name",
+                "school_type": "School_Type",
+                "certified_on": "Discipline",
+                "start_date": "yyyy-mm-dd",
+                "end_date": "yyyy-mm-dd",
+                "user_id": "valid_id",
+            }
+        }
+
+
+# The `CertificationRead` class represents a Certification read operation and includes properties for user ID
+# and Certification ID.
+class CertificationRead(CertificationBase):
+    user_id: int
+    certification_id: int
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "card_title": "Certification",
+                "school_name": "School_Name",
+                "school_type": "School_Type",
+                "certified_on": "Discipline",
+                "start_date": "yyyy-mm-dd",
+                "end_date": "yyyy-mm-dd",
+                "user_id": "valid id",
+                "certification_id": 0,
+            }
+        }
+
+
+# The `CertificationUpdate` class represents an update to a Certification entry in a database, including the
+# card title, Certification name, and proficiency level.
+class CertificationUpdate(SQLModel):
+    card_title: Optional[str] = None
+    school_name: Optional[str] = None
+    school_type: Optional[str] = None
+    certified_on: Optional[str] = None
+    start_date: Optional[datetime.date] = None
+    end_date: Optional[datetime.date] = None
+
+    class Config:
+        exclude = {"user_id"}
+        schema_extra = {
+            "example": {
+                "card_title": "Certification",
+                "school_name": "School_Name",
+                "school_type": "School_Type",
+                "certified_on": "Discipline",
+                "start_date": "yyyy-mm-dd",
+                "end_date": "yyyy-mm-dd",
+                # "user_id": "valid id",
+            }
+        }
+
+
+# The above class represents a base model for a Referee with attributes such as card title, Referee
+# name, and proficiency level.
+class RefereeBase(SQLModel):
+    card_title: str
+    full_name: str
+    email: EmailStr
+    phone_number: str
+    company_name: str
+    occupation: str
+    address: str
+
+
+# The `Referee` class represents a programming Referee and its relationship with a user.
+class Referee(RefereeBase, table=True):
+    referee_id: int = Field(default=None, primary_key=True)
+
+    user_id: int = Field(foreign_key="user.user_id")
+    user: Optional[User] = Relationship(back_populates="referee_details")
+
+
+# The `RefereeCreate` class is a subclass of `RefereeBase` that includes a `user_id` attribute and a
+# `Config` class with an example schema.
+class RefereeCreate(RefereeBase):
+    user_id: int
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "card_title": "Referee",
+                "full_name": "Full_Name",
+                "email": "referee@email.com",
+                "phone_number": "A phone number",
+                "company_name": "Some_Company_Name",
+                "occupation": "Some_Job_Title",
+                "address": "Some_Address",
+                "user_id": "valid_id",
+            }
+        }
+
+
+# The `RefereeRead` class represents a Referee read operation and includes properties for user ID
+# and Referee ID.
+class RefereeRead(RefereeBase):
+    user_id: int
+    referee_id: int
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "card_title": "Referee",
+                "full_name": "Full_Name",
+                "email": "referee@email.com",
+                "phone_number": "A phone number",
+                "company_name": "Some_Company_Name",
+                "occupation": "Some_Job_Title",
+                "address": "Some_Address",
+                "user_id": "valid id",
+                "referee_id": 0,
+            }
+        }
+
+
+# The `RefereeUpdate` class represents an update to a Referee entry in a database, including the
+# card title, Referee name, and proficiency level.
+class RefereeUpdate(SQLModel):
+    card_title: Optional[str] = None
+    full_name: Optional[str] = None
+    email: Optional[EmailStr] = None
+    phone_number: Optional[str] = None
+    company_name: Optional[str] = None
+    occupation: Optional[str] = None
+    address: Optional[str] = None
+
+    class Config:
+        exclude = {"user_id"}
+        schema_extra = {
+            "example": {
+                "card_title": "Referee",
+                "full_name": "Full_Name",
+                "email": "referee@email.com",
+                "phone_number": "A phone number",
+                "company_name": "Some_Company_Name",
+                "occupation": "Some_Job_Title",
+                "address": "Some_Address",
+                # "user_id": "valid id",
+            }
+        }
