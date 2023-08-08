@@ -1,48 +1,93 @@
 
-const Skills = () => {
+import { Form } from "react-router-dom";
+
+function Skills() {
+  const contact = {
+    first: "Your",
+    last: "Name",
+    avatar: "https://placekitten.com/g/200/200",
+    twitter: "your_handle",
+    notes: "Some notes",
+    favorite: true,
+  };
+
   return (
-    <div className="skills-container">
-      <strong>Skills</strong>
-      <form>
-  { /* 2 column grid layout with text inputs for the first and last names */ }
-  <div className="row mb-4">
-    <div className="col">
-      <div className="form-outline">
-        <input type="text" id="form3Example1" className="form-control" />
-        <label className="form-label" htmlFor="form3Example1">First name</label>
+    <div id="contact">
+      <div>
+        <img
+          key={contact.avatar}
+          src={contact.avatar || null}
+        />
+      </div>
+
+      <div>
+        <h1>
+          {contact.first || contact.last ? (
+            <>
+              {contact.first} {contact.last}
+            </>
+          ) : (
+            <i>No Name</i>
+          )}{" "}
+          <Favorite contact={contact} />
+        </h1>
+
+        {contact.notes && <p>{contact.notes}</p>}
+
+        <div>
+          <Form 
+          method="edit"
+          action="edit"
+            onSubmit={(event) => {
+              if (
+                !confirm(
+                  "Please confirm you want to edit this record."
+                )
+              ) {
+                event.preventDefault();
+              }
+            }}
+            >
+            <button type="submit">Edit</button>
+          </Form>
+          <Form
+            method="post"
+            action="destroy"
+            onSubmit={(event) => {
+              if (
+                !confirm(
+                  "Please confirm you want to delete this record."
+                )
+              ) {
+                event.preventDefault();
+              }
+            }}
+          >
+            <button type="submit">Delete</button>
+          </Form>
+        </div>
       </div>
     </div>
-    <div className="col">
-      <div className="form-outline">
-        <input type="text" id="form3Example2" className="form-control" />
-        <label className="form-label" htmlFor="form3Example2">Last name</label>
-      </div>
-    </div>
-  </div>
-
-  { /* Email input */ }
-  <div className="form-outline mb-4">
-    <input type="email" id="form3Example3" className="form-control" />
-    <label className="form-label" htmlFor="form3Example3">Email address</label>
-  </div>
-
-  { /* Password input */ }
-  <div className="form-outline mb-4">
-    <input type="password" id="form3Example4" className="form-control" />
-    <label className="form-label" htmlFor="form3Example4">Password</label>
-  </div>
-
-  { /* Submit button */ }
-  <button type="submit" className="btn btn-primary btn-block mb-4">Sign up</button>
-
-  { /* Register buttons */ }
-  <div className="text-center">
-    <p>or sign up with:</p>
-    </div>
-</form>
-    
-    </div>
-  )
+  );
 }
 
-export default Skills
+function Favorite({ contact }) {
+  // yes, this is a `let` for later
+  let favorite = contact.favorite;
+  return (
+    <Form method="post">
+      <button
+        name="favorite"
+        value={favorite ? "false" : "true"}
+        aria-label={
+          favorite
+            ? "Remove from favorites"
+            : "Add to favorites"
+        }
+      >
+        {favorite ? "★" : "☆"}
+      </button>
+    </Form>
+  );
+};
+export default Skills;
