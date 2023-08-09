@@ -1,24 +1,26 @@
-import uvicorn
 from fastapi import FastAPI
-from app.routers import (
-    users,
-    experience,
-    education,
-    language,
-    project,
-    profile,
-    certification,
-    referee,
-)
+
+# imports below are essential in loading version 1 models to avoid circular import error
+from app.v1.database.models.user_model import UserV1
+from app.v1.database.models.profile_model import ProfileV1
+from app.v1.database.models.project_model import ProjectV1
+from app.v1.database.models.language_model import LanguageV1
+from app.v1.database.models.education_model import EducationV1
+from app.v1.database.models.experience_model import ExperienceV1
+from app.v1.database.models.referee_model import RefereeV1
+from app.v1.database.models.certification_model import CertificationV1
+from app.v1.database.models.health_status_model import HealthCheck
 
 from app import settings
-from app.core.models import HealthCheck
+
+# from app.core.models import HealthCheck
 from fastapi.middleware.cors import CORSMiddleware
+from app.v1.database.dummy_data.loader import LoadDummyData
 
 from app.core.db import initialize_db
-from app.helpers.database.alembic_migrations import AlembicMigrations
-from app.helpers.database.dummy_data import create_dummy_user
+from app.v1 import v1_router
 from pathlib import Path
+import uvicorn
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,37 +45,32 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-app.include_router(users.router)
-app.include_router(experience.router)
-app.include_router(education.router)
-app.include_router(language.router)
-app.include_router(project.router)
-app.include_router(profile.router)
-app.include_router(certification.router)
-app.include_router(referee.router)
+app.include_router(v1_router.v1_router)
 
 
 @app.on_event("startup")
 def on_startup():
     initialize_db()
-    # alembic_instance = AlembicMigrations(config_path=str(ALEMBIC_CONFIG_FILE))
-    # alembic_instance.upgrade_to_alembic_head()
-    print(
-        create_dummy_user(
-            user_id=1, phone_number="+254711215654", email="test_1@email.com"
-        )
+    # initialize dummy data generator class
+    dummy_data_loader_1 = LoadDummyData(
+        user_id=1,
+        dummy_email="test_email_1@email.com",
+        dummy_phone_number="+254711215654",
     )
-    print(
-        create_dummy_user(
-            user_id=2, phone_number="+254711215655", email="test_2@email.com"
-        )
+    dummy_data_loader_2 = LoadDummyData(
+        user_id=2,
+        dummy_email="test_email_2@email.com",
+        dummy_phone_number="+254711217654",
     )
-    print(
-        create_dummy_user(
-            user_id=3, phone_number="+254711215634", email="test_3@email.com"
-        )
+    dummy_data_loader_3 = LoadDummyData(
+        user_id=3,
+        dummy_email="test_email_3@email.com",
+        dummy_phone_number="+254712215654",
     )
+
+    print(dummy_data_loader_1.create_user())
+    print(dummy_data_loader_2.create_user())
+    print(dummy_data_loader_3.create_user())
 
 
 @app.get("/", response_model=HealthCheck, tags=["Status"])
@@ -83,13 +80,3 @@ def health_check() -> dict:
         "version": settings.version,
         "description": settings.description,
     }
-
-
-if __name__ == "__main__":
-    uvicorn.run(
-        "main:app",
-        port=5000,
-        host="0.0.0.0",
-        reload=True,
-        use_colors=True,
-    )
