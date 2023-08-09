@@ -3,7 +3,14 @@ from logging.config import fileConfig
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from sqlmodel import SQLModel
-from app.core.models import User, Profile, Project, Language, Experience, Education
+from app.v1.database.models.user_model import UserV1
+from app.v1.database.models.profile_model import ProfileV1
+from app.v1.database.models.project_model import ProjectV1
+from app.v1.database.models.language_model import LanguageV1
+from app.v1.database.models.education_model import EducationV1
+from app.v1.database.models.experience_model import ExperienceV1
+from app.v1.database.models.referee_model import RefereeV1
+from app.v1.database.models.certification_model import CertificationV1
 from app import settings
 
 from alembic import context
