@@ -100,7 +100,7 @@ useHead({
 })
 
 definePageMeta({
-  layout: "template3",
+  layout: "default",
 })
 
 </script>

@@ -1,11 +1,11 @@
 <template>
   <div class="child education">
     <div id="section-title">
-      <h4><strong>Education</strong></h4>
+      <h4><strong>{{ education.card_title }}</strong></h4>
       <Helpers.Bold_hr />
     </div>
 
-    <div v-for="(item, index) in education" :key="index" class="enrolment">
+    <div v-for="(item, index) in education.education_details" :key="index" class="enrolment">
       <div class="iconic-section">
         <span><strong>Level : </strong> {{ item.education_level }}</span>
       </div>
@@ -20,10 +20,10 @@
           <span><strong>Start Date:</strong> {{ item.start_date }}</span>
         </div>
         <div class="col-md-6 iconic-section">
-          <span><strong>End Date:</strong> {{ item.finish_date }}</span>
+          <span><strong>End Date:</strong> {{ item.end_date }}</span>
         </div>
       </div>
-      <Helpers.Dotted_hr v-if="index < education.length - 1" />
+      <Helpers.Dotted_hr v-if="index < education.education_details.length - 1" />
     </div>
   </div>
 </template>

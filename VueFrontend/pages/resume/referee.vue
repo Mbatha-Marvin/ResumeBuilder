@@ -2,7 +2,7 @@
    <div class="container">
       <div class="row">
          <div class="col-md-2 text-center">
-            <NuxtLink class="prev-link" :to="'/'">Previous</NuxtLink>
+            <NuxtLink class="prev-link" :to="'/resume/preview'">Previous</NuxtLink>
          </div>
          <div class="col-md-8">
             <div>
@@ -23,9 +23,9 @@
                </div>
             </div>
          </div>
-         <div class="col-md-2 text-center">
+         <!-- <div class="col-md-2 text-center">
             <NuxtLink class="next-link" :to="'/resume/education'">Next</NuxtLink>
-         </div>
+         </div> -->
       </div>
    </div>
 </template>

@@ -2,7 +2,7 @@
    <div class="container">
       <div class="row">
          <div class="col-md-2 text-center">
-            <NuxtLink class="prev-link" :to="'/'">Previous</NuxtLink>
+            <NuxtLink class="prev-link" :to="'/resume/start'">Previous</NuxtLink>
          </div>
          <div class="col-md-8">
             <div>

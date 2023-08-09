@@ -1,11 +1,5 @@
 <template>
     <div class="container">
-
-        <!-- <div>
-                    <h4 class="text-center bold">Login</h4>
-                    <hr class="border border-success border-2 opacity-75">
-                </div> -->
-
         <div class="card mb-2">
             <div class="card-body rounded">
                 <h4 class="text-center text-uppercase bold">Login</h4>

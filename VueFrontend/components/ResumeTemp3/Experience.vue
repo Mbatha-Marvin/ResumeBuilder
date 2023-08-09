@@ -1,11 +1,11 @@
 <template>
   <div class="child work-experience">
     <div id="section-title">
-      <h4><strong>Experience</strong></h4>
+      <h4><strong>{{ experience.card_title }}</strong></h4>
       <Helpers.Bold_hr />
     </div>
 
-    <div v-for="(item, index) in experience" :key="index" class="experience">
+    <div v-for="(item, index) in experience.experience_details" :key="index" class="experience">
       <div id="experience-title">
         <h5><strong>{{ item.job_title }} </strong></h5>
       </div>
@@ -34,13 +34,13 @@
           <h6><strong>Achievements</strong></h6>
         </div>
 
-        <div v-for="(description, index) in item.job_descriptions" :key="index">
+        <div v-for="(description, index) in item.job_description" :key="index">
           <div class="iconic-section">
             <i class="bi bi-dot"></i><span>{{ description }}</span>
           </div>
         </div>
       </div>
-      <Helpers.Dotted_hr v-if="index < experience.length - 1" />
+      <Helpers.Dotted_hr v-if="index < experience.experience_details.length - 1" />
 
     </div>
   </div>

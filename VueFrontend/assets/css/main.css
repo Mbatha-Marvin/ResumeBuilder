@@ -12,7 +12,7 @@
 
 /* body {
     background: #8a8383 !important;
-    background-color: #42428a !important;
+    background-color: #555 !important;
     background-color: white;   
 } */
 
@@ -90,6 +90,11 @@ a {
 .carousel-item img {
   height: 400px !important;
   width: auto;
+}
+
+
+.router-link-exact-active {
+  color: #12b488;
 }
 
   /* .summary{

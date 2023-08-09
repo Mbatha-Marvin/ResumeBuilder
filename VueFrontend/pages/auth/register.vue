@@ -9,19 +9,20 @@
       <div class="card-body">
         <form @submit.prevent="submitForm" class="needs-validation" novalidate>
           <div class="form-group">
-            <label for="name" class="form-label">Username</label>
-            <input v-model="newUser.name" type="text" id="name" class="form-control" placeholder="Enter Username"
-              required />
-            <span class="invalid-feedback">Name is required</span>
-          </div>
-          <div class="form-group">
-            <label for="email" class="form-label">Email</label>
+            <label for="email" class="form-label">Email:</label>
             <input v-model="newUser.email" type="email" id="email" :class="isError" placeholder="Enter Email" required />
             <span class="invalid-feedback">Email is required</span>
             <span v-if="errorMessage" class="form-text error-text">{{ errorMessage }}</span>
           </div>
           <div class="form-group">
-            <label for="password" class="form-label">Password</label>
+            <label for="phone_number" class="form-label">Phone Number:</label>
+            <input v-model="newUser.phone_number" type="tel" id="phone_number" name="phone_number" class="form-control" placeholder="Enter Phone Number" pattern="[+]{1}[0-9]{3}[0-9]{3}[0-9]{6}"
+              required>
+            <small>Format is: +254722122333</small>
+            <span class="invalid-feedback">Phone Number is required</span>
+          </div>
+          <div class="form-group">
+            <label for="password" class="form-label">Password:</label>
             <input v-model="newUser.password" type="password" id="password" class="form-control"
               placeholder="Enter Password" required />
             <span class="invalid-feedback">Password is required</span>
@@ -46,7 +47,7 @@ export default defineComponent({
   name: 'CreateUser',
   setup() {
 
-    const newUser = ref({ name: '', email: '', password: '' });
+    const newUser = ref({ phone_number: '', email: '', password: '' });
     const errorMessage = ref('');
     const isError = ref('form-control');
 
@@ -69,7 +70,7 @@ export default defineComponent({
             console.log('Registration successful');
             errorMessage.value = '';
             isError.value = 'form-control';
-            router.push('/users');
+            router.push('/auth/login');
             console.log(response);
           })
           .catch(function (error) {

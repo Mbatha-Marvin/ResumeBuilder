@@ -1,22 +1,22 @@
 <template>
    <div class="child objective">
       <div id="section-title">
-        <h4><strong>Summary</strong></h4>
+        <h4><strong>{{ objective.card_title }}</strong></h4>
         <Helpers.Bold_hr />
       </div>
       <span class="objective description">
-             {{ resume.user_contact_details[0].user_summary }}
+             {{ objective.brief_description }}
       </span>
     </div>
 </template>
 
 <script setup>
-const { resume } = defineProps(['resume'])
+const { objective } = defineProps(['objective'])
 
 </script>
 
 <style scoped>
-.summary{
+.objective{
     text-align: left !important;
 }
 
