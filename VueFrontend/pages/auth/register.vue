@@ -40,6 +40,7 @@
 <script>
 import { defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
+const { BASE_URL } = useRuntimeConfig();
 import axios from 'axios';
 import Bold_hr from '../../components/Helpers/Bold_hr.vue';
 
@@ -52,8 +53,6 @@ export default defineComponent({
     const isError = ref('form-control');
 
     const router = useRouter();
-
-    const BASE_URL = "http://localhost:5000";
 
     const createUser = async () => {
       errorMessage.value = '';

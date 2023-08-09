@@ -101,3 +101,4 @@ VueFrontend/package-lock.json
 VueFrontend/pages/users/index copy.vue
 VueFrontend/store/
 resume_data.json
+FastApiBackend/env
