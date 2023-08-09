@@ -1,27 +1,19 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends
 from app.core.db import get_db_session
-from typing import List, Optional
-from sqlmodel import Session, select
-from pydantic import EmailStr
+from typing import List
+from sqlmodel import Session
 from app.v1.database.services.referee_services import RefereeCRUDServices
 from app.v1.database.models.referee_model import (
-    RefereeV1,
     RefereeV1Update,
     RefereeV1Read,
-    RefereeV1Create,
+    RefereeV1CreateRequest,
 )
 
 router = APIRouter(prefix="/users/{user_id}/referee", tags=["Referee Version 1"])
 
 
 @router.get("/", response_model=List[RefereeV1Read])
-def read_user_referee(
-    *,
-    session: Session = Depends(get_db_session),
-    user_id: int,
-    offset: int = 0,
-    limit: int = Query(default=10, lte=15),
-):
+def read_user_referee(*, session: Session = Depends(get_db_session), user_id: int):
     referee_crud_services = RefereeCRUDServices(session=session)
     return referee_crud_services.read_user_referee_details(user_id=user_id)
 
@@ -31,11 +23,11 @@ def create_user_referee(
     *,
     session: Session = Depends(get_db_session),
     user_id: int,
-    user_referee: RefereeV1Create,
+    user_referee_request: RefereeV1CreateRequest,
 ):
     referee_crud_services = RefereeCRUDServices(session=session)
     return referee_crud_services.create_user_referee(
-        user_id=user_id, user_referee=user_referee
+        user_id=user_id, user_referee_request=user_referee_request
     )
 
 

@@ -8,6 +8,7 @@ from app.v1.database.models.certification_model import (
     CertificationV1Update,
     CertificationV1Read,
     CertificationV1Create,
+    CertificationV1CreateRequest,
 )
 
 
@@ -26,7 +27,7 @@ class CertificationCRUDService(UserCRUDService):
 
     def create_user_certifications(
         self,
-        user_certification: CertificationV1Create,
+        user_certification_request: CertificationV1CreateRequest,
         user_id: int,
         email: Optional[EmailStr] = None,
     ) -> CertificationV1Read:
@@ -34,6 +35,9 @@ class CertificationCRUDService(UserCRUDService):
         if user is None:
             raise HTTPException(status_code=404, detail="User not Found")
         else:
+            user_certification = CertificationV1Create.parse_obj(
+                user_certification_request
+            )
             user_certification.user_id = user.user_id
             user_certification_db_create = CertificationV1.from_orm(user_certification)
 

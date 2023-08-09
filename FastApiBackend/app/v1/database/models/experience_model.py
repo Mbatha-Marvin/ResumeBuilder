@@ -31,8 +31,9 @@ class ExperienceV1(ExperienceV1Base, table=True):
 
 # The `ExperienceV1Create` class is a subclass of `ExperienceV1Base` that includes a `user_id` attribute
 # and a `Config` class with an example schema for creating a new experience.
-class ExperienceV1Create(ExperienceV1Base):
-    user_id: int
+class ExperienceV1CreateRequest(ExperienceV1Base):
+    # user_id: int
+    pass
 
     class Config:
         schema_extra = {
@@ -46,9 +47,13 @@ class ExperienceV1Create(ExperienceV1Base):
                 "job_descriptions": ["Description 1", "Description 2"],
                 "start_date": "yyyy-mm-dd",
                 "end_date": "yyyy-mm-dd",
-                "user_id": 0,
+                # "user_id": 0,
             }
         }
+
+
+class ExperienceV1Create(ExperienceV1Base):
+    user_id: Optional[int] = None
 
 
 # The `ExperienceV1Read` class is a subclass of `ExperienceV1Base` that includes additional attributes for

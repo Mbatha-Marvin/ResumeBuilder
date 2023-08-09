@@ -7,6 +7,7 @@ from app.v1.database.models.profile_model import (
     ProfileV1Create,
     ProfileV1Read,
     ProfileV1Update,
+    ProfileV1CreateRequest,
 )
 
 
@@ -22,12 +23,18 @@ class ProfileCRUDServices(UserCRUDService):
             return user.profile_details
 
     def create_user_profile(
-        self, user_id: int, profile: ProfileV1Create
+        self, user_id: int, profile_request: ProfileV1CreateRequest
     ) -> ProfileV1Read:
         user = self.get_user(user_id=user_id)
         if user is None:
             raise HTTPException(status_code=404, detail="User not Found")
+        elif len(user.profile_details) >= 1:
+            raise HTTPException(
+                status_code=404, detail="A profile already exists for this User"
+            )
+
         else:
+            profile = ProfileV1Create.parse_obj(profile_request)
             profile.user_id = user_id
             new_profile = ProfileV1.from_orm(profile)
 

@@ -2,13 +2,11 @@ from fastapi import APIRouter, Depends
 from app.core.db import get_db_session
 from typing import List
 from sqlmodel import Session
-from pydantic import EmailStr
 from app.v1.database.services.project_services import ProjectCRUDServices
 from app.v1.database.models.project_model import (
-    ProjectV1,
     ProjectV1Update,
     ProjectV1Read,
-    ProjectV1Create,
+    ProjectV1CreateRequest,
 )
 
 router = APIRouter(prefix="/users/{user_id}/project", tags=["Project Version 1"])
@@ -29,11 +27,11 @@ def create_user_project(
     *,
     session: Session = Depends(get_db_session),
     user_id: int,
-    user_project: ProjectV1Create,
+    user_project_request: ProjectV1CreateRequest,
 ):
     project_crud_services = ProjectCRUDServices(session=session)
     return project_crud_services.create_user_project(
-        user_id=user_id, user_project=user_project
+        user_id=user_id, user_project_request=user_project_request
     )
 
 

@@ -27,8 +27,9 @@ class ProjectV1(ProjectV1Base, table=True):
 
 
 # The `ProjectV1Create` class is a subclass of `ProjectV1Base` and includes a `user_id` attribute.
-class ProjectV1Create(ProjectV1Base):
-    user_id: int
+class ProjectV1CreateRequest(ProjectV1Base):
+    # user_id: int
+    pass
 
     class Config:
         schema_extra = {
@@ -38,9 +39,13 @@ class ProjectV1Create(ProjectV1Base):
                 "project_description_title": "Project Description Title",
                 "project_description": ["Description 1", "Description 2"],
                 "project_url": "project_url.com",
-                "user_id": 0,
+                # "user_id": 0,
             }
         }
+
+
+class ProjectV1Create(ProjectV1Base):
+    user_id: Optional[int] = None
 
 
 # The `ProjectV1Read` class is a subclass of `ProjectV1Base` and represents a project with additional

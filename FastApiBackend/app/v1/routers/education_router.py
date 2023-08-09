@@ -4,10 +4,9 @@ from typing import List
 from sqlmodel import Session
 from app.v1.database.services.education_services import EducationCRUDService
 from app.v1.database.models.education_model import (
-    EducationV1,
     EducationV1Update,
     EducationV1Read,
-    EducationV1Create,
+    EducationV1CreateRequest,
 )
 
 router = APIRouter(prefix="/user/{user_id}/eduaction", tags=["Education Version 1"])
@@ -26,11 +25,11 @@ def create_user_education(
     *,
     user_id: int,
     session: Session = Depends(get_db_session),
-    user_education: EducationV1Create,
+    user_education_request: EducationV1CreateRequest,
 ):
     education_crud_service = EducationCRUDService(session=session)
     return education_crud_service.create_user_education(
-        user_id=user_id, user_education=user_education
+        user_id=user_id, user_education_request=user_education_request
     )
 
 

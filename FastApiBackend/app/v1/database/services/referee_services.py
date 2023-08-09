@@ -5,6 +5,7 @@ from typing import List
 from app.v1.database.models.referee_model import (
     RefereeV1,
     RefereeV1Create,
+    RefereeV1CreateRequest,
     RefereeV1Read,
     RefereeV1Update,
 )
@@ -22,12 +23,13 @@ class RefereeCRUDServices(UserCRUDService):
             return user.referee_details
 
     def create_user_referee(
-        self, user_id: int, user_referee: RefereeV1Create
+        self, user_id: int, user_referee_request: RefereeV1CreateRequest
     ) -> RefereeV1Read:
         user = self.get_user(user_id=user_id)
         if user is None:
             raise HTTPException(status_code=404, detail="User not Found")
         else:
+            user_referee = RefereeV1Create.parse_obj(user_referee_request)
             user_referee.user_id = user_id
             user_referee_db_create = RefereeV1.from_orm(user_referee)
 

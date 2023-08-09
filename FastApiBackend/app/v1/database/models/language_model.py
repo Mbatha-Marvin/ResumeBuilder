@@ -24,8 +24,9 @@ class LanguageV1(LanguageV1Base, table=True):
 
 # The `LanguageCreate` class is a subclass of `LanguageV1Base` that includes a `user_id` attribute and a
 # `Config` class with an example schema.
-class LanguageV1Create(LanguageV1Base):
-    user_id: int
+class LanguageV1CreateRequest(LanguageV1Base):
+    # user_id: int
+    pass
 
     class Config:
         schema_extra = {
@@ -33,9 +34,13 @@ class LanguageV1Create(LanguageV1Base):
                 "card_title": "Card Title",
                 "language_name": "Language Name",
                 "profeciency_level": 5,
-                "user_id": "valid id",
+                # "user_id": "valid id",
             }
         }
+
+
+class LanguageV1Create(LanguageV1Base):
+    user_id: Optional[int] = None
 
 
 # The `LanguageRead` class represents a language read operation and includes properties for user ID

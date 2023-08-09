@@ -31,8 +31,8 @@ class ProfileV1(ProfileV1Base, table=True):
     user: Optional["UserV1"] = Relationship(back_populates="profile_details")
 
 
-class ProfileV1Create(ProfileV1Base):
-    user_id: int
+class ProfileV1CreateRequest(ProfileV1Base):
+    # user_id: int
 
     class Config:
         schema_extra = {
@@ -52,9 +52,13 @@ class ProfileV1Create(ProfileV1Base):
                 "user_work_title": "User Work Title",
                 "user_summary": "User Summary",
                 "objectives": "objective summary",
-                "user_id": 0,
+                # "user_id": 0,
             }
         }
+
+
+class ProfileV1Create(ProfileV1Base):
+    user_id: Optional[int] = None
 
 
 class ProfileV1Read(ProfileV1Base):

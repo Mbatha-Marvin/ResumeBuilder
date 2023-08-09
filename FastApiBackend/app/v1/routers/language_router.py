@@ -4,10 +4,9 @@ from typing import List
 from sqlmodel import Session
 from app.v1.database.services.language_services import LanguageCRUDServices
 from app.v1.database.models.language_model import (
-    LanguageV1,
+    LanguageV1CreateRequest,
     LanguageV1Update,
     LanguageV1Read,
-    LanguageV1Create,
 )
 
 router = APIRouter(prefix="/users/{user_id}/language", tags=["Language Version 1"])
@@ -24,11 +23,11 @@ def create_user_language(
     *,
     session: Session = Depends(get_db_session),
     user_id: int,
-    user_language: LanguageV1Create,
+    user_language_request: LanguageV1CreateRequest,
 ):
     langauge_crud_services = LanguageCRUDServices(session=session)
     return langauge_crud_services.create_user_language(
-        user_id=user_id, user_language=user_language
+        user_id=user_id, user_language_request=user_language_request
     )
 
 

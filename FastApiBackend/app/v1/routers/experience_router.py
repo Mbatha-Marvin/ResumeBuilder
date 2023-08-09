@@ -4,8 +4,7 @@ from typing import List
 from sqlmodel import Session
 from app.v1.database.services.experience_services import ExperienceCRUDServices
 from app.v1.database.models.experience_model import (
-    ExperienceV1,
-    ExperienceV1Create,
+    ExperienceV1CreateRequest,
     ExperienceV1Read,
     ExperienceV1Update,
 )
@@ -30,11 +29,11 @@ def create_user_experience(
     *,
     session: Session = Depends(get_db_session),
     user_id: int,
-    user_experience: ExperienceV1Create,
+    user_experience_request: ExperienceV1CreateRequest,
 ):
     experience_crud_services = ExperienceCRUDServices(session=session)
     return experience_crud_services.create_user_experience(
-        user_id=user_id, user_experience=user_experience
+        user_id=user_id, user_experience_request=user_experience_request
     )
 
 

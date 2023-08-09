@@ -5,6 +5,7 @@ from typing import List
 from app.v1.database.models.experience_model import (
     ExperienceV1,
     ExperienceV1Create,
+    ExperienceV1CreateRequest,
     ExperienceV1Read,
     ExperienceV1Update,
 )
@@ -22,12 +23,13 @@ class ExperienceCRUDServices(UserCRUDService):
             return user.experience_details
 
     def create_user_experience(
-        self, user_id: int, user_experience: ExperienceV1Create
+        self, user_id: int, user_experience_request: ExperienceV1CreateRequest
     ) -> ExperienceV1Read:
         user = self.get_user(user_id=user_id)
         if user is None:
             raise HTTPException(status_code=404, detail="User not Found")
         else:
+            user_experience = ExperienceV1Create.parse_obj(user_experience_request)
             user_experience.user_id = user_id
             user_experience_db_create = ExperienceV1.from_orm(user_experience)
 

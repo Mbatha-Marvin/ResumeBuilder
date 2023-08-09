@@ -22,8 +22,9 @@ class CertificationV1(CertificationV1Base, table=True):
     user: Optional["UserV1"] = Relationship(back_populates="certification_details")
 
 
-class CertificationV1Create(CertificationV1Base):
-    user_id: int
+class CertificationV1CreateRequest(CertificationV1Base):
+    # user_id: int
+    pass
 
     class Config:
         schema_extra = {
@@ -34,9 +35,14 @@ class CertificationV1Create(CertificationV1Base):
                 "certified_on": "Discipline",
                 "start_date": "yyyy-mm-dd",
                 "end_date": "yyyy-mm-dd",
-                "user_id": 0,
+                # "user_id": 0,
             }
         }
+
+
+class CertificationV1Create(CertificationV1Base):
+    user_id: Optional[int] = None
+    # user_id: int
 
 
 class CertificationV1Read(CertificationV1Base):

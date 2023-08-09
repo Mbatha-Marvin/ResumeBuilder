@@ -8,6 +8,7 @@ from app.v1.database.models.education_model import (
     EducationV1Update,
     EducationV1Read,
     EducationV1Create,
+    EducationV1CreateRequest,
 )
 
 
@@ -27,12 +28,13 @@ class EducationCRUDService(UserCRUDService):
     def create_user_education(
         self,
         user_id: int,
-        user_education: EducationV1Create,
+        user_education_request: EducationV1CreateRequest,
     ) -> EducationV1Read:
         user = self.get_user(user_id=user_id)
         if user is None:
             raise HTTPException(status_code=404, detail="User not Found")
         else:
+            user_education = EducationV1Create.parse_obj(user_education_request)
             user_education.user_id = user_id
             user_education_db_create = EducationV1.from_orm(user_education)
 

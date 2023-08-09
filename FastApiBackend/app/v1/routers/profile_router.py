@@ -4,10 +4,9 @@ from typing import List
 from sqlmodel import Session
 from app.v1.database.services.profile_services import ProfileCRUDServices
 from app.v1.database.models.profile_model import (
-    ProfileV1,
     ProfileV1Update,
     ProfileV1Read,
-    ProfileV1Create,
+    ProfileV1CreateRequest,
 )
 
 router = APIRouter(prefix="/users/{user_id}/profile", tags=["Profile Version 1"])
@@ -28,10 +27,12 @@ def create_profile(
     *,
     session: Session = Depends(get_db_session),
     user_id: int,
-    profile: ProfileV1Create,
+    profile_request: ProfileV1CreateRequest,
 ):
     profile_crud_service = ProfileCRUDServices(session=session)
-    return profile_crud_service.create_user_profile(user_id=user_id, profile=profile)
+    return profile_crud_service.create_user_profile(
+        user_id=user_id, profile_request=profile_request
+    )
 
 
 @router.patch("/{profile_id}", response_model=ProfileV1Read)

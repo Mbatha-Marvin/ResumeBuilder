@@ -5,6 +5,7 @@ from typing import List
 from app.v1.database.models.project_model import (
     ProjectV1,
     ProjectV1Create,
+    ProjectV1CreateRequest,
     ProjectV1Read,
     ProjectV1Update,
 )
@@ -22,12 +23,13 @@ class ProjectCRUDServices(UserCRUDService):
             return user.project_details
 
     def create_user_project(
-        self, user_id: int, user_project: ProjectV1Create
+        self, user_id: int, user_project_request: ProjectV1CreateRequest
     ) -> ProjectV1Read:
         user = self.get_user(user_id=user_id)
         if user is None:
             raise HTTPException(status_code=404, detail="User not Found")
         else:
+            user_project = ProjectV1Create.parse_obj(user_project_request)
             user_project.user_id = user_id
             user_project_db_create = ProjectV1.from_orm(user_project)
 

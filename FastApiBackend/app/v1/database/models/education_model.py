@@ -30,8 +30,9 @@ class EducationV1(EducationV1Base, table=True):
 
 # The `EducationV1Create` class is a subclass of `EducationV1Base` that includes a `user_id` attribute and
 # a `Config` class with an example schema for creating an education record.
-class EducationV1Create(EducationV1Base):
-    user_id: int
+class EducationV1CreateRequest(EducationV1Base):
+    # user_id: int
+    pass
 
     class Config:
         schema_extra = {
@@ -44,9 +45,13 @@ class EducationV1Create(EducationV1Base):
                 "final_grade": "Final Grade",
                 "start_date": "yyyy-mm-dd",
                 "end_date": "yyyy-mm-dd",
-                "user_id": 0,
+                # "user_id": 0,
             }
         }
+
+
+class EducationV1Create(EducationV1Base):
+    user_id: Optional[int] = None
 
 
 # The `EducationV1Read` class represents an education record with various attributes and includes an
