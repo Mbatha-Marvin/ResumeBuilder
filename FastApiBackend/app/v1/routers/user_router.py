@@ -11,7 +11,7 @@ from app.v1.database.models.user_model import (
     UserV1Create,
 )
 
-router = APIRouter(prefix="/user", tags=["UsersV1"])
+router = APIRouter(prefix="/user", tags=["Users Version 1"])
 
 
 @router.get(path="/all", response_model=List[UserV1Read])

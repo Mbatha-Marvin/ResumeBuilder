@@ -11,7 +11,7 @@ from app.v1.database.models.project_model import (
     ProjectV1Create,
 )
 
-router = APIRouter(prefix="/users/{user_id}/project", tags=["ProjectV1"])
+router = APIRouter(prefix="/users/{user_id}/project", tags=["Project Version 1"])
 
 
 @router.get("/", response_model=List[ProjectV1Read])

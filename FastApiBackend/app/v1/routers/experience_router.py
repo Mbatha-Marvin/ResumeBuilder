@@ -12,7 +12,7 @@ from app.v1.database.models.experience_model import (
 
 # The line `router = APIRouter(prefix="/users/{user_id}/experience", tags=["Experience"])` creates a
 # new instance of the `APIRouter` class with a specified prefix and tags.
-router = APIRouter(prefix="/users/{user_id}/experience", tags=["ExperienceV1"])
+router = APIRouter(prefix="/users/{user_id}/experience", tags=["Experience Version 1"])
 
 
 @router.get("/", response_model=List[ExperienceV1Read])

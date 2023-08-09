@@ -10,7 +10,7 @@ from app.v1.database.models.language_model import (
     LanguageV1Create,
 )
 
-router = APIRouter(prefix="/users/{user_id}/language", tags=["LanguageV1"])
+router = APIRouter(prefix="/users/{user_id}/language", tags=["Language Version 1"])
 
 
 @router.get("/", response_model=List[LanguageV1Read])

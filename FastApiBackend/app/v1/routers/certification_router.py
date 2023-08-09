@@ -10,7 +10,9 @@ from app.v1.database.models.certification_model import (
     CertificationV1Create,
 )
 
-router = APIRouter(prefix="/user/{user_id}/certification", tags=["CertificationV1"])
+router = APIRouter(
+    prefix="/user/{user_id}/certification", tags=["Certification Version 1"]
+)
 
 
 @router.get(path="/", response_model=List[CertificationV1Read])

@@ -15,7 +15,7 @@ from app.v1.routers import (
 v1_router = APIRouter(prefix="/api/v1")
 
 
-@v1_router.get("/", response_model=HealthCheck, tags=["StatusV1"])
+@v1_router.get("/", response_model=HealthCheck, tags=["Status Version 1"])
 def health_check() -> dict:
     return {
         "name": settings.project_name,

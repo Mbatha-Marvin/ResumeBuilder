@@ -11,7 +11,7 @@ from app.v1.database.models.referee_model import (
     RefereeV1Create,
 )
 
-router = APIRouter(prefix="/users/{user_id}/referee", tags=["RefereeV1"])
+router = APIRouter(prefix="/users/{user_id}/referee", tags=["Referee Version 1"])
 
 
 @router.get("/", response_model=List[RefereeV1Read])
