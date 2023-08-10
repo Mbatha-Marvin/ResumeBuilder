@@ -1,9 +1,7 @@
 <template>
    <div class="container">
       <div class="row">
-
          <div class="col-md-12">
-
                <div class="card mb-2">
                   <div class="card-body rounded">
                      <h4 class="text-center text-uppercase bold">Education</h4>

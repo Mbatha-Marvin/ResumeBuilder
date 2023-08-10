@@ -4,5 +4,29 @@
             "card_title": "string",
             "icon_location": "string"
         }
-    }
+    },
+    {
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "middle_name": "Middle Name",
+        "image_url": "image_url",
+        "linkedin_url": "valid_url",
+        "github_url": "valid_url",
+        "personal_website": "personal_website",
+        "city": "City",
+        "country": "Country of residence",
+        "address": "address",
+        "skills": [
+          "Description 1",
+          "Description 2"
+        ],
+        "hobbies": [
+          "Description 1",
+          "Description 2"
+        ],
+        "user_work_title": "User Work Title",
+        "user_summary": "User Summary",
+        "objectives": "objective summary"
+      }
 ]
+

@@ -10,16 +10,18 @@
         <form @submit.prevent="submitForm" class="needs-validation" novalidate>
           <div class="form-group">
             <label for="email" class="form-label">Email:</label>
-            <input v-model="newUser.email" type="email" id="email" :class="isError" placeholder="Enter Email" required />
+            <input v-model="newUser.email" type="email" id="email" :class="isErrorEmail" placeholder="Enter Email"
+              required />
             <span class="invalid-feedback">Email is required</span>
-            <span v-if="errorMessage" class="form-text error-text">{{ errorMessage }}</span>
+            <small v-if="errorMessageEmail" class="form-text error-text">{{ errorMessageEmail }}</small>
           </div>
           <div class="form-group">
             <label for="phone_number" class="form-label">Phone Number:</label>
-            <input v-model="newUser.phone_number" type="tel" id="phone_number" name="phone_number" class="form-control" placeholder="Enter Phone Number" pattern="[+]{1}[0-9]{3}[0-9]{3}[0-9]{6}"
-              required>
-            <small>Format is: +254722122333</small>
-            <span class="invalid-feedback">Phone Number is required</span>
+            <input v-model="newUser.phone_number" type="tel" id="phone_number" :class="isErrorPhone" name="phone_number"
+              class="form-control" placeholder="Enter Phone Number" pattern="[+]{1}[0-9]{3}[0-9]{3}[0-9]{6}" required>
+            <span class="invalid-feedback">A valid Phone Number is required</span>
+            <small v-if="errorMessagePhone" class="form-text error-text">{{ errorMessagePhone }}</small>
+            <small v-show="!errorMessagePhone">Format is: +254722122333</small>
           </div>
           <div class="form-group">
             <label for="password" class="form-label">Password:</label>
@@ -40,42 +42,51 @@
 <script>
 import { defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
-const { BASE_URL } = useRuntimeConfig();
-import axios from 'axios';
-import Bold_hr from '../../components/Helpers/Bold_hr.vue';
 
 export default defineComponent({
   name: 'CreateUser',
   setup() {
-
+    const axios = useNuxtApp().$axios;
     const newUser = ref({ phone_number: '', email: '', password: '' });
-    const errorMessage = ref('');
-    const isError = ref('form-control');
-
+    const errorMessageEmail = ref('');
+    const errorMessagePhone = ref('');
+    const isErrorPhone = ref('form-control');
+    const isErrorEmail = ref('form-control');
     const router = useRouter();
 
     const createUser = async () => {
-      errorMessage.value = '';
       const form = document.querySelector('.needs-validation');
+      errorMessageEmail.value = '';
+            errorMessagePhone.value = '';
+            isErrorPhone.value = 'form-control';
+            isErrorEmail.value = 'form-control';
       if (form.checkValidity()) {
-        errorMessage.value = '';
         await axios({
           method: 'post',
-          url: `${BASE_URL}/users`,
+          url: '/user',
           headers: { 'Content-Type': 'application/json' },
           data: JSON.stringify(newUser.value),
         })
           .then(function (response) {
             console.log('Registration successful');
-            errorMessage.value = '';
-            isError.value = 'form-control';
+            errorMessageEmail.value = '';
+            errorMessagePhone.value = '';
+            isErrorPhone.value = 'form-control';
+            isErrorEmail.value = 'form-control';
             router.push('/auth/login');
             console.log(response);
           })
           .catch(function (error) {
             console.log(error);
-            errorMessage.value = error.response.data.detail;
-            isError.value = 'form-control border-danger';
+            if (error.response.data.detail['Email Exists']) {
+              errorMessageEmail.value = 'Email Already Exists';
+              isErrorPhone.value = 'form-control';
+              isErrorEmail.value = 'form-control border-danger';
+            } else if (error.response.data.detail['Phone Number Exists']) {
+              errorMessagePhone.value = 'Phone Number Already Exists';
+              isErrorPhone.value = 'form-control border-danger';
+              isErrorEmail.value = 'form-control';
+            }
           });
       } else {
         form.classList.add('was-validated');
@@ -92,6 +103,10 @@ export default defineComponent({
 
           if (!form.checkValidity()) {
             form.classList.add('was-validated');
+            errorMessageEmail.value = '';
+            errorMessagePhone.value = '';
+            isErrorPhone.value = 'form-control';
+            isErrorEmail.value = 'form-control';
           } else {
             createUser();
           }
@@ -99,11 +114,13 @@ export default defineComponent({
       });
     });
 
-    if (errorMessage) {
+    if (errorMessagePhone || errorMessageEmail) {
       return {
         newUser,
-        errorMessage,
-        isError
+        errorMessagePhone,
+        errorMessageEmail,
+        isErrorEmail,
+        isErrorPhone
       }
     } else {
       return {

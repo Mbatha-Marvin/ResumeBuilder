@@ -20,7 +20,6 @@
 import time
 from sqlmodel import create_engine, SQLModel, Session
 from pydantic import BaseSettings
-import pymysql
 
 class Settings(BaseSettings):
     db_connection_str: str
