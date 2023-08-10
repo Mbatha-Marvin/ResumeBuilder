@@ -19,7 +19,8 @@
                             </div>
                             <div class="card">
                                 <div class="card-body">
-                                    <form class="form form-horizontal">
+                                    <form @submit.prevent="createEducation" class="form form-horizontal needs-validation"
+                                        novalidate>
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -27,9 +28,10 @@
                                                         <label class="col-md-3 label-control" for="course_title">Course
                                                             Title</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" id="course_title"
-                                                                class="form-control border-primary"
-                                                                placeholder="Course Title" name="course_title">
+                                                            <input v-model="newEducation.course_title" type="text"
+                                                                id="course_title" class="form-control border-primary"
+                                                                placeholder="Course Title" name="course_title" required>
+                                                            <span class="invalid-feedback">Course Title is required</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -39,9 +41,17 @@
                                                         <label class="col-md-3 label-control" for="card_title">Card
                                                             Title</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" id="card_title"
+                                                            <!-- <input type="text" id="card_title"
                                                                 class="form-control border-primary" value="Education"
-                                                                placeholder="Card Title" name="card_title">
+                                                                placeholder="Card Title" name="card_title"> -->
+                                                            <select v-model="newEducation.card_title"
+                                                                class="form-select border-primary"
+                                                                aria-label="Default select example" required>
+                                                                <option disabled value="">Please Select</option>
+                                                                <option>Education</option>
+                                                                <option>Academics</option>
+                                                            </select>
+                                                            <span class="invalid-feedback">Please Select Card Title</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -52,9 +62,10 @@
                                                         <label class="col-md-3 label-control" for="school_name">School
                                                             Name</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" id="school_name"
-                                                                class="form-control border-primary"
-                                                                placeholder="School Name" name="school_name">
+                                                            <input v-model="newEducation.school_name" type="text"
+                                                                id="school_name" class="form-control border-primary"
+                                                                placeholder="School Name" name="school_name" required>
+                                                            <span class="invalid-feedback">School Name is required</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -63,9 +74,10 @@
                                                         <label class="col-md-3 label-control"
                                                             for="location">Location</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" id="location"
+                                                            <input v-model="newEducation.location" type="text" id="location"
                                                                 class="form-control border-primary" placeholder="Location"
-                                                                name="location">
+                                                                name="location" required>
+                                                            <span class="invalid-feedback">Location is required</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -76,9 +88,11 @@
                                                         <label class="col-md-3 label-control"
                                                             for="education_level">Education Level</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" id="education_level"
-                                                                class="form-control border-primary"
-                                                                placeholder="Education Level" name="education_level">
+                                                            <input v-model="newEducation.education_level" type="text"
+                                                                id="education_level" class="form-control border-primary"
+                                                                placeholder="Education Level" name="education_level" required>
+                                                            <span class="invalid-feedback">Education Level is
+                                                                required</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -87,9 +101,10 @@
                                                         <label class="col-md-3 label-control" for="final_grade">Final
                                                             Grade</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" id="final_grade"
-                                                                class="form-control border-primary"
-                                                                placeholder="Final Grade" name="final_grade">
+                                                            <input v-model="newEducation.final_grade" type="text"
+                                                                id="final_grade" class="form-control border-primary"
+                                                                placeholder="Final Grade" name="final_grade" required>
+                                                            <span class="invalid-feedback">Final Grade is required</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -100,9 +115,12 @@
                                                         <label class="col-md-3 label-control" for="start_date">Start
                                                             Date</label>
                                                         <div class="col-md-9">
-                                                            <input type="date" id="start_date"
-                                                                class="form-control border-primary" placeholder="Start
-                                                            Date" name="start_date">
+                                                            <input v-model="newEducation.start_date" type="date"
+                                                                id="start_date" class="form-control border-primary"
+                                                                placeholder="Start
+                                                            Date" name="start_date" required>
+                                                            <span class="invalid-feedback">Start
+                                                                Date is required</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -111,9 +129,10 @@
                                                         <label class="col-md-3 label-control" for="end_date">End
                                                             date</label>
                                                         <div class="col-md-9">
-                                                            <input type="date" id="end_date"
+                                                            <input v-model="newEducation.end_date" type="date" id="end_date"
                                                                 class="form-control border-primary" placeholder="End date"
-                                                                name="end_date">
+                                                                name="end_date" required>
+                                                            <span class="invalid-feedback">End date is required</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -143,54 +162,35 @@ import { defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 export default defineComponent({
-    name: 'CreateUser',
+    name: 'CreateEducation',
     setup() {
-        
+
         definePageMeta({
             layout: "sidestar",
         });
-        
+
         const axios = useNuxtApp().$axios;
-        const newUser = ref({ phone_number: '', email: '', password: '' });
-        const errorMessageEmail = ref('');
-        const errorMessagePhone = ref('');
-        const isErrorPhone = ref('form-control');
-        const isErrorEmail = ref('form-control');
+        const newEducation = ref({ card_title: '', school_name: '', education_level: '', course_title: '', location: '', final_grade: '', start_date: '', end_date: '' });
         const router = useRouter();
 
-        const createUser = async () => {
+        const createEducation = async () => {
             const form = document.querySelector('.needs-validation');
-            errorMessageEmail.value = '';
-            errorMessagePhone.value = '';
-            isErrorPhone.value = 'form-control';
-            isErrorEmail.value = 'form-control';
+            const user_id = 1;
+
             if (form.checkValidity()) {
                 await axios({
                     method: 'post',
-                    url: '/user',
+                    url: `/user/${user_id}/eduaction/`,
                     headers: { 'Content-Type': 'application/json' },
-                    data: JSON.stringify(newUser.value),
+                    data: JSON.stringify(newEducation.value),
                 })
                     .then(function (response) {
                         console.log('Registration successful');
-                        errorMessageEmail.value = '';
-                        errorMessagePhone.value = '';
-                        isErrorPhone.value = 'form-control';
-                        isErrorEmail.value = 'form-control';
-                        router.push('/auth/login');
+                        router.push('/resume/education');
                         console.log(response);
                     })
                     .catch(function (error) {
                         console.log(error);
-                        if (error.response.data.detail['Email Exists']) {
-                            errorMessageEmail.value = 'Email Already Exists';
-                            isErrorPhone.value = 'form-control';
-                            isErrorEmail.value = 'form-control border-danger';
-                        } else if (error.response.data.detail['Phone Number Exists']) {
-                            errorMessagePhone.value = 'Phone Number Already Exists';
-                            isErrorPhone.value = 'form-control border-danger';
-                            isErrorEmail.value = 'form-control';
-                        }
                     });
             } else {
                 form.classList.add('was-validated');
@@ -207,32 +207,17 @@ export default defineComponent({
 
                     if (!form.checkValidity()) {
                         form.classList.add('was-validated');
-                        errorMessageEmail.value = '';
-                        errorMessagePhone.value = '';
-                        isErrorPhone.value = 'form-control';
-                        isErrorEmail.value = 'form-control';
                     } else {
-                        createUser();
+                        createEducation();
                     }
                 }, false);
             });
         });
 
-        if (errorMessagePhone || errorMessageEmail) {
-            return {
-                newUser,
-                errorMessagePhone,
-                errorMessageEmail,
-                isErrorEmail,
-                isErrorPhone
-            }
-        } else {
-            return {
-                newUser,
-                createUser,
-            };
-        }
-
+        return {
+            newEducation,
+            createEducation,
+        };
     },
 });
 </script>
