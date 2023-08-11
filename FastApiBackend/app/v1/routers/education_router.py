@@ -9,7 +9,7 @@ from app.v1.database.models.education_model import (
     EducationV1CreateRequest,
 )
 
-router = APIRouter(prefix="/user/{user_id}/eduaction", tags=["Education Version 1"])
+router = APIRouter(prefix="/user/{user_id}/education", tags=["Education Version 1"])
 
 
 @router.get(path="/", response_model=List[EducationV1Read])

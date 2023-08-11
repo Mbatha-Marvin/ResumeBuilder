@@ -9,7 +9,7 @@ from app.v1.database.models.referee_model import (
     RefereeV1CreateRequest,
 )
 
-router = APIRouter(prefix="/users/{user_id}/referee", tags=["Referee Version 1"])
+router = APIRouter(prefix="/user/{user_id}/referee", tags=["Referee Version 1"])
 
 
 @router.get("/", response_model=List[RefereeV1Read])
