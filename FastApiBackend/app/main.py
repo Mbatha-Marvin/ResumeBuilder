@@ -9,6 +9,7 @@ from app.v1.database.models.education_model import EducationV1
 from app.v1.database.models.experience_model import ExperienceV1
 from app.v1.database.models.referee_model import RefereeV1
 from app.v1.database.models.certification_model import CertificationV1
+from app.v1.database.models.verification_model import VerificationV1
 from app.v1.database.models.health_status_model import HealthCheck
 
 from app import settings
