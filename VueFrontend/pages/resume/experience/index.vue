@@ -252,8 +252,8 @@ export default defineComponent({
 
         const addDescription = () => {
             if (newDescription.value.trim() !== '') {
-                if (experiences.descriptions.length < 5) {
-                    experiences.descriptions.push(newDescription.value);
+                if (experience.descriptions.length < 5) {
+                    experience.descriptions.push(newDescription.value);
                 } else {
                     // Implement logic to display an error or warning when the limit is reached
                 }

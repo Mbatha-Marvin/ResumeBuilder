@@ -4,20 +4,20 @@
             <div class="col-md-12">
                 <div class="card mb-2">
                     <div class="card-body rounded">
-                        <h4 class="text-center text-uppercase bold">Experience Section</h4>
+                        <h4 class="text-center text-uppercase bold">Referee Section</h4>
                     </div>
                 </div>
                 <div class="card mb-2">
                     <div class="card-content collapse show">
                         <div class="card-body card-dashboard">
                             <div class="row">
-                                <h4 class="d-inline">Experience List
-                                    <NuxtLink :to="'/resume/experience/create'" class="btn btn-sm btn-success float-end"><i
+                                <h4 class="d-inline">Referee List
+                                    <NuxtLink :to="'/resume/referee/create'" class="btn btn-sm btn-success float-end"><i
                                             class="bi bi-plus-square"></i>{{ ' ' }}Create
                                     </NuxtLink>
                                 </h4>
                             </div>
-                            <div v-for="(experience, index) in experiences" :key="index" class="card mt-2">
+                            <div v-for="(referee, index) in referees" :key="index" class="card mt-2">
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
 
@@ -25,53 +25,53 @@
                                             <p class="float-start"><strong>{{ index }}</strong></p>
                                         </div>
 
-                                        <form @submit.prevent="submitExperienceForm(index)"
+                                        <form @submit.prevent="submitRefereeForm(index)"
                                             class="form form-horizontal needs-validation" novalidate>
                                             <div class="form-body">
                                                 <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group row mb-2">
-                                                            <label class="col-md-3 label-control" for="course_title">Course
-                                                                Title</label>
-                                                            <div class="col-md-9">
-                                                                <input v-model="experience.course_title" type="text"
-                                                                    id="course_title" class="form-control border-primary"
-                                                                    placeholder="Course Title" name="course_title" required>
-                                                                <span class="invalid-feedback">Course Title is
-                                                                    required</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
+                                                    
                                                     <div class="col-md-6">
                                                         <div class="form-group row mb-2">
                                                             <label class="col-md-3 label-control" for="card_title">Card
                                                                 Title</label>
                                                             <div class="col-md-9">
-                                                                <select v-model="experience.card_title"
+                                                                <select v-model="referee.card_title"
                                                                     class="form-select border-primary"
                                                                     aria-label="Default select example" required>
-                                                                    <option selected :value="experience.card_title">{{
-                                                                        experience.card_title }}</option>
-                                                                    <option>experience</option>
-                                                                    <option>Academics</option>
+                                                                    <option selected :value="referee.card_title">{{
+                                                                        referee.card_title }}</option>
+                                                                    <option>Referee</option>
+                                                                    <option>Reference</option>
                                                                 </select>
                                                                 <span class="invalid-feedback">Please Select Card
                                                                     Title</span>
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group row mb-2">
+                                                            <label class="col-md-3 label-control" for="full_name">Referee Name</label>
+                                                            <div class="col-md-9">
+                                                                <input v-model="referee.full_name" type="text"
+                                                                    id="full_name" class="form-control border-primary"
+                                                                    placeholder="Referee Name" name="full_name" required>
+                                                                <span class="invalid-feedback">Referee Name is
+                                                                    required</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row mb-2">
-                                                            <label class="col-md-3 label-control" for="school_name">School
-                                                                Name</label>
+                                                            <label class="col-md-3 label-control" for="phone_number">Phone Number</label>
                                                             <div class="col-md-9">
-                                                                <input v-model="experience.school_name" type="text"
-                                                                    id="school_name" class="form-control border-primary"
-                                                                    placeholder="School Name" name="school_name" required>
-                                                                <span class="invalid-feedback">School Name is
+                                                                <input v-model="referee.phone_number" type="text"
+                                                                    id="phone_number" class="form-control border-primary"
+                                                                    placeholder="Phone Number" name="phone_number" required>
+                                                                <span class="invalid-feedback">Phone Number is
                                                                     required</span>
                                                             </div>
                                                         </div>
@@ -79,12 +79,12 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group row mb-2">
                                                             <label class="col-md-3 label-control"
-                                                                for="location">Location</label>
+                                                                for="company_name">Company Name</label>
                                                             <div class="col-md-9">
-                                                                <input v-model="experience.location" type="text"
-                                                                    id="location" class="form-control border-primary"
-                                                                    placeholder="Location" name="location" required>
-                                                                <span class="invalid-feedback">Location is required</span>
+                                                                <input v-model="referee.company_name" type="text"
+                                                                    id="company_name" class="form-control border-primary"
+                                                                    placeholder="Company Name" name="company_name" required>
+                                                                <span class="invalid-feedback">Company Name is required</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -93,75 +93,32 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group row mb-2">
                                                             <label class="col-md-3 label-control"
-                                                                for="experience_level">experience
-                                                                Level</label>
+                                                                for="occupation">Occupation</label>
                                                             <div class="col-md-9">
-                                                                <input v-model="experience.experience_level" type="text"
-                                                                    id="experience_level"
+                                                                <input v-model="referee.occupation" type="text"
+                                                                    id="occupation"
                                                                     class="form-control border-primary"
-                                                                    placeholder="experience Level" name="experience_level"
+                                                                    placeholder="Occupation" name="occupation"
                                                                     required>
-                                                                <span class="invalid-feedback">experience Level is
+                                                                <span class="invalid-feedback">Occupation is
                                                                     required</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group row mb-2">
-                                                            <label class="col-md-3 label-control" for="final_grade">Final
-                                                                Grade</label>
+                                                            <label class="col-md-3 label-control" for="address">Address</label>
                                                             <div class="col-md-9">
-                                                                <input v-model="experience.final_grade" type="text"
-                                                                    id="final_grade" class="form-control border-primary"
-                                                                    placeholder="Final Grade" name="final_grade" required>
-                                                                <span class="invalid-feedback">Final Grade is
+                                                                <input v-model="referee.address" type="text"
+                                                                    id="address" class="form-control border-primary"
+                                                                    placeholder="Address" name="address" required>
+                                                                <span class="invalid-feedback">Address is
                                                                     required</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group row mb-2">
-                                                            <label class="col-md-3 label-control" for="start_date">Start
-                                                                Date</label>
-                                                            <div class="col-md-9">
-                                                                <input v-model="experience.start_date" type="date"
-                                                                    id="start_date" class="form-control border-primary"
-                                                                    placeholder="Start
-                                                            Date" name="start_date" required>
-                                                                <span class="invalid-feedback">Start
-                                                                    Date is required</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group row mb-2">
-                                                            <label class="col-md-3 label-control" for="end_date">End
-                                                                date</label>
-                                                            <div class="col-md-9">
-                                                                <input v-model="experience.end_date" type="date"
-                                                                    id="end_date" class="form-control border-primary"
-                                                                    placeholder="End date" name="end_date" required>
-                                                                <span class="invalid-feedback">End date is required</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <div class="row">
-                                                <div class="form-actions my-2">
-                                                    <button type="submit" class="btn btn-sm btn-primary mx-2 float-start">
-                                                        <i class="bi bi-pencil-square"></i>{{ ' ' }}Update
-                                                    </button>
-
-                                                    <button @click="deleteExperience(experience.experience_id)"
-                                                        class="btn btn-sm btn-danger float-end mx-2"><i
-                                                            class="bi bi-trash3"></i>
-                                                        {{ ' ' }}Delete
-                                                    </button>
-                                                </div>
                                             </div>
 
                                         </form>
@@ -185,48 +142,48 @@ definePageMeta({
 });
 
 export default defineComponent({
-    name: 'experienceList',
+    name: 'refereeList',
     setup() {
 
-        const experiences = ref([]);
+        const referees = ref([]);
         const axios = useNuxtApp().$axios;
         const user_id = 1;
         const router = useRouter();
 
-        const getExperience = async () => {
+        const getReferee = async () => {
             try {
-                const response = await axios.get(`/user/${user_id}/experience/`);
-                experiences.value = response.data;
+                const response = await axios.get(`/user/${user_id}/referee/`);
+                referees.value = response.data;
             } catch (error) {
-                console.error('Error fetching experiences:', error);
+                console.error('Error fetching referees:', error);
             }
         };
 
-        const updateExperience = async (experienceIndex) => {
+        const updateReferee = async (refereeIndex) => {
             try {
                 await axios.patch(
-                    `/user/${experienceIndex.user_id}/experience/${experienceIndex.experience_id}`,
-                    experienceIndex
+                    `/user/${refereeIndex.user_id}/referee/${refereeIndex.referee_id}`,
+                    refereeIndex
                 ).then(function (response) {
                     console.log(response);
-                    router.push('/resume/experience');
+                    router.push('/resume/referee');
                 });
             } catch (error) {
                 console.error('Error updating:', error);
             }
         };
 
-        const deleteExperience = async (experience_id) => {
+        const deleteReferee = async (referee_id) => {
             try {
-                await axios.delete(`/user/${user_id}/experience/${experience_id}`);
-                getExperience();
+                await axios.delete(`/user/${user_id}/referee/${referee_id}`);
+                getReferee();
             } catch (error) {
-                console.error('Error deleting experience:', error);
+                console.error('Error deleting referee:', error);
             }
         };
 
-        const submitExperienceForm = async (experienceIndex) => {
-            const experienceToUpdate = experiences.value[experienceIndex];
+        const submitRefereeForm = async (refereeIndex) => {
+            const refereeToUpdate = referees.value[refereeIndex];
             const form = document.querySelector('.needs-validation');
 
             if (!form.checkValidity()) {
@@ -234,17 +191,17 @@ export default defineComponent({
                 return;
             }
 
-            updateExperience(experienceToUpdate);
+            updateReferee(refereeToUpdate);
         };
 
         onMounted(() => {
-            getExperience();
+            getReferee();
         });
 
         return {
-            experiences,
-            deleteExperience,
-            submitExperienceForm
+            referees,
+            deleteReferee,
+            submitRefereeForm
         };
     },
 });
