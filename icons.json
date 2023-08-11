@@ -27,7 +27,7 @@
     "user_work_title": "User Work Title",
     "user_summary": "User Summary",
     "objectives": "objective summary"
-  }  
+  },  
   {
     "card_title": "Education",
     "school_name": "dgvgv",
@@ -37,5 +37,25 @@
     "final_grade": "Final Grade",
     "start_date": "2023-08-25",
     "end_date": "2023-08-18"
+  },
+
+  {
+    "card_title": "Experience",
+    "job_title": "Job title 1",
+    "company_name": "Company Name 1",
+    "company_url": "company_1_url.com",
+    "location": "Location 1",
+    "job_description_title": "Job Description Title 1",
+    "job_descriptions": [
+      "some job description entry 1",
+      "some job description entry 2",
+      "some job description entry 3 that is slightly lengthy for variety",
+      "some job description entry 4 that is longer than the rest to test text wrapping in the cards",
+      "some job description entry 5 "
+    ],
+    "start_date": "2017-09-21",
+    "end_date": "2021-03-24",
+    "user_id": 1,
+    "experience_id": 1
   }
 ]
