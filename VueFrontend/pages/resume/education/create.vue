@@ -12,8 +12,7 @@
                         <div class="card-body card-dashboard">
                             <div class="row">
                                 <p class="d-inline">Create New Education
-                                    <NuxtLink :to="'/resume/education'" class="btn btn-sm btn-danger float-end"><i
-                                            class="bi bi-arrow-left-circle"></i>Back
+                                    <NuxtLink :to="'/resume/education'" class="btn btn-sm btn-success float-end"><i class="bi bi-list-ol"></i>{{ ' ' }}List
                                     </NuxtLink>
                                 </p>
                             </div>
@@ -41,9 +40,6 @@
                                                         <label class="col-md-3 label-control" for="card_title">Card
                                                             Title</label>
                                                         <div class="col-md-9">
-                                                            <!-- <input type="text" id="card_title"
-                                                                class="form-control border-primary" value="Education"
-                                                                placeholder="Card Title" name="card_title"> -->
                                                             <select v-model="newEducation.card_title"
                                                                 class="form-select border-primary"
                                                                 aria-label="Default select example" required>
@@ -138,14 +134,36 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-actions float-end mt-2">
-                                            <NuxtLink :to="'/resume/education'" class="btn btn-danger mx-2">
+                                        
+                                        <!-- <div class="form-actions float-end mt-2">
+                                            <NuxtLink :to="'/resume/education'" class="btn btn-sm btn-danger mx-2 float-start">
                                                 <i class="bi bi-x-lg"></i> Cancel
                                             </NuxtLink>
-                                            <button type="submit" class="btn btn-primary mx-2">
+                                            <button type="submit" class="btn btn-sm btn-primary mx-2 float-end">
                                                 <i class="bi bi-check2-square"></i> Save
                                             </button>
-                                        </div>
+                                        </div> -->
+                                        
+                                        
+                                        <div class="row">
+                                                <div class="form-actions my-2">
+                                                    <NuxtLink :to="'/resume/education'" class="btn btn-sm btn-danger mx-2 float-start">
+                                                <i class="bi bi-x-lg"></i>{{ ' ' }}Cancel
+                                            </NuxtLink>
+                                            <button type="submit" class="btn btn-sm btn-primary mx-2 float-end">
+                                                <i class="bi bi-check2-square"></i>{{ ' ' }}Save
+                                            </button>
+                                                    <!-- <button type="submit" class="btn btn-sm btn-primary mx-2 float-start">
+                                                        <i class="bi bi-pencil-square"></i>{{ ' ' }}Update
+                                                    </button>
+
+                                                    <button @click="deleteEducation(education.education_id)"
+                                                        class="btn btn-sm btn-danger float-end mx-2"><i
+                                                            class="bi bi-trash3"></i>
+                                                        {{ ' ' }}Delete
+                                                    </button> -->
+                                                </div>
+                                            </div>
                                     </form>
                                 </div>
                             </div>
@@ -176,16 +194,14 @@ export default defineComponent({
         const createEducation = async () => {
             const form = document.querySelector('.needs-validation');
             const user_id = 1;
-
             if (form.checkValidity()) {
                 await axios({
                     method: 'post',
-                    url: `/user/${user_id}/eduaction/`,
+                    url: `/user/${user_id}/education/`,
                     headers: { 'Content-Type': 'application/json' },
                     data: JSON.stringify(newEducation.value),
                 })
                     .then(function (response) {
-                        console.log('Registration successful');
                         router.push('/resume/education');
                         console.log(response);
                     })
@@ -216,7 +232,6 @@ export default defineComponent({
 
         return {
             newEducation,
-            createEducation,
         };
     },
 });
