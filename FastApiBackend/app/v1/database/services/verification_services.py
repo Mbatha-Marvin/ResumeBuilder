@@ -1,13 +1,11 @@
 from typing import List
-from sqlmodel import Session
+from sqlmodel import Session, select
 from fastapi import HTTPException
 import africastalking
 import pyotp, datetime
 from app.v1.database.models.verification_model import (
     VerificationV1,
     VerificationV1Create,
-    VerificationV1Read,
-    PhoneVerificationV1Request,
 )
 from app import settings
 
@@ -55,3 +53,18 @@ class CreateVerificationDetails:
         self.session.refresh(verification_instance)
 
         return otp_code
+
+    def update_phone_verified_field(self, user_id: int) -> bool:
+        verification_instance = self.session.exec(
+            select(VerificationV1).where(VerificationV1.user_id == user_id)
+        ).one_or_none()
+
+        verification_instance.number_verified = True
+
+        self.session.add(verification_instance)
+        self.session.commit()
+        self.session.refresh(verification_instance)
+
+        return True
+
+        pass

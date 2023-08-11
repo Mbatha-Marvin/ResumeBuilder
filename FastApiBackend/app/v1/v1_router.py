@@ -10,6 +10,7 @@ from app.v1.routers import (
     certification_router,
     referee_router,
     project_router,
+    verification_router,
 )
 
 v1_router = APIRouter(prefix="/api/v1")
@@ -25,6 +26,7 @@ def health_check() -> dict:
 
 
 v1_router.include_router(user_router.router)
+v1_router.include_router(verification_router.router)
 v1_router.include_router(profile_router.router)
 v1_router.include_router(education_router.router)
 v1_router.include_router(experience_router.router)
