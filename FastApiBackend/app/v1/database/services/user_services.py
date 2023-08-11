@@ -9,6 +9,7 @@ from sqlmodel import Session, select
 from pydantic import EmailStr
 from typing import Optional
 from app.v1.database.services.user_services_helper_functions import get_full_profile
+from app.v1.database.services.verification_services import CreateVerificationDetails
 
 
 class UserCRUDService:
@@ -86,9 +87,17 @@ class UserCRUDService:
 
         else:
             new_user_instance = UserV1.from_orm(new_user)
+            # new_user_instance = UserV1.parse_obj(new_user)
             self.session.add(new_user_instance)
             self.session.commit()
             self.session.refresh(new_user_instance)
+
+            create_verification_details_service = CreateVerificationDetails(
+                session=self.session
+            )
+            created = create_verification_details_service.create_phone_number_verification_details(
+                user_id=new_user_instance.user_id
+            )
 
             return new_user_instance
 

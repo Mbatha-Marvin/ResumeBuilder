@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from app.v1.database.models.profile_model import ProfileV1
     from app.v1.database.models.certification_model import CertificationV1
     from app.v1.database.models.referee_model import RefereeV1
+    from app.v1.database.models.verification_model import VerificationV1
 
 
 # The class `UserV1Base` represents a user with attributes such as name, password, and email.
@@ -50,6 +51,7 @@ class UserV1(UserV1Base, table=True):
     profile_details: List["ProfileV1"] = Relationship(back_populates="user")
     certification_details: List["CertificationV1"] = Relationship(back_populates="user")
     referee_details: List["RefereeV1"] = Relationship(back_populates="user")
+    verification_details: List["VerificationV1"] = Relationship(back_populates="user")
 
 
 # The `UserV1Create` class is a subclass of `UserV1Base` and includes a `Config` class with an `example`

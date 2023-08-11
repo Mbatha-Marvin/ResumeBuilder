@@ -9,7 +9,7 @@ from app.v1.database.models.profile_model import (
     ProfileV1CreateRequest,
 )
 
-router = APIRouter(prefix="/users/{user_id}/profile", tags=["Profile Version 1"])
+router = APIRouter(prefix="/user/{user_id}/profile", tags=["Profile Version 1"])
 
 
 @router.get("/", response_model=List[ProfileV1Read])

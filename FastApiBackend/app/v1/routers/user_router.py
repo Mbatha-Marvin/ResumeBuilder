@@ -10,11 +10,13 @@ from app.v1.database.models.user_model import (
     UserV1Read,
     UserV1Create,
 )
+from app.v1.database.services.verification_services import CreateVerificationDetails
 
-router = APIRouter(prefix="/user", tags=["Users Version 1"])
+
+router = APIRouter(tags=["Users Version 1"])
 
 
-@router.get(path="/all", response_model=List[UserV1Read])
+@router.get(path="/users", response_model=List[UserV1Read])
 def read_users(
     *,
     session: Session = Depends(get_db_session),
@@ -26,7 +28,7 @@ def read_users(
     return users
 
 
-@router.get(path="/{user_id}", response_model=UserV1Read)
+@router.get(path="/user/{user_id}", response_model=UserV1Read)
 def read_user(
     *,
     session: Session = Depends(get_db_session),
@@ -42,7 +44,7 @@ def read_user(
         return user_in_db
 
 
-@router.get(path="/{user_id}/full_profile")
+@router.get(path="/user/{user_id}/full_profile")
 def read_full_profile(
     *,
     session: Session = Depends(get_db_session),
@@ -53,7 +55,7 @@ def read_full_profile(
     return user_crud_service.get_full_user_details(email=email, user_id=user_id)
 
 
-@router.post("/", response_model=UserV1Read)
+@router.post("/user/", response_model=UserV1Read)
 def create_user(
     *,
     session: Session = Depends(get_db_session),
@@ -65,7 +67,7 @@ def create_user(
     return new_user_instance
 
 
-@router.patch("/{user_id}", response_model=UserV1Read)
+@router.patch("/user/{user_id}", response_model=UserV1Read)
 def update_user(
     *,
     session: Session = Depends(get_db_session),
@@ -78,7 +80,7 @@ def update_user(
     return db_user_instance
 
 
-@router.delete("/{user_id}")
+@router.delete("/user/{user_id}")
 def delete_user(
     *,
     session: Session = Depends(get_db_session),
