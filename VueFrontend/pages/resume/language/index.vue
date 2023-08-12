@@ -80,6 +80,20 @@
                                                 </div>
     
                                             </div>
+                                            
+                                            <div class="row">
+                                                <div class="form-actions my-2">
+                                                    <button type="submit" class="btn btn-sm btn-primary mx-2 float-start">
+                                                        <i class="bi bi-pencil-square"></i>{{ ' ' }}Update
+                                                    </button>
+
+                                                    <button @click="deleteLanguage(language.language_id)"
+                                                        class="btn btn-sm btn-danger float-end mx-2"><i
+                                                            class="bi bi-trash3"></i>
+                                                        {{ ' ' }}Delete
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>

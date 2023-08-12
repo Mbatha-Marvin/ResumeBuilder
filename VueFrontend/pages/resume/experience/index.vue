@@ -104,45 +104,52 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group row mb-2">
-                                                            <label class="col-md-3 label-control"
-                                                                for="job_description_title">Job Description Title</label>
-                                                            <div class="col-md-9">
-                                                                <input v-model="experience.job_description_title"
-                                                                    type="text" id="job_description_title"
-                                                                    class="form-control border-primary"
-                                                                    placeholder="Job Description Title"
-                                                                    name="job_description_title" required>
-                                                                <span class="invalid-feedback">Job Description Title is
-                                                                    required</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
+                                                
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row mb-2">
                                                             <label class="col-md-3 label-control"
-                                                                for="location">Location</label>
+                                                                for="location">Description:</label>
                                                             <div class="col-md-9">
-                                                                <input id="description" v-model="newDescription"
-                                                                    class="form-control border-primary"
-                                                                    placeholder="Job description" />
-                                                                <button type="button" @click="addDescription">Add
-                                                                    Description</button>
-                                                                <span class="invalid-feedback">Location is
-                                                                    required</span>
+                                                                <div class="input-group">
+                                                                    <input  v-model="newDescription" type="text" class="form-control border-primary" placeholder="Type and click (+) to add to list" />
+                                                                    <span class="input-group-text"><button class="btn btn-sm btn-success" type="button" @click="addDescription(index)"><i class="bi bi-plus"></i></button></span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div v-for="(description, index) in experience.job_descriptions"
-                                                        :key="index" class="description-entry">
-                                                        {{ description }}
-                                                        <button type="button"
-                                                            @click="removeDescription(index)">Delete</button>
+                                                    
+                                                        <div class="col-md-6">
+                                                            <div class="card mb-2">
+                                                        <div v-for="(description, descriptionIndex) in experience.job_descriptions"
+                                                            :key="descriptionIndex" class="description-entry my-2 mx-2">
+                                                            {{ description }}
+                                                            <button type="button" class="btn btn-sm btn-danger"
+                                                                @click="removeDescription(index, descriptionIndex)"><i class="bi bi-x"></i></button>
+                                                        </div>
+                                                    </div>
                                                     </div>
                                                 </div>
+<!-- 
+                                                <div class="card my-2">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label for="job_descriptions">Description:</label>
+                                                            <input v-model="newDescription"
+                                                                placeholder="Enter a job description" />
+                                                                
+                                                            <button type="button" @click="addDescription(index)">Add
+                                                                Description</button>
+                                                        </div>
+                                                        <div  v-for="(description, descriptionIndex) in experience.job_descriptions"
+                                                            :key="descriptionIndex" class="description-entry col-md-6">
+                                                            {{ description }}
+                                                            <button type="button"
+                                                                @click="removeDescription(index, descriptionIndex)">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row mb-2">
@@ -249,17 +256,22 @@ export default defineComponent({
             }
         };
 
-
-        const addDescription = () => {
+        const addDescription = (experienceIndex) => {
             if (newDescription.value.trim() !== '') {
-                if (experience.descriptions.length < 5) {
-                    experience.descriptions.push(newDescription.value);
+                const experienceDescriptionToAdd = experiences.value[experienceIndex];
+                if (experienceDescriptionToAdd.job_descriptions.length < 5) {
+                    experienceDescriptionToAdd.job_descriptions.push(newDescription.value);
                 } else {
-                    // Implement logic to display an error or warning when the limit is reached
+                    console.log('Errow while adding, exceeded 5');
                 }
 
                 newDescription.value = '';
             }
+        };
+
+        const removeDescription = (experienceIndex, descriptionIndex) => {
+            const experienceDescriptionToremove = experiences.value[experienceIndex];
+            experienceDescriptionToremove.job_descriptions.splice(descriptionIndex, 1)
         };
 
         const submitExperienceForm = async (experienceIndex) => {
@@ -274,6 +286,7 @@ export default defineComponent({
             updateExperience(experienceToUpdate);
         };
 
+
         onMounted(() => {
             getExperience();
         });
@@ -282,7 +295,10 @@ export default defineComponent({
             experiences,
             deleteExperience,
             submitExperienceForm,
-            addDescription
+            addDescription,
+            newDescription,
+            removeDescription,
+
         };
     },
 });
