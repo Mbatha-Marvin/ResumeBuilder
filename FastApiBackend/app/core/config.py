@@ -8,6 +8,8 @@ class Settings(BaseSettings):
     project_name: str
     version: str
     description: str
-
+    africas_talking_username: str
+    africas_talking_api_key: str
+    test_phone_number: str
     # Database
     db_connection_str: str

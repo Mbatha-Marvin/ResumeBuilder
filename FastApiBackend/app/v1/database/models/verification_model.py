@@ -15,7 +15,10 @@ class VerificationV1BaseModel(SQLModel):
 
 
 class PhoneVerificationV1Request(SQLModel):
-    opt_code: int
+    otp_code: int
+
+    class Config:
+        schema_extra = {"example": {"otp_code": "valid OTP code"}}
 
 
 class VerificationV1Read(SQLModel):
