@@ -28,9 +28,9 @@
                                                         <label class="col-md-3 label-control" for="job_title">Job
                                                             Title</label>
                                                         <div class="col-md-9">
-                                                            <input v-model="newExperience.job_title" type="text" id="job_title"
-                                                                class="form-control border-primary" placeholder="Job title"
-                                                                name="job_title" required>
+                                                            <input v-model="newExperience.job_title" type="text"
+                                                                id="job_title" class="form-control border-primary"
+                                                                placeholder="Job title" name="job_title" required>
                                                             <span class="invalid-feedback">Job title is
                                                                 required</span>
                                                         </div>
@@ -89,9 +89,9 @@
                                                         <label class="col-md-3 label-control"
                                                             for="location">Location</label>
                                                         <div class="col-md-9">
-                                                            <input v-model="newExperience.location" type="text" id="location"
-                                                                class="form-control border-primary" placeholder="Location"
-                                                                name="location" required>
+                                                            <input v-model="newExperience.location" type="text"
+                                                                id="location" class="form-control border-primary"
+                                                                placeholder="Location" name="location" required>
                                                             <span class="invalid-feedback">Location is
                                                                 required</span>
                                                         </div>
@@ -111,7 +111,7 @@
                                                                     placeholder="Type and click (+) to add to list" />
                                                                 <span class="input-group-text"><button
                                                                         class="btn btn-sm btn-success" type="button"
-                                                                        @click="addDescription(index)"><i
+                                                                        @click="addDescription"><i
                                                                             class="bi bi-plus"></i></button></span>
                                                             </div>
                                                         </div>
@@ -150,9 +150,9 @@
                                                         <label class="col-md-3 label-control" for="end_date">End
                                                             date</label>
                                                         <div class="col-md-9">
-                                                            <input v-model="newExperience.end_date" type="date" id="end_date"
-                                                                class="form-control border-primary" placeholder="End date"
-                                                                name="end_date" required>
+                                                            <input v-model="newExperience.end_date" type="date"
+                                                                id="end_date" class="form-control border-primary"
+                                                                placeholder="End date" name="end_date" required>
                                                             <span class="invalid-feedback">End date is required</span>
                                                         </div>
                                                     </div>
@@ -197,9 +197,9 @@ export default defineComponent({
         });
 
         const axios = useNuxtApp().$axios;
-        const newExperience = ref({ card_title: '', school_name: '', education_level: '', course_title: '', location: '', final_grade: '', start_date: '', end_date: '' });
+        const newExperience = ref({});
         const router = useRouter();
-        
+
         const addDescription = (experienceIndex) => {
             if (newDescription.value.trim() !== '') {
                 const experienceDescriptionToAdd = experiences.value[experienceIndex];

@@ -22,7 +22,7 @@
                                     <div class="card-body card-dashboard">
 
                                         <div class="row">
-                                            <p class="float-start"><strong>{{ index }}</strong></p>
+                                            <p class="float-start"><strong>{{ index + 1 }}</strong></p>
                                         </div>
 
                                         <form @submit.prevent="submitExperienceForm(index)"
@@ -53,7 +53,7 @@
                                                                     aria-label="Default select example" required>
                                                                     <option selected :value="experience.card_title">{{
                                                                         experience.card_title }}</option>
-                                                                    <option>experience</option>
+                                                                    <option>Experience</option>
                                                                     <option>Academics</option>
                                                                 </select>
                                                                 <span class="invalid-feedback">Please Select Card
@@ -131,25 +131,7 @@
                                                     </div>
                                                     </div>
                                                 </div>
-<!-- 
-                                                <div class="card my-2">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label for="job_descriptions">Description:</label>
-                                                            <input v-model="newDescription"
-                                                                placeholder="Enter a job description" />
-                                                                
-                                                            <button type="button" @click="addDescription(index)">Add
-                                                                Description</button>
-                                                        </div>
-                                                        <div  v-for="(description, descriptionIndex) in experience.job_descriptions"
-                                                            :key="descriptionIndex" class="description-entry col-md-6">
-                                                            {{ description }}
-                                                            <button type="button"
-                                                                @click="removeDescription(index, descriptionIndex)">Delete</button>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
+
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row mb-2">

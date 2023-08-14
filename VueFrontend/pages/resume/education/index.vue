@@ -11,18 +11,18 @@
                     <div class="card-content collapse show">
                         <div class="card-body card-dashboard">
                             <div class="row">
-                                <h4 class="d-inline">Education List
+                                <p class="d-inline">Education List
                                     <NuxtLink :to="'/resume/education/create'" class="btn btn-sm btn-success float-end"><i
                                             class="bi bi-plus-square"></i>{{ ' ' }}Create
                                     </NuxtLink>
-                                </h4>
+                                </p>
                             </div>
                             <div v-for="(education, index) in educations" :key="index" class="card mt-2">
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
                                         
                                         <div class="row">
-                                 <p class="float-start"><strong>{{ index }}</strong></p>
+                                 <p class="float-start"><strong>{{ index + 1 }}</strong></p>
                               </div>
 
                                         <form @submit.prevent="submitEducationForm(index)"

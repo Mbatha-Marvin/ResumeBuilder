@@ -22,7 +22,7 @@
                                     <div class="card-body card-dashboard">
 
                                         <div class="row">
-                                            <p class="float-start"><strong>{{ index }}</strong></p>
+                                            <p class="float-start"><strong>{{ index + 1 }}</strong></p>
                                         </div>
 
                                         <form @submit.prevent="submitLanguageForm(index)"
