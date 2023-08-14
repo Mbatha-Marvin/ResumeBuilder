@@ -95,11 +95,17 @@ class UserCRUDService:
             create_verification_details_service = CreateVerificationDetails(
                 session=self.session
             )
-            created = create_verification_details_service.create_phone_number_verification_details(
+            otp_code = create_verification_details_service.create_phone_number_verification_details(
                 user_id=new_user_instance.user_id
             )
 
-            return new_user_instance
+            if otp_code:
+                create_verification_details_service.send_otp_to_number(
+                    otp_code=otp_code, phone_number=new_user_instance.phone_number
+                )
+                return new_user_instance
+            else:
+                raise HTTPException(status_code=409, detail="Error generating otp")
 
     def update_user(
         self,

@@ -19,6 +19,7 @@ alembic = "^1.11.1"
 pydantic = {extras = ["email"], version = "^1.10.10"}
 phonenumbers = "^8.13.18"
 pyotp = "^2.9.0"
+africastalking = "^1.2.5"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"
