@@ -5,6 +5,7 @@
                 <div class="card mb-2">
                     <div class="card-body rounded">
                         <h4 class="text-center text-uppercase bold">Project Section</h4>
+                        <h4 class="text-center text-uppercase bold">Project Section</h4>
                     </div>
                 </div>
                 <div class="card mb-2">
@@ -236,6 +237,7 @@ export default defineComponent({
 
             updateProject(projectToUpdate);
         };
+
 
         onMounted(() => {
             getProjects();

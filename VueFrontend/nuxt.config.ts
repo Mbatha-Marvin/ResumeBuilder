@@ -1,18 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  devServer: {
-    host: "0.0.0.0",
-    port: 5173, // you can replace this port with any port
-  },
-  vite: {
-    server: {
-      hmr: {
-        protocol: 'ws',
-        host: '0.0.0.0',  
-      }
-    }
-  },
+  // devServer: {
+  //   host: "0.0.0.0",
+  //   port: 5173, // you can replace this port with any port
+  // },
+  // vite: {
+  //   server: {
+  //     hmr: {
+  //       protocol: 'ws',
+  //       host: '0.0.0.0',  
+  //     }
+  //   }
+  // },
   app: {
     head: {
       title: 'Resume Builder',

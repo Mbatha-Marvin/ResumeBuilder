@@ -53,7 +53,7 @@
                                                                     aria-label="Default select example" required>
                                                                     <option selected :value="experience.card_title">{{
                                                                         experience.card_title }}</option>
-                                                                    <option>experience</option>
+                                                                    <option>Experience</option>
                                                                     <option>Academics</option>
                                                                 </select>
                                                                 <span class="invalid-feedback">Please Select Card
