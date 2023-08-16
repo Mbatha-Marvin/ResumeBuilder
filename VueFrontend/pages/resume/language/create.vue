@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="card mb-2">
                     <div class="card-body rounded">
-                        <h4 class="text-center text-uppercase bold">Language</h4>
+                        <h4 class="text-center text-uppercase bold">Language Section</h4>
                     </div>
                 </div>
                 <div class="card mb-2">
@@ -43,7 +43,7 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group row mb-2">
-                                                            <label class="col-md-3 label-control" for="language_name">newLanguage Name</label>
+                                                            <label class="col-md-3 label-control" for="language_name">Language Name</label>
                                                             <div class="col-md-9">
                                                                 <input v-model="newLanguage.language_name" type="text"
                                                                     id="language_name" class="form-control border-primary"

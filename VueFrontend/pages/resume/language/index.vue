@@ -4,25 +4,25 @@
             <div class="col-md-12">
                 <div class="card mb-2">
                     <div class="card-body rounded">
-                        <h4 class="text-center text-uppercase bold">language Section</h4>
+                        <h4 class="text-center text-uppercase bold">Language Section</h4>
                     </div>
                 </div>
                 <div class="card mb-2">
                     <div class="card-content collapse show">
                         <div class="card-body card-dashboard">
                             <div class="row">
-                                <h4 class="d-inline">language List
+                                <p class="d-inline">Language List
                                     <NuxtLink :to="'/resume/language/create'" class="btn btn-sm btn-success float-end"><i
                                             class="bi bi-plus-square"></i>{{ ' ' }}Create
                                     </NuxtLink>
-                                </h4>
+                                </p>
                             </div>
                             <div v-for="(language, index) in languages" :key="index" class="card mt-2">
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
 
                                         <div class="row">
-                                            <p class="float-start"><strong>{{ index }}</strong></p>
+                                            <p class="float-start"><strong>{{ index + 1 }}</strong></p>
                                         </div>
 
                                         <form @submit.prevent="submitLanguageForm(index)"

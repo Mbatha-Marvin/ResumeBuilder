@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="card mb-2">
                     <div class="card-body rounded">
-                        <h4 class="text-center text-uppercase bold">Education</h4>
+                        <h4 class="text-center text-uppercase bold">Create Education Section</h4>
                     </div>
                 </div>
                 <div class="card mb-2">
@@ -134,17 +134,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        <!-- <div class="form-actions float-end mt-2">
-                                            <NuxtLink :to="'/resume/education'" class="btn btn-sm btn-danger mx-2 float-start">
-                                                <i class="bi bi-x-lg"></i> Cancel
-                                            </NuxtLink>
-                                            <button type="submit" class="btn btn-sm btn-primary mx-2 float-end">
-                                                <i class="bi bi-check2-square"></i> Save
-                                            </button>
-                                        </div> -->
-                                        
-                                        
+                                                                                
                                         <div class="row">
                                                 <div class="form-actions my-2">
                                                     <NuxtLink :to="'/resume/education'" class="btn btn-sm btn-danger mx-2 float-start">
@@ -153,15 +143,6 @@
                                             <button type="submit" class="btn btn-sm btn-primary mx-2 float-end">
                                                 <i class="bi bi-check2-square"></i>{{ ' ' }}Save
                                             </button>
-                                                    <!-- <button type="submit" class="btn btn-sm btn-primary mx-2 float-start">
-                                                        <i class="bi bi-pencil-square"></i>{{ ' ' }}Update
-                                                    </button>
-
-                                                    <button @click="deleteEducation(education.education_id)"
-                                                        class="btn btn-sm btn-danger float-end mx-2"><i
-                                                            class="bi bi-trash3"></i>
-                                                        {{ ' ' }}Delete
-                                                    </button> -->
                                                 </div>
                                             </div>
                                     </form>

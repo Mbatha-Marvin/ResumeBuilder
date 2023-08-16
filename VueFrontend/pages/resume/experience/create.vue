@@ -4,15 +4,15 @@
             <div class="col-md-12">
                 <div class="card mb-2">
                     <div class="card-body rounded">
-                        <h4 class="text-center text-uppercase bold">Education</h4>
+                        <h4 class="text-center text-uppercase bold">Experience Section</h4>
                     </div>
                 </div>
                 <div class="card mb-2">
                     <div class="card-content collapse show">
                         <div class="card-body card-dashboard">
                             <div class="row">
-                                <p class="d-inline">Create New Education
-                                    <NuxtLink :to="'/resume/education'" class="btn btn-sm btn-success float-end"><i
+                                <p class="d-inline">Create New Experience
+                                    <NuxtLink :to="'/resume/experience'" class="btn btn-sm btn-success float-end"><i
                                             class="bi bi-list-ol"></i>{{ ' ' }}List
                                     </NuxtLink>
                                 </p>
@@ -111,7 +111,7 @@
                                                                     placeholder="Type and click (+) to add to list" />
                                                                 <span class="input-group-text"><button
                                                                         class="btn btn-sm btn-success" type="button"
-                                                                        @click="addDescription(index)"><i
+                                                                        @click="addDescription"><i
                                                                             class="bi bi-plus"></i></button></span>
                                                             </div>
                                                         </div>
@@ -120,13 +120,22 @@
 
                                                 <div class="col-md-6">
                                                     <div class="card mb-2">
-                                                        <div v-for="(description, descriptionIndex) in newExperience.job_descriptions"
-                                                            :key="descriptionIndex" class="description-entry my-2 mx-2">
-                                                            {{ description }}
-                                                            <button type="button" class="btn btn-sm btn-danger"
-                                                                @click="removeDescription(index, descriptionIndex)"><i
-                                                                    class="bi bi-x"></i></button>
-                                                        </div>
+                                                            <div class="card-content collapse show">
+                                                                <div class="card-body card-dashboard">
+                                                                    <div class="row">
+                                                                        <p>job descriptions here</p>
+                                                                        <hr class="border border-primary border-2 opacity-50">
+                                                                    </div>
+  
+                                                                    <ol type="1">
+                                                                        <li v-for="(description, descriptionIndex) in newExperience.job_descriptions"
+                                                                        :key="descriptionIndex" class="my-2 mx-2">{{ description }} <button type="button" class="btn btn-sm btn-danger"
+                                                                            @click="removeDescription(index, descriptionIndex)"><i
+                                                                                class="bi bi-x"></i></button></li>
+                                                                    </ol>
+
+                                                                </div>
+                                                            </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -197,14 +206,16 @@ export default defineComponent({
         });
 
         const axios = useNuxtApp().$axios;
-        const newExperience = ref({ card_title: '', school_name: '', education_level: '', course_title: '', location: '', final_grade: '', start_date: '', end_date: '' });
+        const newExperience = ref({ card_title: '', job_title: '', company_name: '', company_url: '', location: '', job_description_title: '', job_descriptions: [], start_date: '', end_date: '' });
+        const newDescription = ref('');
         const router = useRouter();
         
-        const addDescription = (experienceIndex) => {
+        const addDescription = () => {
+            
             if (newDescription.value.trim() !== '') {
-                const experienceDescriptionToAdd = experiences.value[experienceIndex];
-                if (experienceDescriptionToAdd.job_descriptions.length < 5) {
-                    experienceDescriptionToAdd.job_descriptions.push(newDescription.value);
+                const experienceDescriptionToAdd = newExperience.value.job_descriptions;
+                if (experienceDescriptionToAdd.length < 5) {
+                    experienceDescriptionToAdd.push(newDescription.value);
                 } else {
                     console.log('Errow while adding, exceeded 5');
                 }
@@ -213,9 +224,9 @@ export default defineComponent({
             }
         };
 
-        const removeDescription = (experienceIndex, descriptionIndex) => {
-            const experienceDescriptionToremove = experiences.value[experienceIndex];
-            experienceDescriptionToremove.job_descriptions.splice(descriptionIndex, 1)
+        const removeDescription = (descriptionIndex) => {
+            const experienceDescriptionToremove = newExperience.value.job_descriptions;
+            experienceDescriptionToremove.splice(descriptionIndex, 1)
         };
 
         const createExperience = async () => {
@@ -224,13 +235,13 @@ export default defineComponent({
             if (form.checkValidity()) {
                 await axios({
                     method: 'post',
-                    url: `/user/${user_id}/education/`,
+                    url: `/user/${user_id}/experience/`,
                     headers: { 'Content-Type': 'application/json' },
                     data: JSON.stringify(newExperience.value),
                 })
                     .then(function (response) {
-                        router.push('/resume/education');
-                        console.log(response);
+                        router.push('/resume/experience');
+                        // console.log(response);
                     })
                     .catch(function (error) {
                         console.log(error);
@@ -260,6 +271,7 @@ export default defineComponent({
         return {
             newExperience,
             addDescription,
+            newDescription,
             removeDescription
         };
     },
