@@ -24,7 +24,6 @@
 
 <script >
 import { defineComponent, ref, onMounted } from 'vue';
-import axios from 'axios';
 
 definePageMeta({
    layout: "template3",
@@ -35,14 +34,14 @@ export default defineComponent({
   name: 'fetchData',
   setup() {
     const users = ref([]);
-
-    const BASE_URL = "http://localhost:5000";
+    const user_id = 1;
+    const axios = useNuxtApp().$axios;
 
     const fetchData = async () => {
 
       await axios({
         method: 'get',
-        url: `${BASE_URL}/users/1/full_profile`,
+        url: `/user/${user_id}/full_profile`,
         headers: { 'Content-Type': 'application/json' },
       })
         .then(function (response) {
