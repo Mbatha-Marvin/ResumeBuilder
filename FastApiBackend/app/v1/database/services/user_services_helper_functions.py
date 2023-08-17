@@ -76,7 +76,7 @@ def get_full_profile(user: UserV1) -> dict:
                     "course_title": detail.course_title,
                     "final_grade": detail.final_grade,
                     "start_date": detail.start_date,
-                    "end_date": detail.finish_date,
+                    "end_date": detail.end_date,
                 }
                 for detail in user.education_details
             ],
