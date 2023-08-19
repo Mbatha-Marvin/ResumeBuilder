@@ -49,18 +49,5 @@ services:
     ports:
       - 5432:5432
     
-
-
-  resume_builder_pgadmin:
-    container_name: resume_builder_pgadmin
-    image: dpage/pgadmin4:7
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
-      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
-    ports:
-      - 5050:80
-    depends_on:
-      - resume_builder_db
-
 volumes:
   resume-builder-postgres-data:
