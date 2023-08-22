@@ -75,6 +75,7 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script >
@@ -100,4 +101,6 @@ useHead({
 
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

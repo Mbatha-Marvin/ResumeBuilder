@@ -1,5 +1,5 @@
 <template>
-    <div class="container footer-padding">
+
         <div class="footer">
             <blockquote class="blockquote mb-2">
                 <p>Designed by</p>
@@ -8,7 +8,7 @@
                 </footer>
             </blockquote>
         </div>
-    </div>
+
 </template>
 
 <script>
@@ -19,10 +19,7 @@ export default {
 
 <style scoped>
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+    /* position: block; */
     color: white;
     text-align: center;
     background-color: #053116;
@@ -31,5 +28,6 @@ export default {
 
 .footer-padding {
     margin-top: 20px;
+margin-bottom: 0px;
 }
 </style>
