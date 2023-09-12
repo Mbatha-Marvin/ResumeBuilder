@@ -1,5 +1,5 @@
 <template>
-  <div ref="template3" class="template3" v-for="(user, index) in users" :key="index">
+  <div ref="pdfContent" class="template3" v-for="(user, index) in users" :key="index">
     <ResumeTemp3.Title :user_profile="user.user_profile" />
     <div class="parent">
       <ResumeTemp3.Summary :summary="user.summary" />
@@ -17,16 +17,14 @@
       <ResumeTemp3.Referees :referee="user.referee" />
     </div>
     <div class="d-grid gap-2 col-6 mx-auto mb-3">
-      <button @click="generatePDF"
-        class="btn btn-success">Download PDF</button>
+      <button @click="generatePDF" class="btn btn-success">Download PDF</button>
     </div>
   </div>
 </template>
 
 <script >
 import { defineComponent, ref, onMounted } from 'vue';
-import jsPDF from 'jspdf';
-import html2pdf from 'html2pdf.js';
+import axiosT from 'axios';
 
 definePageMeta({
   layout: "template3",
@@ -35,37 +33,35 @@ definePageMeta({
 
 export default defineComponent({
   name: 'fetchData',
-  methods: {
-    async generatePDF() {
-      const contentDiv = this.$refs.template3;
-
-      // Configure the PDF options
-      const pdfOptions = {
-        margin: 10,
-        filename: 'generated_pdf.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-      };
-
-      // Generate the PDF using html2pdf.js
-      const pdfPromise = html2pdf().from(contentDiv).set(pdfOptions).outputPdf();
-
-      // Wait for the PDF generation to complete
-      const pdfBlob = await pdfPromise;
-
-      // Open or download the generated PDF
-      const pdfUrl = URL.createObjectURL(pdfBlob);
-      window.open(pdfUrl, '_blank');
-    }
-  },
   setup() {
     const users = ref([]);
     const template3 = ref('');
+    const pdfContent = ref('');
     const user_id = 1;
     const axios = useNuxtApp().$axios;
 
-    const doc = jsPDF('p', 'pt', 'A4');
+    const generatePDF = async () => {
+      
+      const content = pdfContent.value;
+
+      try {
+        const response = await axiosT.post('http://localhost:3000/generate-pdf', {
+          html: content.innerHTML,
+        }, {
+          responseType: 'blob',
+        });
+
+        const blobUrl = URL.createObjectURL(response.data);
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = 'generated-pdf.pdf';
+        link.click();
+
+        URL.revokeObjectURL(blobUrl);
+      } catch (error) {
+        console.error('PDF generation error:', error);
+      }
+    }
 
     const fetchData = async () => {
 
@@ -91,6 +87,8 @@ export default defineComponent({
 
     return {
       users,
+      pdfContent,
+      generatePDF
     };
   },
 });

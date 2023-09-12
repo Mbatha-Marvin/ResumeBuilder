@@ -34,7 +34,8 @@ services:
     depends_on:
       - resume-bulder-fastapi_backend
       - resume_builder_db
-    command: npm run dev -- -o
+    command: yarn dev -o
+
 
   resume_builder_db:
     image: postgres:15.3-alpine3.18
