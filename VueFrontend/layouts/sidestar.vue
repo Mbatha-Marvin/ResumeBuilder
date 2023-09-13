@@ -10,12 +10,26 @@
         <NuxtLink to="/resume/referee"><i class="bi bi-sliders2"></i>{{' '}}Referees</NuxtLink>
         <NuxtLink to="/template"><i class="bi bi-eye-fill"></i>{{' '}}Preview</NuxtLink>
     </div>
-    <div class="main py-4 d-flex justify-contents-center">
+    <div class="main py-4 d-flex justify-contents-center"> 
             <slot />
     </div>
+
 </template>
 
 <script>
+
+export default {
+  data() {
+    return {
+      isOpen: false,
+    };
+  },
+  methods: {
+    toggleSidebar() {
+      this.isOpen = !this.isOpen;
+    },
+  },
+};
 
 </script>
 
@@ -36,7 +50,6 @@ body {
     padding-top: 20px;
 }
 
-
 .sidenav a {
   display: block;
   color: black;
@@ -46,32 +59,23 @@ body {
 
 .sidenav a:hover {
     color: #f1f1f1;
+    background-color: #555;
 }
 
-.sidenav a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-
-
-.sidenav a:hover:not(.active) {
-  background-color: #555;
-  color: white;
+.router-link-exact-active {
+    color: #f1f1f1 !important;
+    background-color: #440f58;
+    border-color: #140266;
 }
 
 .main {
     margin-left: 150px;
     font-family: "Lato", sans-serif;
-    /* font-family: "Times New Roman", Times, serif; */
-    /* Same as the width of the sidenav */
     font-size: 14px;
-    /* Increased text to enable scrolling */
     padding: 0px 0px;
-    /* background-color: #555;
-    background-size: cover; */
 }
 
-@media screen and (max-height: 450px) {
+@media (max-width: 768px) {
     .sidenav {
         padding-top: 15px;
     }
@@ -79,5 +83,11 @@ body {
     .sidenav a {
         font-size: 18px;
     }
+            
+    .router-link-exact-active {
+    color: #f1f1f1 !important;
+    background-color: #440f58;
+    border-color: #140266;
+}
 }
 </style>
