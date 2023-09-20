@@ -17,7 +17,7 @@
         <ResumeTemp4.Reference />
       </div>
       <div class="d-grid gap-2 col-6 mx-auto mb-3">
-        <button ref="pdfButton" @click="generatePDF" class="btn btn-success">Download PDF</button>
+        <button ref="pdfButton" @click="generatePDF" class={{ `btn btn-success` }}>Download PDF</button>
       </div>
     </div>
   </div>

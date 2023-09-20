@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container py-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="card mb-2">
@@ -130,15 +130,17 @@
                                                             <div class="card-content collapse show">
                                                                 <div class="card-body card-dashboard">
                                                                     <div class="row">
-                                                                        <p >job descriptions here</p>
+                                                                        <p>job descriptions here</p>
                                                                         <Bold_hr />
                                                                     </div>
-  
+
                                                                     <ol type="1">
                                                                         <li v-for="(description, descriptionIndex) in experience.job_descriptions"
-                                                                        :key="descriptionIndex" class="my-2 mx-2">{{ description }} <button type="button" class="btn btn-sm btn-danger"
-                                                                            @click="removeDescription(index, descriptionIndex)"><i
-                                                                                class="bi bi-x"></i></button></li>
+                                                                            :key="descriptionIndex" class="my-2 mx-2">{{
+                                                                                description }} <button type="button"
+                                                                                class="btn btn-sm btn-danger"
+                                                                                @click="removeDescription(index, descriptionIndex)"><i
+                                                                                    class="bi bi-x"></i></button></li>
                                                                     </ol>
 
                                                                 </div>
@@ -146,25 +148,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- 
-                                                <div class="card my-2">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label for="job_descriptions">Description:</label>
-                                                            <input v-model="newDescription"
-                                                                placeholder="Enter a job description" />
-                                                                
-                                                            <button type="button" @click="addDescription(index)">Add
-                                                                Description</button>
-                                                        </div>
-                                                        <div  v-for="(description, descriptionIndex) in experience.job_descriptions"
-                                                            :key="descriptionIndex" class="description-entry col-md-6">
-                                                            {{ description }}
-                                                            <button type="button"
-                                                                @click="removeDescription(index, descriptionIndex)">Delete</button>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
+
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row mb-2">
@@ -238,7 +222,7 @@ export default defineComponent({
         const user_id = 1;
         const router = useRouter();
         const newDescription = ref('');
-        
+
         const getExperience = async () => {
             try {
                 const response = await axios.get(`/user/${user_id}/experience/`);

@@ -95,8 +95,19 @@ useHead({
       content: "Welcome to the Resume Builder homepage page"
     },
   ],
+  link: [
+    {
+      rel: "stylesheet",
+      href: ""
+    }
+  ],
+  script: [
+    {
+      type: "text/javascript",
+      href: ""
+    }
+  ]
 });
-
 
 </script>
 

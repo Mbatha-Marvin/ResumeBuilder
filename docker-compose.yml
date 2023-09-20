@@ -17,7 +17,6 @@ services:
       - resume_builder_db
     command: uvicorn app.main:app --reload --host 0.0.0.0 --port 5000
 
-      
   vue_frontend:
     build:
       context: ./VueFrontend
@@ -49,8 +48,6 @@ services:
     ports:
       - 5432:5432
     
-
-
   resume_builder_pgadmin:
     container_name: resume_builder_pgadmin
     image: dpage/pgadmin4:7

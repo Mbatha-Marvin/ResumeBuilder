@@ -1,116 +1,16 @@
-<template>
-  <div class="d-flex" id="wrapper">
-    <!-- Sidebar-->
-    <div class="border-end bg-white" id="sidebar-wrapper" :class="{ 'sb-sidenav-toggled': sidebarOpen }">
-      <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
-      <div class="list-group list-group-flush">
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
-      </div>
-    </div>
-    <!-- Page content wrapper-->
-    <div id="page-content-wrapper">
-      <!-- Top navigation-->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <div class="container-fluid">
-          <button class="btn btn-primary" id="sidebarToggle" @click="toggleSidebar">Toggle Menu</button>
+@charset "UTF-8";
 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
-              class="navbar-toggler-icon"></span></button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-              <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#!">Action</a>
-                  <a class="dropdown-item" href="#!">Another action</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#!">Something else here</a>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- Page content-->
-      <div class="container-fluid">
-        <!-- <h1 class="mt-4">Simple Sidebar</h1>
-        <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on
-          larger screens. When toggled using the button below, the menu will change.</p>
-        <p>
-          Make sure to keep all page content within the
-          <code>#page-content-wrapper</code>
-          . The top navbar is optional, and just for demonstration. Just create an element with the
-          <code>#sidebarToggle</code>
-          ID which will toggle the menu when clicked.
-        </p> -->
-
-        <slot />
-      </div>
-    </div>
-  </div>
-</template>
-
-<script >
-
-// useHead({
-//   title: 'Resume Builder Home',
-//   meta: [
-//     {
-//       charset: "utf-8",
-//     },
-//     {
-//       name: "viewport",
-//       content: "width=device-width, initial-scale=1"
-//     },
-//     {
-//       hid: "description",
-//       name: "description",
-//       content: "Welcome to the Resume Builder homepage page"
-//     },
-//   ],
-//   link: [
-//     {
-//       rel: "stylesheet",
-//       href: "/assets/sidebar/css/styles.css"
-//     }
-//   ],
-//   script: [
-//     {
-//       type: "text/javascript",
-//       src: "/assets/sidebar/js/scripts.js"
-//     }
-//   ]
-// });
-
-
-
-export default {
-  data() {
-    return {
-      sidebarOpen: true,
-    };
-  },
-  methods: {
-    toggleSidebar() {
-      this.sidebarOpen = !this.sidebarOpen;
-    },
-  },
-};
-
-
-
-</script>
-
-<style scoped>
+/*!
+* Start Bootstrap - Simple Sidebar v6.0.6 (https://startbootstrap.com/template/simple-sidebar)
+* Copyright 2013-2023 Start Bootstrap
+* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
+*/
+/*!
+ * Bootstrap  v5.2.3 (https://getbootstrap.com/)
+ * Copyright 2011-2022 The Bootstrap Authors
+ * Copyright 2011-2022 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -12735,8 +12635,7 @@ fieldset:disabled .btn {
     width: 100%;
   }
 
-  .sb-sidenav-toggled #wrapper #sidebar-wrapper {
+  body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     margin-left: -15rem;
   }
 }
-</style>
