@@ -1,18 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  // devServer: {
-  //   host: "0.0.0.0",
-  //   port: 5173, // you can replace this port with any port
-  // },
-  // vite: {
-  //   server: {
-  //     hmr: {
-  //       protocol: 'ws',
-  //       host: '0.0.0.0',  
-  //     }
-  //   }
-  // },
+  devServer: {
+    host: "0.0.0.0",
+    port: 5173, // you can replace this port with any port
+  },
+  vite: {
+    server: {
+      hmr: {
+        protocol: 'ws',
+        host: '0.0.0.0',  
+      }
+    }
+  },
   app: {
     head: {
       title: 'Resume Builder',
@@ -29,7 +29,7 @@ export default defineNuxtConfig({
       ]
     }
   },
-  css: ['~/assets/css/main.css', '~/assets/scss/styles.scss'],
+  css: ['~/assets/css/main.css', '~/assets/scss/styles.scss','~/assets/css/dashboard.css'],
   runtimeConfig: {
     public: {
       BASE_URL: process.env.BASE_URL

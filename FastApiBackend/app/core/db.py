@@ -16,7 +16,6 @@
 #     with Session(engine) as session:
 #         yield session
 
-
 import time
 from sqlmodel import create_engine, SQLModel, Session
 from pydantic import BaseSettings

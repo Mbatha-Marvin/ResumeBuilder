@@ -33,7 +33,8 @@ services:
     depends_on:
       - resume-bulder-fastapi_backend
       - resume_builder_db
-    command: npm run dev -- -o
+    command: yarn dev -o
+
 
   resume_builder_db:
     image: postgres:15.3-alpine3.18
@@ -48,6 +49,7 @@ services:
     ports:
       - 5432:5432
     
+<<<<<<< HEAD
   resume_builder_pgadmin:
     container_name: resume_builder_pgadmin
     image: dpage/pgadmin4:7
@@ -59,5 +61,7 @@ services:
     depends_on:
       - resume_builder_db
 
+=======
+>>>>>>> 571f77e0f00cd23fd436f4f43b53112717a2f307
 volumes:
   resume-builder-postgres-data:
