@@ -1,136 +1,83 @@
 <template>
-  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark ">
-    <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm btn-primary order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-        class="bi bi-justify-left"></i></button>
-    <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-      <div class="input-group">
-        <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
-          aria-describedby="btnNavbarSearch" />
-        <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+  <div class="d-flex" id="wrapper">
+    <!-- Sidebar-->
+    <div class="border-end bg-white" id="sidebar-wrapper">
+      <div class="sidebar-heading border-bottom bg-light">Resume Builder</div>
+      <div class="list-group list-group-flush">
+        <NuxtLink class="list-group-item list-group-item-action list-group-item-light p-3" to="/resume/start">Lets start
+        </NuxtLink>
+        <NuxtLink class="list-group-item list-group-item-action list-group-item-light p-3" to="/resume/profile"><i
+            class="bi bi-person"></i>{{ ' ' }}Profile</NuxtLink>
+        <NuxtLink class="list-group-item list-group-item-action list-group-item-light p-3" to="/resume/education"><i
+            class="bi bi-book"></i>{{ ' ' }}Education</NuxtLink>
+        <NuxtLink class="list-group-item list-group-item-action list-group-item-light p-3" to="/resume/experience"><i
+            class="bi bi-list-stars"></i>{{ ' ' }}Experience</NuxtLink>
+        <NuxtLink class="list-group-item list-group-item-action list-group-item-light p-3" to="/resume/language"><i
+            class="bi bi-translate"></i>{{ ' ' }}Languages</NuxtLink>
+        <NuxtLink class="list-group-item list-group-item-action list-group-item-light p-3" to="/resume/certification"><i
+            class="bi bi-patch-check"></i>{{ ' ' }}Certification</NuxtLink>
+        <NuxtLink class="list-group-item list-group-item-action list-group-item-light p-3" to="/resume/project"><i
+            class="bi bi-blockquote-left"></i>{{ ' ' }}Projects</NuxtLink>
+        <NuxtLink class="list-group-item list-group-item-action list-group-item-light p-3" to="/resume/referee"><i
+            class="bi bi-sliders2"></i>{{ ' ' }}Referees</NuxtLink>
+        <NuxtLink class="list-group-item list-group-item-action list-group-item-light p-3" to="/resume/preview"><i
+            class="bi bi-eye-fill"></i>{{ ' ' }}Preview</NuxtLink>
       </div>
-    </form>
-    <!-- Navbar-->
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="#!">Settings</a></li>
-          <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-          <li>
-            <hr class="dropdown-divider" />
-          </li>
-          <li><a class="dropdown-item" href="#!">Logout</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-  <div id="layoutSidenav">
-    <div id="layoutSidenav_nav">
-      <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-        <div class="sb-sidenav-menu">
-          <div class="nav">
-            <div class="sb-sidenav-menu-heading">Core</div>
-            <a class="nav-link" href="index.html">
-              <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-              Dashboard
-            </a>
-            <div class="sb-sidenav-menu-heading">Interface</div>
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
-              aria-expanded="false" aria-controls="collapseLayouts">
-              <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-              Layouts
-              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
-              </nav>
-            </div>
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
-              aria-expanded="false" aria-controls="collapsePages">
-              <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-              Pages
-              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth"
-                  aria-expanded="false" aria-controls="pagesCollapseAuth">
-                  Authentication
-                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
-                  data-bs-parent="#sidenavAccordionPages">
-                  <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="login.html">Login</a>
-                    <a class="nav-link" href="register.html">Register</a>
-                    <a class="nav-link" href="password.html">Forgot Password</a>
-                  </nav>
+    </div>
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+      <!-- Top navigation-->
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <button class="navbar-brand btn btn-primary" id="sidebarToggle"><i class="bi bi-justify-left"></i></button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#!">Action</a>
+                  <a class="dropdown-item" href="#!">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#!">Something else here</a>
                 </div>
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError"
-                  aria-expanded="false" aria-controls="pagesCollapseError">
-                  Error
-                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
-                  data-bs-parent="#sidenavAccordionPages">
-                  <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="401.html">401 Page</a>
-                    <a class="nav-link" href="404.html">404 Page</a>
-                    <a class="nav-link" href="500.html">500 Page</a>
-                  </nav>
-                </div>
-              </nav>
-            </div>
-            <div class="sb-sidenav-menu-heading">Addons</div>
-            <a class="nav-link" href="charts.html">
-              <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-              Charts
-            </a>
-            <a class="nav-link" href="tables.html">
-              <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-              Tables
-            </a>
+              </li>
+            </ul>
+
           </div>
-        </div>
-        <div class="sb-sidenav-footer">
-          <div class="small">Logged in as:</div>
-          Start Bootstrap
         </div>
       </nav>
-    </div>
-    <div id="layoutSidenav_content">
-      <main>
-        <div class="container-fluid py-5">
-          <slot />
-        </div>
-      </main>
-      <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid px-4">
-          <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-            <div>
-              <a href="#">Privacy Policy</a>
-              &middot;
-              <a href="#">Terms &amp; Conditions</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+
+      <!-- Page content-->
+      <div class="container-fluid">
+        <h1 class="mt-4">Simple Sidebar</h1>
+        <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on
+          larger screens. When toggled using the button below, the menu will change.</p>
+        <p>
+          Make sure to keep all page content within the
+          <code>#page-content-wrapper</code>
+          . The top navbar is optional, and just for demonstration. Just create an element with the
+          <code>#sidebarToggle</code>
+          ID which will toggle the menu when clicked.
+        </p>
+
+        <slot />
+      </div>
     </div>
   </div>
 </template>
 
 <script >
-
-{/* <button class="btn btn-link btn-sm btn-primary order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-  class="bi bi-justify-left"></i></button> */}
 
 // useHead({
 //   title: 'Resume Builder Home',
@@ -177,13 +124,13 @@ export default defineComponent({
 
 </script>
 
-<style>
+<style scoped>
 @charset "UTF-8";
 
 /*!
-* Start Bootstrap - SB Admin v7.0.7 (https://startbootstrap.com/template/sb-admin)
+* Start Bootstrap - Simple Sidebar v6.0.6 (https://startbootstrap.com/template/simple-sidebar)
 * Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
+* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
 */
 /*!
  * Bootstrap  v5.2.3 (https://getbootstrap.com/)
@@ -2218,8 +2165,7 @@ progress {
   }
 }
 
-.table,
-.datatable-table {
+.table {
   --bs-table-color: var(--bs-body-color);
   --bs-table-bg: transparent;
   --bs-table-border-color: var(--bs-border-color);
@@ -2237,21 +2183,18 @@ progress {
   border-color: var(--bs-table-border-color);
 }
 
-.table> :not(caption)>*>*,
-.datatable-table> :not(caption)>*>* {
+.table> :not(caption)>*>* {
   padding: 0.5rem 0.5rem;
   background-color: var(--bs-table-bg);
   border-bottom-width: 1px;
   box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
 }
 
-.table>tbody,
-.datatable-table>tbody {
+.table>tbody {
   vertical-align: inherit;
 }
 
-.table>thead,
-.datatable-table>thead {
+.table>thead {
   vertical-align: bottom;
 }
 
@@ -2267,13 +2210,11 @@ progress {
   padding: 0.25rem 0.25rem;
 }
 
-.table-bordered> :not(caption)>*,
-.datatable-table> :not(caption)>* {
+.table-bordered> :not(caption)>* {
   border-width: 1px 0;
 }
 
-.table-bordered> :not(caption)>*>*,
-.datatable-table> :not(caption)>*>* {
+.table-bordered> :not(caption)>*>* {
   border-width: 0 1px;
 }
 
@@ -2300,8 +2241,7 @@ progress {
   color: var(--bs-table-active-color);
 }
 
-.table-hover>tbody>tr:hover>*,
-.datatable-table>tbody>tr:hover>* {
+.table-hover>tbody>tr:hover>* {
   --bs-table-accent-bg: var(--bs-table-hover-bg);
   color: var(--bs-table-hover-color);
 }
@@ -2418,8 +2358,7 @@ progress {
   border-color: var(--bs-table-border-color);
 }
 
-.table-responsive,
-.datatable-wrapper .datatable-container {
+.table-responsive {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -2489,8 +2428,7 @@ progress {
   color: #6c757d;
 }
 
-.form-control,
-.datatable-input {
+.form-control {
   display: block;
   width: 100%;
   padding: 0.375rem 0.75rem;
@@ -2509,25 +2447,20 @@ progress {
 }
 
 @media (prefers-reduced-motion: reduce) {
-
-  .form-control,
-  .datatable-input {
+  .form-control {
     transition: none;
   }
 }
 
-.form-control[type=file],
-[type=file].datatable-input {
+.form-control[type=file] {
   overflow: hidden;
 }
 
-.form-control[type=file]:not(:disabled):not([readonly]),
-[type=file].datatable-input:not(:disabled):not([readonly]) {
+.form-control[type=file]:not(:disabled):not([readonly]) {
   cursor: pointer;
 }
 
-.form-control:focus,
-.datatable-input:focus {
+.form-control:focus {
   color: #212529;
   background-color: #fff;
   border-color: #86b7fe;
@@ -2535,31 +2468,26 @@ progress {
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
-.form-control::-webkit-date-and-time-value,
-.datatable-input::-webkit-date-and-time-value {
+.form-control::-webkit-date-and-time-value {
   height: 1.5em;
 }
 
-.form-control::-moz-placeholder,
-.datatable-input::-moz-placeholder {
+.form-control::-moz-placeholder {
   color: #6c757d;
   opacity: 1;
 }
 
-.form-control::placeholder,
-.datatable-input::placeholder {
+.form-control::placeholder {
   color: #6c757d;
   opacity: 1;
 }
 
-.form-control:disabled,
-.datatable-input:disabled {
+.form-control:disabled {
   background-color: #e9ecef;
   opacity: 1;
 }
 
-.form-control::file-selector-button,
-.datatable-input::file-selector-button {
+.form-control::file-selector-button {
   padding: 0.375rem 0.75rem;
   margin: -0.375rem -0.75rem;
   -webkit-margin-end: 0.75rem;
@@ -2576,15 +2504,12 @@ progress {
 }
 
 @media (prefers-reduced-motion: reduce) {
-
-  .form-control::file-selector-button,
-  .datatable-input::file-selector-button {
+  .form-control::file-selector-button {
     transition: none;
   }
 }
 
-.form-control:hover:not(:disabled):not([readonly])::file-selector-button,
-.datatable-input:hover:not(:disabled):not([readonly])::file-selector-button {
+.form-control:hover:not(:disabled):not([readonly])::file-selector-button {
   background-color: #dde0e3;
 }
 
@@ -2638,8 +2563,7 @@ progress {
   margin-inline-end: 1rem;
 }
 
-textarea.form-control,
-textarea.datatable-input {
+textarea.form-control {
   min-height: calc(1.5em + 0.75rem + 2px);
 }
 
@@ -2678,8 +2602,7 @@ textarea.form-control-lg {
   height: calc(1.5em + 1rem + 2px);
 }
 
-.form-select,
-.datatable-selector {
+.form-select {
   display: block;
   width: 100%;
   padding: 0.375rem 2.25rem 0.375rem 0.75rem;
@@ -2702,35 +2625,28 @@ textarea.form-control-lg {
 }
 
 @media (prefers-reduced-motion: reduce) {
-
-  .form-select,
-  .datatable-selector {
+  .form-select {
     transition: none;
   }
 }
 
-.form-select:focus,
-.datatable-selector:focus {
+.form-select:focus {
   border-color: #86b7fe;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
 .form-select[multiple],
-[multiple].datatable-selector,
-.form-select[size]:not([size="1"]),
-[size].datatable-selector:not([size="1"]) {
+.form-select[size]:not([size="1"]) {
   padding-right: 0.75rem;
   background-image: none;
 }
 
-.form-select:disabled,
-.datatable-selector:disabled {
+.form-select:disabled {
   background-color: #e9ecef;
 }
 
-.form-select:-moz-focusring,
-.datatable-selector:-moz-focusring {
+.form-select:-moz-focusring {
   color: transparent;
   text-shadow: 0 0 0 #212529;
 }
@@ -3007,10 +2923,8 @@ textarea.form-control-lg {
 }
 
 .form-floating>.form-control,
-.form-floating>.datatable-input,
 .form-floating>.form-control-plaintext,
-.form-floating>.form-select,
-.form-floating>.datatable-selector {
+.form-floating>.form-select {
   height: calc(3.5rem + 2px);
   line-height: 1.25;
 }
@@ -3039,34 +2953,28 @@ textarea.form-control-lg {
 }
 
 .form-floating>.form-control,
-.form-floating>.datatable-input,
 .form-floating>.form-control-plaintext {
   padding: 1rem 0.75rem;
 }
 
 .form-floating>.form-control::-moz-placeholder,
-.form-floating>.datatable-input::-moz-placeholder,
 .form-floating>.form-control-plaintext::-moz-placeholder {
   color: transparent;
 }
 
 .form-floating>.form-control::placeholder,
-.form-floating>.datatable-input::placeholder,
 .form-floating>.form-control-plaintext::placeholder {
   color: transparent;
 }
 
 .form-floating>.form-control:not(:-moz-placeholder-shown),
-.form-floating>.datatable-input:not(:-moz-placeholder-shown),
 .form-floating>.form-control-plaintext:not(:-moz-placeholder-shown) {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
 }
 
 .form-floating>.form-control:focus,
-.form-floating>.datatable-input:focus,
 .form-floating>.form-control:not(:placeholder-shown),
-.form-floating>.datatable-input:not(:placeholder-shown),
 .form-floating>.form-control-plaintext:focus,
 .form-floating>.form-control-plaintext:not(:placeholder-shown) {
   padding-top: 1.625rem;
@@ -3074,37 +2982,30 @@ textarea.form-control-lg {
 }
 
 .form-floating>.form-control:-webkit-autofill,
-.form-floating>.datatable-input:-webkit-autofill,
 .form-floating>.form-control-plaintext:-webkit-autofill {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
 }
 
-.form-floating>.form-select,
-.form-floating>.datatable-selector {
+.form-floating>.form-select {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
 }
 
-.form-floating>.form-control:not(:-moz-placeholder-shown)~label,
-.form-floating>.datatable-input:not(:-moz-placeholder-shown)~label {
+.form-floating>.form-control:not(:-moz-placeholder-shown)~label {
   opacity: 0.65;
   transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 }
 
 .form-floating>.form-control:focus~label,
-.form-floating>.datatable-input:focus~label,
 .form-floating>.form-control:not(:placeholder-shown)~label,
-.form-floating>.datatable-input:not(:placeholder-shown)~label,
 .form-floating>.form-control-plaintext~label,
-.form-floating>.form-select~label,
-.form-floating>.datatable-selector~label {
+.form-floating>.form-select~label {
   opacity: 0.65;
   transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 }
 
-.form-floating>.form-control:-webkit-autofill~label,
-.form-floating>.datatable-input:-webkit-autofill~label {
+.form-floating>.form-control:-webkit-autofill~label {
   opacity: 0.65;
   transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 }
@@ -3122,9 +3023,7 @@ textarea.form-control-lg {
 }
 
 .input-group>.form-control,
-.input-group>.datatable-input,
 .input-group>.form-select,
-.input-group>.datatable-selector,
 .input-group>.form-floating {
   position: relative;
   flex: 1 1 auto;
@@ -3133,9 +3032,7 @@ textarea.form-control-lg {
 }
 
 .input-group>.form-control:focus,
-.input-group>.datatable-input:focus,
 .input-group>.form-select:focus,
-.input-group>.datatable-selector:focus,
 .input-group>.form-floating:focus-within {
   z-index: 5;
 }
@@ -3165,9 +3062,7 @@ textarea.form-control-lg {
 }
 
 .input-group-lg>.form-control,
-.input-group-lg>.datatable-input,
 .input-group-lg>.form-select,
-.input-group-lg>.datatable-selector,
 .input-group-lg>.input-group-text,
 .input-group-lg>.btn {
   padding: 0.5rem 1rem;
@@ -3176,9 +3071,7 @@ textarea.form-control-lg {
 }
 
 .input-group-sm>.form-control,
-.input-group-sm>.datatable-input,
 .input-group-sm>.form-select,
-.input-group-sm>.datatable-selector,
 .input-group-sm>.input-group-text,
 .input-group-sm>.btn {
   padding: 0.25rem 0.5rem;
@@ -3187,18 +3080,14 @@ textarea.form-control-lg {
 }
 
 .input-group-lg>.form-select,
-.input-group-lg>.datatable-selector,
-.input-group-sm>.form-select,
-.input-group-sm>.datatable-selector {
+.input-group-sm>.form-select {
   padding-right: 3rem;
 }
 
 .input-group:not(.has-validation)> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating),
 .input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3),
 .input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-control,
-.input-group:not(.has-validation)>.form-floating:not(:last-child)>.datatable-input,
-.input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-select,
-.input-group:not(.has-validation)>.form-floating:not(:last-child)>.datatable-selector {
+.input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-select {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -3206,9 +3095,7 @@ textarea.form-control-lg {
 .input-group.has-validation> :nth-last-child(n+3):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating),
 .input-group.has-validation>.dropdown-toggle:nth-last-child(n+4),
 .input-group.has-validation>.form-floating:nth-last-child(n+3)>.form-control,
-.input-group.has-validation>.form-floating:nth-last-child(n+3)>.datatable-input,
-.input-group.has-validation>.form-floating:nth-last-child(n+3)>.form-select,
-.input-group.has-validation>.form-floating:nth-last-child(n+3)>.datatable-selector {
+.input-group.has-validation>.form-floating:nth-last-child(n+3)>.form-select {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -3220,9 +3107,7 @@ textarea.form-control-lg {
 }
 
 .input-group>.form-floating:not(:first-child)>.form-control,
-.input-group>.form-floating:not(:first-child)>.datatable-input,
-.input-group>.form-floating:not(:first-child)>.form-select,
-.input-group>.form-floating:not(:first-child)>.datatable-selector {
+.input-group>.form-floating:not(:first-child)>.form-select {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -3257,9 +3142,7 @@ textarea.form-control-lg {
 }
 
 .was-validated .form-control:valid,
-.was-validated .datatable-input:valid,
-.form-control.is-valid,
-.is-valid.datatable-input {
+.form-control.is-valid {
   border-color: #198754;
   padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
@@ -3269,36 +3152,26 @@ textarea.form-control-lg {
 }
 
 .was-validated .form-control:valid:focus,
-.was-validated .datatable-input:valid:focus,
-.form-control.is-valid:focus,
-.is-valid.datatable-input:focus {
+.form-control.is-valid:focus {
   border-color: #198754;
   box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
 }
 
 .was-validated textarea.form-control:valid,
-.was-validated textarea.datatable-input:valid,
-textarea.form-control.is-valid,
-textarea.is-valid.datatable-input {
+textarea.form-control.is-valid {
   padding-right: calc(1.5em + 0.75rem);
   background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
 }
 
 .was-validated .form-select:valid,
-.was-validated .datatable-selector:valid,
-.form-select.is-valid,
-.is-valid.datatable-selector {
+.form-select.is-valid {
   border-color: #198754;
 }
 
 .was-validated .form-select:valid:not([multiple]):not([size]),
-.was-validated .datatable-selector:valid:not([multiple]):not([size]),
 .was-validated .form-select:valid:not([multiple])[size="1"],
-.was-validated .datatable-selector:valid:not([multiple])[size="1"],
 .form-select.is-valid:not([multiple]):not([size]),
-.is-valid.datatable-selector:not([multiple]):not([size]),
-.form-select.is-valid:not([multiple])[size="1"],
-.is-valid.datatable-selector:not([multiple])[size="1"] {
+.form-select.is-valid:not([multiple])[size="1"] {
   padding-right: 4.125rem;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
   background-position: right 0.75rem center, center right 2.25rem;
@@ -3306,9 +3179,7 @@ textarea.is-valid.datatable-input {
 }
 
 .was-validated .form-select:valid:focus,
-.was-validated .datatable-selector:valid:focus,
-.form-select.is-valid:focus,
-.is-valid.datatable-selector:focus {
+.form-select.is-valid:focus {
   border-color: #198754;
   box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
 }
@@ -3343,13 +3214,9 @@ textarea.is-valid.datatable-input {
 }
 
 .was-validated .input-group>.form-control:not(:focus):valid,
-.was-validated .input-group>.datatable-input:not(:focus):valid,
 .input-group>.form-control:not(:focus).is-valid,
-.input-group>.datatable-input:not(:focus).is-valid,
 .was-validated .input-group>.form-select:not(:focus):valid,
-.was-validated .input-group>.datatable-selector:not(:focus):valid,
 .input-group>.form-select:not(:focus).is-valid,
-.input-group>.datatable-selector:not(:focus).is-valid,
 .was-validated .input-group>.form-floating:not(:focus-within):valid,
 .input-group>.form-floating:not(:focus-within).is-valid {
   z-index: 3;
@@ -3385,9 +3252,7 @@ textarea.is-valid.datatable-input {
 }
 
 .was-validated .form-control:invalid,
-.was-validated .datatable-input:invalid,
-.form-control.is-invalid,
-.is-invalid.datatable-input {
+.form-control.is-invalid {
   border-color: #dc3545;
   padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
@@ -3397,36 +3262,26 @@ textarea.is-valid.datatable-input {
 }
 
 .was-validated .form-control:invalid:focus,
-.was-validated .datatable-input:invalid:focus,
-.form-control.is-invalid:focus,
-.is-invalid.datatable-input:focus {
+.form-control.is-invalid:focus {
   border-color: #dc3545;
   box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
 }
 
 .was-validated textarea.form-control:invalid,
-.was-validated textarea.datatable-input:invalid,
-textarea.form-control.is-invalid,
-textarea.is-invalid.datatable-input {
+textarea.form-control.is-invalid {
   padding-right: calc(1.5em + 0.75rem);
   background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
 }
 
 .was-validated .form-select:invalid,
-.was-validated .datatable-selector:invalid,
-.form-select.is-invalid,
-.is-invalid.datatable-selector {
+.form-select.is-invalid {
   border-color: #dc3545;
 }
 
 .was-validated .form-select:invalid:not([multiple]):not([size]),
-.was-validated .datatable-selector:invalid:not([multiple]):not([size]),
 .was-validated .form-select:invalid:not([multiple])[size="1"],
-.was-validated .datatable-selector:invalid:not([multiple])[size="1"],
 .form-select.is-invalid:not([multiple]):not([size]),
-.is-invalid.datatable-selector:not([multiple]):not([size]),
-.form-select.is-invalid:not([multiple])[size="1"],
-.is-invalid.datatable-selector:not([multiple])[size="1"] {
+.form-select.is-invalid:not([multiple])[size="1"] {
   padding-right: 4.125rem;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
   background-position: right 0.75rem center, center right 2.25rem;
@@ -3434,9 +3289,7 @@ textarea.is-invalid.datatable-input {
 }
 
 .was-validated .form-select:invalid:focus,
-.was-validated .datatable-selector:invalid:focus,
-.form-select.is-invalid:focus,
-.is-invalid.datatable-selector:focus {
+.form-select.is-invalid:focus {
   border-color: #dc3545;
   box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
 }
@@ -3471,13 +3324,9 @@ textarea.is-invalid.datatable-input {
 }
 
 .was-validated .input-group>.form-control:not(:focus):invalid,
-.was-validated .input-group>.datatable-input:not(:focus):invalid,
 .input-group>.form-control:not(:focus).is-invalid,
-.input-group>.datatable-input:not(:focus).is-invalid,
 .was-validated .input-group>.form-select:not(:focus):invalid,
-.was-validated .input-group>.datatable-selector:not(:focus):invalid,
 .input-group>.form-select:not(:focus).is-invalid,
-.input-group>.datatable-selector:not(:focus).is-invalid,
 .was-validated .input-group>.form-floating:not(:focus-within):invalid,
 .input-group>.form-floating:not(:focus-within).is-invalid {
   z-index: 4;
@@ -5422,8 +5271,7 @@ fieldset:disabled .btn {
   color: var(--bs-breadcrumb-item-active-color);
 }
 
-.pagination,
-.datatable-pagination ul {
+.pagination {
   --bs-pagination-padding-x: 0.75rem;
   --bs-pagination-padding-y: 0.375rem;
   --bs-pagination-font-size: 1rem;
@@ -5449,8 +5297,7 @@ fieldset:disabled .btn {
   list-style: none;
 }
 
-.page-link,
-.datatable-pagination a {
+.page-link {
   position: relative;
   display: block;
   padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
@@ -5463,23 +5310,19 @@ fieldset:disabled .btn {
 }
 
 @media (prefers-reduced-motion: reduce) {
-
-  .page-link,
-  .datatable-pagination a {
+  .page-link {
     transition: none;
   }
 }
 
-.page-link:hover,
-.datatable-pagination a:hover {
+.page-link:hover {
   z-index: 2;
   color: var(--bs-pagination-hover-color);
   background-color: var(--bs-pagination-hover-bg);
   border-color: var(--bs-pagination-hover-border-color);
 }
 
-.page-link:focus,
-.datatable-pagination a:focus {
+.page-link:focus {
   z-index: 3;
   color: var(--bs-pagination-focus-color);
   background-color: var(--bs-pagination-focus-bg);
@@ -5488,9 +5331,7 @@ fieldset:disabled .btn {
 }
 
 .page-link.active,
-.datatable-pagination a.active,
-.active>.page-link,
-.datatable-pagination .active>a {
+.active>.page-link {
   z-index: 3;
   color: var(--bs-pagination-active-color);
   background-color: var(--bs-pagination-active-bg);
@@ -5498,37 +5339,23 @@ fieldset:disabled .btn {
 }
 
 .page-link.disabled,
-.datatable-pagination a.disabled,
-.disabled>.page-link,
-.datatable-pagination .disabled>a {
+.disabled>.page-link {
   color: var(--bs-pagination-disabled-color);
   pointer-events: none;
   background-color: var(--bs-pagination-disabled-bg);
   border-color: var(--bs-pagination-disabled-border-color);
 }
 
-.page-item:not(:first-child) .page-link,
-.page-item:not(:first-child) .datatable-pagination a,
-.datatable-pagination .page-item:not(:first-child) a,
-.datatable-pagination li:not(:first-child) .page-link,
-.datatable-pagination li:not(:first-child) a {
+.page-item:not(:first-child) .page-link {
   margin-left: -1px;
 }
 
-.page-item:first-child .page-link,
-.page-item:first-child .datatable-pagination a,
-.datatable-pagination .page-item:first-child a,
-.datatable-pagination li:first-child .page-link,
-.datatable-pagination li:first-child a {
+.page-item:first-child .page-link {
   border-top-left-radius: var(--bs-pagination-border-radius);
   border-bottom-left-radius: var(--bs-pagination-border-radius);
 }
 
-.page-item:last-child .page-link,
-.page-item:last-child .datatable-pagination a,
-.datatable-pagination .page-item:last-child a,
-.datatable-pagination li:last-child .page-link,
-.datatable-pagination li:last-child a {
+.page-item:last-child .page-link {
   border-top-right-radius: var(--bs-pagination-border-radius);
   border-bottom-right-radius: var(--bs-pagination-border-radius);
 }
@@ -8064,9 +7891,7 @@ fieldset:disabled .btn {
   --bs-aspect-ratio: 42.8571428571%;
 }
 
-.fixed-top,
-.sb-nav-fixed #layoutSidenav #layoutSidenav_nav,
-.sb-nav-fixed .sb-topnav {
+.fixed-top {
   position: fixed;
   top: 0;
   right: 0;
@@ -12911,448 +12736,45 @@ fieldset:disabled .btn {
   }
 }
 
-html,
-body {
-  height: 100%;
+#wrapper {
+  overflow-x: hidden;
 }
 
-#layoutAuthentication {
-  display: flex;
-  flex-direction: column;
+#sidebar-wrapper {
   min-height: 100vh;
+  margin-left: -15rem;
+  transition: margin 0.25s ease-out;
 }
 
-#layoutAuthentication #layoutAuthentication_content {
-  min-width: 0;
-  flex-grow: 1;
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
 }
 
-#layoutAuthentication #layoutAuthentication_footer {
-  min-width: 0;
+#sidebar-wrapper .list-group {
+  width: 15rem;
 }
 
-#layoutSidenav {
-  display: flex;
+#page-content-wrapper {
+  min-width: 100vw;
 }
 
-#layoutSidenav #layoutSidenav_nav {
-  flex-basis: 225px;
-  flex-shrink: 0;
-  transition: transform 0.15s ease-in-out;
-  z-index: 1038;
-  transform: translateX(-225px);
+body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+  margin-left: 0;
 }
 
-#layoutSidenav #layoutSidenav_content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-width: 0;
-  flex-grow: 1;
-  min-height: calc(100vh - 56px);
-  margin-left: -225px;
-}
-
-.sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
-  transform: translateX(0);
-}
-
-.sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  z-index: 1037;
-  opacity: 0.5;
-  transition: opacity 0.3s ease-in-out;
-}
-
-@media (min-width: 992px) {
-  #layoutSidenav #layoutSidenav_nav {
-    transform: translateX(0);
-  }
-
-  #layoutSidenav #layoutSidenav_content {
+@media (min-width: 768px) {
+  #sidebar-wrapper {
     margin-left: 0;
-    transition: margin 0.15s ease-in-out;
   }
 
-  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
-    transform: translateX(-225px);
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
   }
 
-  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content {
-    margin-left: -225px;
+  body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+    margin-left: -15rem;
   }
-
-  .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
-    display: none;
-  }
-}
-
-.sb-nav-fixed .sb-topnav {
-  z-index: 1039;
-}
-
-.sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
-  width: 225px;
-  height: 100vh;
-  z-index: 1038;
-}
-
-.sb-nav-fixed #layoutSidenav #layoutSidenav_nav .sb-sidenav {
-  padding-top: 56px;
-}
-
-.sb-nav-fixed #layoutSidenav #layoutSidenav_nav .sb-sidenav .sb-sidenav-menu {
-  overflow-y: auto;
-}
-
-.sb-nav-fixed #layoutSidenav #layoutSidenav_content {
-  padding-left: 225px;
-  top: 56px;
-}
-
-#layoutError {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-#layoutError #layoutError_content {
-  min-width: 0;
-  flex-grow: 1;
-}
-
-#layoutError #layoutError_footer {
-  min-width: 0;
-}
-
-.img-error {
-  max-width: 20rem;
-}
-
-.nav .nav-link .sb-nav-link-icon,
-.sb-sidenav-menu .nav-link .sb-nav-link-icon {
-  margin-right: 0.5rem;
-}
-
-.sb-topnav {
-  padding-left: 0;
-  height: 56px;
-  z-index: 1039;
-}
-
-.sb-topnav .navbar-brand {
-  width: 225px;
-  margin: 0;
-}
-
-.sb-topnav.navbar-dark #sidebarToggle {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.sb-topnav.navbar-light #sidebarToggle {
-  color: #212529;
-}
-
-.sb-sidenav {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  flex-wrap: nowrap;
-}
-
-.sb-sidenav .sb-sidenav-menu {
-  flex-grow: 1;
-}
-
-.sb-sidenav .sb-sidenav-menu .nav {
-  flex-direction: column;
-  flex-wrap: nowrap;
-}
-
-.sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-heading {
-  padding: 1.75rem 1rem 0.75rem;
-  font-size: 0.75rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.sb-sidenav .sb-sidenav-menu .nav .nav-link {
-  display: flex;
-  align-items: center;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  position: relative;
-}
-
-.sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-nav-link-icon {
-  font-size: 0.9rem;
-}
-
-.sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-sidenav-collapse-arrow {
-  display: inline-block;
-  margin-left: auto;
-  transition: transform 0.15s ease;
-}
-
-.sb-sidenav .sb-sidenav-menu .nav .nav-link.collapsed .sb-sidenav-collapse-arrow {
-  transform: rotate(-90deg);
-}
-
-.sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-nested {
-  margin-left: 1.5rem;
-  flex-direction: column;
-}
-
-.sb-sidenav .sb-sidenav-footer {
-  padding: 0.75rem;
-  flex-shrink: 0;
-}
-
-.sb-sidenav-dark {
-  background-color: #212529;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
-  color: rgba(255, 255, 255, 0.25);
-}
-
-.sb-sidenav-dark .sb-sidenav-menu .nav-link {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-nav-link-icon {
-  color: rgba(255, 255, 255, 0.25);
-}
-
-.sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-sidenav-collapse-arrow {
-  color: rgba(255, 255, 255, 0.25);
-}
-
-.sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
-  color: #fff;
-}
-
-.sb-sidenav-dark .sb-sidenav-menu .nav-link.active {
-  color: #fff;
-}
-
-.sb-sidenav-dark .sb-sidenav-menu .nav-link.active .sb-nav-link-icon {
-  color: #fff;
-}
-
-.sb-sidenav-dark .sb-sidenav-footer {
-  background-color: #343a40;
-}
-
-.sb-sidenav-light {
-  background-color: #f8f9fa;
-  color: #212529;
-}
-
-.sb-sidenav-light .sb-sidenav-menu .sb-sidenav-menu-heading {
-  color: #adb5bd;
-}
-
-.sb-sidenav-light .sb-sidenav-menu .nav-link {
-  color: #212529;
-}
-
-.sb-sidenav-light .sb-sidenav-menu .nav-link .sb-nav-link-icon {
-  color: #adb5bd;
-}
-
-.sb-sidenav-light .sb-sidenav-menu .nav-link .sb-sidenav-collapse-arrow {
-  color: #adb5bd;
-}
-
-.sb-sidenav-light .sb-sidenav-menu .nav-link:hover {
-  color: #0d6efd;
-}
-
-.sb-sidenav-light .sb-sidenav-menu .nav-link.active {
-  color: #0d6efd;
-}
-
-.sb-sidenav-light .sb-sidenav-menu .nav-link.active .sb-nav-link-icon {
-  color: #0d6efd;
-}
-
-.sb-sidenav-light .sb-sidenav-footer {
-  background-color: #e9ecef;
-}
-
-.datatable-wrapper .datatable-container {
-  font-size: 0.875rem;
-}
-
-.datatable-wrapper.no-header .datatable-container {
-  border-top: none;
-}
-
-.datatable-wrapper.no-footer .datatable-container {
-  border-bottom: none;
-}
-
-.datatable-top {
-  padding: 0 0 1rem;
-}
-
-.datatable-bottom {
-  padding: 0;
-}
-
-.datatable-top>nav:first-child,
-.datatable-top>div:first-child,
-.datatable-bottom>nav:first-child,
-.datatable-bottom>div:first-child {
-  float: left;
-}
-
-.datatable-top>nav:last-child,
-.datatable-top>div:last-child,
-.datatable-bottom>nav:last-child,
-.datatable-bottom>div:last-child {
-  float: right;
-}
-
-.datatable-selector {
-  width: auto;
-  display: inline-block;
-  padding-left: 1.125rem;
-  padding-right: 2.125rem;
-  margin-right: 0.25rem;
-}
-
-.datatable-info {
-  margin: 7px 0;
-}
-
-/* PAGER */
-.datatable-pagination a:hover {
-  background-color: #e9ecef;
-}
-
-.datatable-pagination .active a,
-.datatable-pagination .active a:focus,
-.datatable-pagination .active a:hover {
-  background-color: #0d6efd;
-}
-
-.datatable-pagination .ellipsis a,
-.datatable-pagination .disabled a,
-.datatable-pagination .disabled a:focus,
-.datatable-pagination .disabled a:hover {
-  cursor: not-allowed;
-}
-
-.datatable-pagination .disabled a,
-.datatable-pagination .disabled a:focus,
-.datatable-pagination .disabled a:hover {
-  cursor: not-allowed;
-  opacity: 0.4;
-}
-
-.datatable-pagination .pager a {
-  font-weight: bold;
-}
-
-/* TABLE */
-.datatable-table {
-  border-collapse: collapse;
-}
-
-.datatable-table>tbody>tr>td,
-.datatable-table>tbody>tr>th,
-.datatable-table>tfoot>tr>td,
-.datatable-table>tfoot>tr>th,
-.datatable-table>thead>tr>td,
-.datatable-table>thead>tr>th {
-  vertical-align: top;
-  padding: 0.5rem 0.5rem;
-}
-
-.datatable-table>thead>tr>th {
-  vertical-align: bottom;
-  text-align: left;
-  border-bottom: none;
-}
-
-.datatable-table>tfoot>tr>th {
-  vertical-align: bottom;
-  text-align: left;
-}
-
-.datatable-table th {
-  vertical-align: bottom;
-  text-align: left;
-}
-
-.datatable-table th a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.datatable-sorter {
-  display: inline-block;
-  height: 100%;
-  position: relative;
-  width: 100%;
-  padding-right: 1rem;
-}
-
-.datatable-sorter::before,
-.datatable-sorter::after {
-  content: "";
-  height: 0;
-  width: 0;
-  position: absolute;
-  right: 4px;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  opacity: 0.2;
-}
-
-.datatable-sorter::before {
-  bottom: 4px;
-}
-
-.datatable-sorter::after {
-  top: 0px;
-}
-
-.asc .datatable-sorter::after,
-.desc .datatable-sorter::before {
-  opacity: 0.6;
-}
-
-.datatables-empty {
-  text-align: center;
-}
-
-.datatable-top::after,
-.datatable-bottom::after {
-  clear: both;
-  content: " ";
-  display: table;
-}
-
-.datatable-pagination li.datatable-hidden {
-  visibility: visible;
-}
-
-.btn-datatable {
-  height: 20px !important;
-  width: 20px !important;
-  font-size: 0.75rem;
-  border-radius: 0.375rem !important;
 }
 </style>

@@ -2,6 +2,39 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+
+                <Topnav />
+                <!-- <div class="card border-light mb-2">
+                    <div class="card-content collapse show">
+                        <div class="card-body card-dashboard">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <button class="btn btn-sm btn-outline-danger" @click="toggleSidebar">
+                                        <i class="bi bi-list"></i>
+                                    </button>
+                                </div>
+
+                                <div class="col-md-8 text-center">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                </div>
+
+                                <div class="col-md-2 text-right">
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" href="#" role="button" id="userDropdown"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="bi bi-person"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                            <a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a>
+                                            <a class="dropdown-item" href="#"><i class="bi bi-person"></i> Profile</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
                 <div class="card mb-2">
                     <div class="card-body rounded">
                         <h4 class="text-center text-uppercase bold">Referee Section</h4>
@@ -29,7 +62,7 @@
                                             class="form form-horizontal needs-validation" novalidate>
                                             <div class="form-body">
                                                 <div class="row">
-                                                    
+
                                                     <div class="col-md-6">
                                                         <div class="form-group row mb-2">
                                                             <label class="col-md-3 label-control" for="card_title">Card
@@ -51,7 +84,8 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group row mb-2">
-                                                            <label class="col-md-3 label-control" for="full_name">Referee Name</label>
+                                                            <label class="col-md-3 label-control" for="full_name">Referee
+                                                                Name</label>
                                                             <div class="col-md-9">
                                                                 <input v-model="referee.full_name" type="text"
                                                                     id="full_name" class="form-control border-primary"
@@ -66,7 +100,8 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row mb-2">
-                                                            <label class="col-md-3 label-control" for="phone_number">Phone Number</label>
+                                                            <label class="col-md-3 label-control" for="phone_number">Phone
+                                                                Number</label>
                                                             <div class="col-md-9">
                                                                 <input v-model="referee.phone_number" type="text"
                                                                     id="phone_number" class="form-control border-primary"
@@ -78,13 +113,14 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group row mb-2">
-                                                            <label class="col-md-3 label-control"
-                                                                for="company_name">Company Name</label>
+                                                            <label class="col-md-3 label-control" for="company_name">Company
+                                                                Name</label>
                                                             <div class="col-md-9">
                                                                 <input v-model="referee.company_name" type="text"
                                                                     id="company_name" class="form-control border-primary"
                                                                     placeholder="Company Name" name="company_name" required>
-                                                                <span class="invalid-feedback">Company Name is required</span>
+                                                                <span class="invalid-feedback">Company Name is
+                                                                    required</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -96,10 +132,8 @@
                                                                 for="occupation">Occupation</label>
                                                             <div class="col-md-9">
                                                                 <input v-model="referee.occupation" type="text"
-                                                                    id="occupation"
-                                                                    class="form-control border-primary"
-                                                                    placeholder="Occupation" name="occupation"
-                                                                    required>
+                                                                    id="occupation" class="form-control border-primary"
+                                                                    placeholder="Occupation" name="occupation" required>
                                                                 <span class="invalid-feedback">Occupation is
                                                                     required</span>
                                                             </div>
@@ -107,10 +141,11 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group row mb-2">
-                                                            <label class="col-md-3 label-control" for="address">Address</label>
+                                                            <label class="col-md-3 label-control"
+                                                                for="address">Address</label>
                                                             <div class="col-md-9">
-                                                                <input v-model="referee.address" type="text"
-                                                                    id="address" class="form-control border-primary"
+                                                                <input v-model="referee.address" type="text" id="address"
+                                                                    class="form-control border-primary"
                                                                     placeholder="Address" name="address" required>
                                                                 <span class="invalid-feedback">Address is
                                                                     required</span>
@@ -149,6 +184,7 @@
 <script>
 import { defineComponent, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import Topnav from '~/components/Users/Topnav.vue';
 
 definePageMeta({
     layout: "sidestar",
@@ -156,6 +192,7 @@ definePageMeta({
 
 export default defineComponent({
     name: 'refereeList',
+
     setup() {
 
         const referees = ref([]);
