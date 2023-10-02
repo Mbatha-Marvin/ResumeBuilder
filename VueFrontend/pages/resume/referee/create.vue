@@ -1,6 +1,5 @@
 <template>
-    <div class="container">
-        <div class="row">
+        <div class="row py-3">
             <div class="col-md-12">
                 <div class="card mb-2">
                     <div class="card-body rounded">
@@ -134,7 +133,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>

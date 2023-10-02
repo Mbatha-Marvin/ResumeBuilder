@@ -32,7 +32,7 @@
  
 <script setup>
 definePageMeta({
-  layout: "sidestar",
+   layout: "sidestar",
 })
 </script>
  
