@@ -75,12 +75,10 @@
       </div>
     </div>
   </div>
-
 </template>
 
-<script >
+<script setup>
 
-<<<<<<< HEAD
 useHead({
   title: 'Resume Builder Home',
   meta: [
@@ -110,28 +108,7 @@ useHead({
     }
   ]
 });
-=======
-// useHead({
-//   title: 'Resume Builder Home',
-//   meta: [
-//     {
-//       charset: "utf-8",
-//     },
-//     {
-//       name: "viewport",
-//       content: "width=device-width, initial-scale=1"
-//     },
-//     {
-//       hid: "description",
-//       name: "description",
-//       content: "Welcome to the Resume Builder homepage page"
-//     },
-//   ],
-// });
->>>>>>> 571f77e0f00cd23fd436f4f43b53112717a2f307
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

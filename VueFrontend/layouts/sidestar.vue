@@ -1,7 +1,10 @@
 <template>
-  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark ">
+  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+    <!-- <a class="navbar-brand ps-3" href="index.html">Daring Coders</a> -->
+    <NuxtLink class="navbar-brand ps-3" to="/resume/start">
+      Daring Coders
+    </NuxtLink>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm btn-primary order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
         class="bi bi-justify-left"></i></button>
@@ -16,15 +19,31 @@
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+        <!-- <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false"><i class="fas fa-user fa-fw"></i></a> -->
+        <NuxtLink class="nav-link dropdown-toggle" id="navbarDropdown" to="#" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <i class="fas fa-user fa-fw"></i>
+        </NuxtLink>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="#!">Settings</a></li>
-          <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+          <li>
+            <NuxtLink class="dropdown-item" to="/settings">
+              Settings
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink class="dropdown-item" to="/profile">
+              Profile
+            </NuxtLink>
+          </li>
           <li>
             <hr class="dropdown-divider" />
           </li>
-          <li><a class="dropdown-item" href="#!">Logout</a></li>
+          <li>
+            <NuxtLink class="dropdown-item" to="/logout">
+              Logout
+            </NuxtLink>
+          </li>
         </ul>
       </li>
     </ul>
@@ -36,85 +55,51 @@
         <div class="sb-sidenav-menu">
           <div class="nav">
             <div class="sb-sidenav-menu-heading">Core</div>
-            <a class="nav-link" href="index.html">
+            <NuxtLink class="nav-link" to="/resume/start">
               <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
               Dashboard
-            </a>
-            <div class="sb-sidenav-menu-heading">Interface</div>
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
-              aria-expanded="false" aria-controls="collapseLayouts">
-              <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-              Layouts
-              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
-              </nav>
-            </div>
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
-              aria-expanded="false" aria-controls="collapsePages">
-              <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-              Pages
-              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth"
-                  aria-expanded="false" aria-controls="pagesCollapseAuth">
-                  Authentication
-                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
-                  data-bs-parent="#sidenavAccordionPages">
-                  <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="login.html">Login</a>
-                    <a class="nav-link" href="register.html">Register</a>
-                    <a class="nav-link" href="password.html">Forgot Password</a>
-                  </nav>
-                </div>
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError"
-                  aria-expanded="false" aria-controls="pagesCollapseError">
-                  Error
-                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
-                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
-                  data-bs-parent="#sidenavAccordionPages">
-                  <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="401.html">401 Page</a>
-                    <a class="nav-link" href="404.html">404 Page</a>
-                    <a class="nav-link" href="500.html">500 Page</a>
-                  </nav>
-                </div>
-              </nav>
-            </div>
+            </NuxtLink>
             <div class="sb-sidenav-menu-heading">Addons</div>
-            <a class="nav-link" href="charts.html">
-              <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-              Charts
-            </a>
-            <a class="nav-link" href="tables.html">
-              <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-              Tables
-            </a>
+            <NuxtLink class="nav-link" to="/resume/profile">
+              <div class="sb-nav-link-icon"><i class="bi bi-person"></i></div>Profile
+            </NuxtLink>
+            <NuxtLink class="nav-link" to="/resume/education">
+              <div class="sb-nav-link-icon"><i class="bi bi-book"></i></div>Education
+            </NuxtLink>
+            <NuxtLink class="nav-link" to="/resume/experience">
+              <div class="sb-nav-link-icon"><i class="bi bi-list-stars"></i></div>Experience
+            </NuxtLink>
+            <NuxtLink class="nav-link" to="/resume/language">
+              <div class="sb-nav-link-icon"><i class="bi bi-translate"></i></div>Languages
+            </NuxtLink>
+            <NuxtLink class="nav-link" to="/resume/certification">
+              <div class="sb-nav-link-icon"><i class="bi bi-patch-check"></i></div>Certification
+            </NuxtLink>
+            <NuxtLink class="nav-link" to="/resume/project">
+              <div class="sb-nav-link-icon"><i class="bi bi-blockquote-left"></i></div>Projects
+            </NuxtLink>
+            <NuxtLink class="nav-link" to="/resume/referee">
+              <div class="sb-nav-link-icon"><i class="bi bi-sliders2"></i></div>Referees
+            </NuxtLink>
+            <NuxtLink class="nav-link" to="/resume/preview">
+              <div class="sb-nav-link-icon"><i class="bi bi-eye-fill"></i></div>Preview
+            </NuxtLink>
           </div>
         </div>
         <div class="sb-sidenav-footer">
           <div class="small">Logged in as:</div>
-          Start Bootstrap
+          Daring CoderPro
         </div>
       </nav>
     </div>
     <div id="layoutSidenav_content">
-      <main>
-        <div class="container-fluid px-4">
-        </div>
+      <main class="py-5">
+        <slot />
       </main>
       <footer class="py-4 bg-light mt-auto">
         <div class="container-fluid px-4">
           <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+            <div class="text-muted">Copyright &copy; 2023</div>
             <div>
               <a href="#">Privacy Policy</a>
               &middot;
@@ -126,8 +111,9 @@
     </div>
   </div>
 </template>
-
 <script >
+import { NuxtLink } from '#build/components';
+
 
 {/* <button class="btn btn-link btn-sm btn-primary order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
   class="bi bi-justify-left"></i></button> */}
@@ -152,7 +138,6 @@
 
 
 export default defineComponent({
-
   data() {
     return {
       response: '',
@@ -164,14 +149,12 @@ export default defineComponent({
     action.addEventListener('click', this.handleAction);
   },
   methods: {
-
     async handleAction() {
       document.body.classList.toggle('sb-sidenav-toggled');
       localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
     },
-
   },
-
+  components: { NuxtLink }
 });
 
 </script>
@@ -13353,5 +13336,6 @@ body {
   width: 20px !important;
   font-size: 0.75rem;
   border-radius: 0.375rem !important;
-}</style>
+}
+</style>
 
