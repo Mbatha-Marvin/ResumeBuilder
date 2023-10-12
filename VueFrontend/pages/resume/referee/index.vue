@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <div class="row">
+    <div class="row py-4 px-2">
+        <div class="container">
             <div class="col-md-12">
                 <div class="card mb-2">
                     <div class="card-body rounded">

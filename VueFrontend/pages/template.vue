@@ -35,18 +35,17 @@ export default defineComponent({
   name: 'fetchData',
   setup() {
     const users = ref([]);
-    const template3 = ref('');
-    const pdfContent = ref('');
+    const pdfContent = ref(null);
     const user_id = 1;
     const axios = useNuxtApp().$axios;
 
     const generatePDF = async () => {
-      
+
       const content = pdfContent.value;
 
       try {
         const response = await axiosT.post('http://localhost:3000/generate-pdf', {
-          html: content.innerHTML,
+          html: content,
         }, {
           responseType: 'blob',
         });
