@@ -1,24 +1,27 @@
 <template>
-  <div :ref="pdfContent" class="template3" v-for="(user, index) in users" :key="index">
-    <ResumeTemp3.Title :user_profile="user.user_profile" />
-    <div class="parent">
-      <ResumeTemp3.Summary :summary="user.summary" />
-      <ResumeTemp3.Education :education="user.education" />
-      <ResumeTemp3.Experience :experience="user.experience" />
-      <ResumeTemp3.Skills :skills="user.skills" />
-      <ResumeTemp3.Objective :objective="user.objectives" />
-      <ResumeTemp3.Certification :certification="user.certification" />
-      <ResumeTemp3.Frameworks />
-      <ResumeTemp3.Programming />
-      <ResumeTemp3.Languages :languages="user.language" />
-      <ResumeTemp3.Operating_Systems />
-      <ResumeTemp3.Hobbies :hobbies="user.hobbies" />
-      <ResumeTemp3.Projects :projects="user.project" />
-      <ResumeTemp3.Referees :referee="user.referee" />
-    </div>
-    <div class="d-grid gap-2 col-6 mx-auto mb-3">
-      <button @click="generatePDF" class="btn btn-success">Download PDF</button>
-    </div>
+
+    <div class="container mt-5">
+      <div :ref="pdfContent" v-for="(user, index) in users" :key="index">
+        <ResumeTemp3.Title :user_profile="user.user_profile" />
+        <div class="parent">
+          <ResumeTemp3.Summary :summary="user.summary" />
+          <ResumeTemp3.Education :education="user.education" />
+          <ResumeTemp3.Experience :experience="user.experience" />
+          <ResumeTemp3.Skills :skills="user.skills" />
+          <ResumeTemp3.Objective :objective="user.objectives" />
+          <ResumeTemp3.Certification :certification="user.certification" />
+          <ResumeTemp3.Frameworks />
+          <ResumeTemp3.Programming />
+          <ResumeTemp3.Languages :languages="user.language" />
+          <ResumeTemp3.Operating_Systems />
+          <ResumeTemp3.Hobbies :hobbies="user.hobbies" />
+          <ResumeTemp3.Projects :projects="user.project" />
+          <ResumeTemp3.Referees :referee="user.referee" />
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto mb-3">
+          <button @click="generatePDF" class="btn btn-success">Download PDF</button>
+        </div>
+      </div>
   </div>
 </template>
 
@@ -27,9 +30,8 @@ import { defineComponent, ref, onMounted } from 'vue';
 import axiosT from 'axios';
 
 definePageMeta({
-  layout: "template3",
+  layout: "sidestar",
 })
-
 
 export default defineComponent({
   name: 'fetchData',

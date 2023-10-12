@@ -14,6 +14,7 @@
           aria-expanded="false">
           <i class="fas fa-user fa-fw"></i>
         </NuxtLink>
+
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
           <li>
             <NuxtLink class="dropdown-item" to="/settings">
@@ -36,6 +37,7 @@
         </ul>
       </li>
     </ul>
+
   </nav>
 
   <div id="layoutSidenav">
