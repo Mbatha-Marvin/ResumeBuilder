@@ -1,17 +1,17 @@
 <template>
    <div class="child summary">
       <div id="section-title">
-        <h4><strong>Summary</strong></h4>
+        <h4><strong>{{ summary.card_title }}</strong></h4>
         <Helpers.Bold_hr />
       </div>
       <span class="summary description">
-             {{ resume.user_contact_details[0].user_summary }}
+             {{ summary.brief_description }}
       </span>
     </div>
 </template>
 
 <script setup>
-const { resume } = defineProps(['resume'])
+const { summary } = defineProps(['summary'])
 
 </script>
 

@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 
 # imports below are essential in loading version 1 models to avoid circular import error
 from app.v1.database.models.user_model import UserV1

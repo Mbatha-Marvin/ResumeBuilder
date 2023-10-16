@@ -15,16 +15,10 @@
         </div>
       </div>
     </div>
+
   </template>
   
-  <script >
-  export default {
-    methods: {
-      generatePDF() {
-        return "generated";
-      },
-    },
-  };
+  <script setup>
   
   useHead({
     title: 'Resume Builder Home',
@@ -46,4 +40,7 @@
   
   </script>
   
-  <style scoped></style>
+  <style scoped>
+
+
+</style>

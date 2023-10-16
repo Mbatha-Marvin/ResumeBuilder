@@ -9,7 +9,7 @@
         <h5><strong>Full Stack Web developer </strong></h5>
       </div>
       <div class="company-title">
-        <img class="masterclass" src="/assets/img/masterclass.jpeg" alt="logo" />
+        <img class="masterclass" src="~/assets/img/masterclass.jpeg" alt="logo" />
         <span><strong>Masterclass Solutions</strong></span>
       </div>
       <div class="iconic-section">
@@ -59,7 +59,7 @@
         <h5><strong>Backend Web Developer(probationary contract)</strong></h5>
       </div>
       <div class="company-title">
-        <img class="masterclass" src="/assets/img/masterclass.jpeg" alt="logo" />
+        <img class="masterclass" src="~/assets/img/masterclass.jpeg" alt="logo" />
         <span><strong>Masterclass Solutions</strong></span>
       </div>
       <div class="iconic-section">
@@ -113,7 +113,7 @@
         <h5><strong>Assistant System Administrator(Internship)</strong></h5>
       </div>
       <div class="company-title">
-        <img class="masterclass" src="/assets/img/kisii.jpg" alt="logo" />
+        <img class="masterclass" src="~/assets/img/kisii.jpg" alt="logo" />
         <span><strong>Kisii University, Eldoret Campus</strong></span>
       </div>
       <div class="iconic-section">

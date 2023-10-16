@@ -1,8 +1,8 @@
 <template>
     <div>
       <Navbar />
-      <!-- <div class="container py-4 d-flex justify-contents-center"> -->
-        <div :class="containerClasses">
+      <div class="container py-4">
+        <!-- <div :class="containerClasses"> -->
         <slot />
       </div>
       <br />
@@ -24,7 +24,7 @@
       return {
         container: true,
         'py-4': true,
-        'd-flex': true,
+        'd-flex-start': true,
         'justify-content-center': true,
         'justify-content-sm-between': true  // Change this class based on your desired behavior
       };

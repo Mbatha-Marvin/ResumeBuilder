@@ -1,8 +1,7 @@
-version: "3"
-name: resume-builder
+version: '3.8'
 
-services:
-  # Fast Api Backend
+services:  
+# Fast Api Backend
   resume-bulder-fastapi_backend:
     build: ./FastApiBackend
     image: resume-bulder-fastapi_backend
@@ -30,9 +29,12 @@ services:
     tty: true
     volumes:
       - ./VueFrontend:/app
+      - /app/node_modules # to avoid mapping of local node_modules
     depends_on:
       - resume-bulder-fastapi_backend
       - resume_builder_db
+    command: yarn dev -o
+
 
   resume_builder_db:
     image: postgres:15.3-alpine3.18
@@ -46,6 +48,17 @@ services:
       - resume-builder-postgres-data:/var/lib/postgresql/data
     ports:
       - 5432:5432
+    
+  resume_builder_pgadmin:
+    container_name: resume_builder_pgadmin
+    image: dpage/pgadmin4:7
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
+    ports:
+      - 5050:80
+    depends_on:
+      - resume_builder_db
 
 volumes:
   resume-builder-postgres-data:
