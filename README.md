@@ -1,7 +1,7 @@
 Resume Builder
 ==========
 
-This is a resume builder Open source program founded by [Marvin Mbatha][marvinmbatha], [Ronald Kimeli][ronaldkimeli] and [Robert Kimaiyo][robertkimaiyo] who are aspiring to bring a new phase of Resume builder techs into unlocking jobs with brilliant Resumes. Your contribution is great inspiration and it is highly encouraged.
+An Open source software founded by [Marvin Mbatha][marvinmbatha], [Ronald Kimeli][ronaldkimeli] and [Robert Kimaiyo][robertkimaiyo] who are aspiring to bring a new phase of Resume builder techs into unlocking jobs with brilliant and ATS friendly Resumes. Your contribution is great inspiration and it is highly encouraged.
 
 Frontend Git branches
 -----------------
@@ -19,6 +19,7 @@ Table of Contents
 -----------------
 
 * [Requirements](#requirements)
+* [Usage](#usage)
 
 Requirements
 ------------
@@ -43,3 +44,43 @@ Resume Builder Frontend requirements based on React:
 [ronaldkimeli]: https://github.com/KimelirR
 [marvinmbatha]: https://github.com/Mbatha-Marvin/
 [robertkimaiyo]: https://github.com/robert5313
+
+
+Usage
+------------
+
+* Clone this repository then create .env for db connection creadentials 
+
+
+```bash
+cd FastApiBackend
+```
+
+Make .env from copy of example.env
+
+
+```bash
+cd example.env .env
+```
+
+Replace the credentials of db with your favorite naming to be generated with the postrgres 
+
+
+```bash
+DB_USER: DB UserName
+DB_PASSWORD: DB Password
+DB_NAME: DB Name
+```
+
+* Install necessary dependencies and run the software servers on detached mode using command below.
+
+
+```bash
+docker compose build --no-cache && docker compose up -d
+```
+- Fill your data in to be reused on the resume preview e.g set Profile, Education,Certifications, Referees etc
+- Preview your details as resume and generate pdf by clicking the pdf logo
+
+* Now check your terminal if everything is already started - On your browser at the url `http://localhost:5173/` if frontend and `http://localhost:5000/` is backend
+
+
