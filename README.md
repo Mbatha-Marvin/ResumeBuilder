@@ -49,7 +49,7 @@ Resume Builder Frontend requirements based on React:
 Usage
 ------------
 
-* Clone this repository then create .env for db connection creadentials 
+Clone this repository then create .env for db connection creadentials 
 
 
 ```bash
@@ -60,7 +60,7 @@ Make .env from copy of example.env
 
 
 ```bash
-cd example.env .env
+cp example.env .env
 ```
 
 Replace the credentials of db with your favorite naming to be generated with the postrgres 
@@ -72,7 +72,7 @@ DB_PASSWORD: DB Password
 DB_NAME: DB Name
 ```
 
-* Install necessary dependencies and run the software servers on detached mode using command below.
+Install necessary dependencies and run the software servers on detached mode using command below.
 
 
 ```bash
