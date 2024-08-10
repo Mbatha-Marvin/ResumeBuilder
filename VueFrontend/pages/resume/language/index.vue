@@ -115,11 +115,11 @@ export default defineComponent({
 
         // Set meta information
         useHead({
-            title: 'Language List',
+            title: 'Languages',
             meta: [
-                { name: 'description', content: 'View Language List' },
-                { property: 'og:title', content: 'Language List' },
-                { property: 'og:description', content: 'View Language List.' }
+                { name: 'description', content: 'View Languages' },
+                { property: 'og:title', content: 'Languages' },
+                { property: 'og:description', content: 'View Languages.' }
             ]
         });
 

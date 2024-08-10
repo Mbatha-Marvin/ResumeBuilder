@@ -159,18 +159,17 @@ export default defineComponent({
     name: 'ProjectList',
     setup() {
 
-
         definePageMeta({
             layout: "sidestar",
         });
 
         // Set meta information
         useHead({
-            title: 'Project',
+            title: 'Projects',
             meta: [
-                { name: 'description', content: 'View Project' },
-                { property: 'og:title', content: 'Project' },
-                { property: 'og:description', content: 'View Project.' }
+                { name: 'description', content: 'View Projects' },
+                { property: 'og:title', content: 'Projects' },
+                { property: 'og:description', content: 'View Projects.' }
             ]
         });
 

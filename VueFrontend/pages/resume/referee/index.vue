@@ -145,11 +145,11 @@ export default defineComponent({
 
         // Set meta information
         useHead({
-            title: 'Referee List',
+            title: 'Referees',
             meta: [
-                { name: 'description', content: 'View Referee List' },
-                { property: 'og:title', content: 'Referee List' },
-                { property: 'og:description', content: 'View Referee List.' }
+                { name: 'description', content: 'View Referees' },
+                { property: 'og:title', content: 'Referees' },
+                { property: 'og:description', content: 'View Referees.' }
             ]
         });
 

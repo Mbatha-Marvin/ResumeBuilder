@@ -311,11 +311,11 @@ export default defineComponent({
 
         // Set meta information
         useHead({
-            title: 'Profile List',
+            title: 'Profile',
             meta: [
-                { name: 'description', content: 'View Profile List' },
-                { property: 'og:title', content: 'Profile List' },
-                { property: 'og:description', content: 'View Profile List.' }
+                { name: 'description', content: 'View Profile' },
+                { property: 'og:title', content: 'Profile' },
+                { property: 'og:description', content: 'View Profile.' }
             ]
         });
 

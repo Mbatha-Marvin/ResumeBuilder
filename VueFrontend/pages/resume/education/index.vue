@@ -165,9 +165,9 @@ export default defineComponent({
             layout: "sidestar",
         });
 
-                  // Set meta information
-                  useHead({
-            title: 'Education List',
+        // Set meta information
+        useHead({
+            title: 'Education',
             meta: [
                 { name: 'description', content: 'View Education List' },
                 { property: 'og:title', content: 'Education List' },

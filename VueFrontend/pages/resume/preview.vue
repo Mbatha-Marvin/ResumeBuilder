@@ -483,7 +483,7 @@ export default defineComponent({
 
     // Set meta information
     useHead({
-      title: 'Resume Preview - Export PDF',
+      title: 'Preview',
       meta: [
         { name: 'description', content: 'Generate and export a PDF of the user profile with ease. Click the icon to download the resume in PDF format.' },
         { property: 'og:title', content: 'Resume Preview - Export PDF' },

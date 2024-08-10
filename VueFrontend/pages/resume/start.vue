@@ -25,9 +25,19 @@
 </template>
  
 <script setup>
-definePageMeta({
-   layout: "sidestar",
-})
+        definePageMeta({
+            layout: "sidestar",
+        });
+
+        // Set meta information
+        useHead({
+            title: 'Start',
+            meta: [
+                { name: 'description', content: 'View Start' },
+                { property: 'og:title', content: 'Start' },
+                { property: 'og:description', content: 'View Start.' }
+            ]
+        });
 </script>
  
 <style>

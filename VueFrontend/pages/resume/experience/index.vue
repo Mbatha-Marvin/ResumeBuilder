@@ -202,10 +202,10 @@ export default defineComponent({
         definePageMeta({
             layout: "sidestar",
         });
-        
+
         // Set meta information
         useHead({
-            title: 'Experience List',
+            title: 'Experience',
             meta: [
                 { name: 'description', content: 'View Experience List' },
                 { property: 'og:title', content: 'Experience List' },

@@ -146,11 +146,11 @@ export default defineComponent({
 
         // Set meta information
         useHead({
-            title: 'Certification List',
+            title: 'Certifications',
             meta: [
-                { name: 'description', content: 'View Certification List' },
-                { property: 'og:title', content: 'Certification List' },
-                { property: 'og:description', content: 'View Certification List.' }
+                { name: 'description', content: 'View Certification' }, 
+                { property: 'og:title', content: 'Certification' },
+                { property: 'og:description', content: 'View Certification.' }
             ]
         });
 
