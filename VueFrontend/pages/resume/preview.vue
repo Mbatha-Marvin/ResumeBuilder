@@ -448,7 +448,6 @@ export default defineComponent({
       <i class="bi bi-file-earmark-pdf export-icon" @click="generatePDF" :class="{ 'disabled': isDownloading }"></i>
     </div>
 
-
     <div ref="pdfContent" class="template3" v-for="(user, index) in users" :key="index">
       <ResumeTemp3.Title :user_profile="user.user_profile" />
       <div class="parent">
@@ -469,7 +468,6 @@ export default defineComponent({
     </div>
   </div>
 </template>
-
 
 <script>
 import { defineComponent, ref, onMounted } from 'vue';

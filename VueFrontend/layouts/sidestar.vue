@@ -3,10 +3,10 @@
     <nav :class="['sb-topnav navbar navbar-expand navbar-dark', navbarColor]" class="text-white">
       <!-- Navbar Brand-->
       <NuxtLink class="navbar-brand ps-3" to="/resume/start">
-        Daring Coders
+        Resume Builder
       </NuxtLink>
       <!-- Sidebar Toggle-->
-      <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
+      <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle">
         <i class="bi bi-columns-gap"></i>
       </button>
       <!-- Navbar Search-->
@@ -20,8 +20,9 @@
       <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
         <li class="nav-item dropdown pe-3">
           <NuxtLink class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <span class="mr-2 d-none d-lg-inline text-white small">Test Name</span>
-            <img :src="profileImage" class="img-profile rounded-circle" alt="Profile" style="height: 30px; width: 30px" />
+            <span class="mr-2 d-none d-lg-inline text-white small">Daring Coder</span>
+            <img :src="profileImage" class="img-profile rounded-circle" alt="Profile"
+              style="height: 30px; width: 30px" />
           </NuxtLink>
 
           <!-- Dropdown - User Information -->
@@ -52,31 +53,31 @@
         <nav :class="['sb-sidenav accordion sb-sidenav-dark', sidebarColor]" id="sidenavAccordion">
           <div class="sb-sidenav-menu">
             <div class="nav">
-              <NuxtLink class="nav-link" to="/resume/start">
+              <NuxtLink class="nav-link" to="/resume/start" @click="closeSidebarOnMobile">
                 <div class="sb-nav-link-icon"><i class="bi bi-columns-gap"></i></div>Dashboard
               </NuxtLink>
-              <NuxtLink class="nav-link" to="/resume/profile">
+              <NuxtLink class="nav-link" to="/resume/profile" @click="closeSidebarOnMobile">
                 <div class="sb-nav-link-icon"><i class="bi bi-person"></i></div>Profile
               </NuxtLink>
-              <NuxtLink class="nav-link" to="/resume/education">
+              <NuxtLink class="nav-link" to="/resume/education" @click="closeSidebarOnMobile">
                 <div class="sb-nav-link-icon"><i class="bi bi-book"></i></div>Education
               </NuxtLink>
-              <NuxtLink class="nav-link" to="/resume/experience">
+              <NuxtLink class="nav-link" to="/resume/experience" @click="closeSidebarOnMobile">
                 <div class="sb-nav-link-icon"><i class="bi bi-list-stars"></i></div>Experience
               </NuxtLink>
-              <NuxtLink class="nav-link" to="/resume/language">
+              <NuxtLink class="nav-link" to="/resume/language" @click="closeSidebarOnMobile">
                 <div class="sb-nav-link-icon"><i class="bi bi-translate"></i></div>Languages
               </NuxtLink>
-              <NuxtLink class="nav-link" to="/resume/certification">
+              <NuxtLink class="nav-link" to="/resume/certification" @click="closeSidebarOnMobile">
                 <div class="sb-nav-link-icon"><i class="bi bi-patch-check"></i></div>Certification
               </NuxtLink>
-              <NuxtLink class="nav-link" to="/resume/project">
+              <NuxtLink class="nav-link" to="/resume/project" @click="closeSidebarOnMobile">
                 <div class="sb-nav-link-icon"><i class="bi bi-blockquote-left"></i></div>Projects
               </NuxtLink>
-              <NuxtLink class="nav-link" to="/resume/referee">
+              <NuxtLink class="nav-link" to="/resume/referee" @click="closeSidebarOnMobile">
                 <div class="sb-nav-link-icon"><i class="bi bi-sliders2"></i></div>Referees
               </NuxtLink>
-              <NuxtLink class="nav-link" to="/resume/preview">
+              <NuxtLink class="nav-link" to="/resume/preview" @click="closeSidebarOnMobile">
                 <div class="sb-nav-link-icon"><i class="bi bi-eye-fill"></i></div>Preview
               </NuxtLink>
             </div>
@@ -94,9 +95,9 @@
         <footer class="py-4 bg-light mt-auto">
           <div class="container-fluid px-4">
             <div class="d-flex align-items-center justify-content-between small">
-              <div class="text-muted">Copyright &copy; 2023</div>
+              <div class="text-muted">Copyright &copy; 2024</div>
               <div>
-                <a href="#">Be an inspiration everyday!</a>
+                <a href="#">Be an inspiration!</a>
               </div>
             </div>
           </div>
@@ -108,7 +109,7 @@
 
 <script setup>
 import { useHead, useRouter, useRoute } from '#app'
-import { ref, watch } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 
 // Import the image
 import profileImage from '~/assets/img/admin.jpg';
@@ -134,42 +135,41 @@ useHead({
 // Watch for route changes and update active link and styles
 watch(route, (to, from) => {
   const currentUrl = to.path
- 
-  // Update styles based on route
   updateStyles(currentUrl)
 })
 
 // Initial setup on component mount
-import { onMounted } from 'vue'
-
 onMounted(() => {
   // Add fixed class to the body
-  const bodyFix = document.querySelector('body')
-  bodyFix.classList.add('sb-nav-fixed')
-  
+  document.querySelector('body').classList.add('sb-nav-fixed')
+
   // Add event listener for sidebar toggle
   const action = document.getElementById('sidebarToggle')
-  action.addEventListener('click', handleAction)
+  if (action) {
+    action.addEventListener('click', handleSidebarToggle)
+  }
 
   // Set active link based on current URL
   const currentUrl = window.location.pathname
   updateStyles(currentUrl)
-});
+})
 
-function handleAction() {
+function handleSidebarToggle() {
   document.body.classList.toggle('sb-sidenav-toggled')
   localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'))
 }
 
 function updateStyles(currentUrl) {
-//   // Update navbar and sidebar styles based on route
-//   if (currentUrl.includes('/resume')) {
-    navbarColor.value = 'bg-purple'
-    sidebarColor.value = 'bg-gradient-cool'
-//   } else {
-    // navbarColor.value = 'bg-primary'
-    // sidebarColor.value = 'bg-dark'
-//   }
+  navbarColor.value = currentUrl.includes('/resume') ? 'bg-purple' : 'bg-primary'
+  sidebarColor.value = currentUrl.includes('/resume') ? 'bg-gradient-cool' : 'bg-dark'
+}
+
+// Function to close sidebar on mobile when a link is clicked
+function closeSidebarOnMobile() {
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    document.body.classList.remove('sb-sidenav-toggled')
+    localStorage.setItem('sb|sidebar-toggle', false)
+  }
 }
 </script>
 
@@ -362,28 +362,35 @@ p {
 
 .bg-purple {
   background-color: var(--bs-dark) !important
-   /* #6f42c1 !important;  */
+    /* #6f42c1 !important;  */
 }
 
 .bg-gradient-cool {
-  background: linear-gradient(135deg, #de6f8f , #6f42c1); 
+  background: linear-gradient(135deg, #de6f8f, #6f42c1);
 }
 
 /* Add a border to active links */
 .nav-link.router-link-active:not(.nav-profile) {
-  color: #ffffff; 
-  border: 2px solid #12b488; 
-  border-radius: 4px; 
+  color: #ffffff;
+  border: 2px solid #12b488;
+  border-radius: 4px;
   padding: 4px 8px;
 }
 
 /* Add a shadow to exactly active links */
 .nav-link.router-link-exact-active:not(.nav-profile) {
-  color: #ffffff; 
-  border: 2px solid #00aaff; 
-  border-radius: 4px; 
+  color: #ffffff;
+  border: 2px solid #00aaff;
+  border-radius: 4px;
   padding: 4px 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure proper styling for mobile responsiveness */
+@media (max-width: 768px) {
+  .sb-sidenav-toggled #layoutSidenav_nav {
+    display: portrait;
+  }
 }
 
 /* #main {
