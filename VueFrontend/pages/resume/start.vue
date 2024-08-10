@@ -1,10 +1,6 @@
 <template>
-   <div class="row py-4">
-      <div class="col-md-2 text-center">
-         {{ '' }}
-      </div>
-      <div class="col-md-12">
-         <div>
+    <div class="row py-4 px-2">
+      <div class="col-xl-12 col-lg-12 col-md-12">
             <div class="card mb-2">
                <div class="card-body rounded">
                   <h4 class="text-center text-uppercase bold">Let's start!</h4>
@@ -20,11 +16,11 @@
                   </blockquote>
                </div>
             </div>
-         </div>
+
+         <div class="text-center">
+         <NuxtLink class="next-link float-start" :to="'/resume/profile'">Next</NuxtLink>
       </div>
-      <div class="col-md-2 text-center">
-         <NuxtLink class="next-link" :to="'/resume/profile'">Next</NuxtLink>
-      </div>
+   </div>
    </div>
 </template>
  

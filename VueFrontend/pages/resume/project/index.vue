@@ -1,6 +1,6 @@
 <template>
-<div class="row py-4 px-2">
-        <div class="col-md-12">
+    <div class="row py-4 px-2">
+        <div class="col-xl-12 col-lg-12 col-md-12">
             <div class="card mb-2">
                 <div class="card-body rounded">
                     <h4 class="text-center text-uppercase bold">Project Section</h4>
@@ -28,129 +28,116 @@
                                         class="form form-horizontal needs-validation" novalidate>
                                         <div class="form-body">
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row mb-2">
-                                                        <label class="col-md-3 label-control" for="project_name">Project
+                                                <div class="col-md-4">
+                                                    <div class="form-group mb-2">
+                                                        <label class="label-control" for="project_name">Project
                                                             Name</label>
-                                                        <div class="col-md-9">
-                                                            <input v-model="project.project_name" type="text"
-                                                                id="project_name" class="form-control border-primary"
-                                                                placeholder="Project Name" name="project_name" required>
-                                                            <span class="invalid-feedback">Project Name is
-                                                                required</span>
-                                                        </div>
+                                                        <input v-model="project.project_name" type="text"
+                                                            id="project_name" class="form-control border-primary"
+                                                            placeholder="Project Name" name="project_name" required>
+                                                        <span class="invalid-feedback">Project Name is
+                                                            required</span>
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6">
-                                                    <div class="form-group row mb-2">
-                                                        <label class="col-md-3 label-control" for="card_title">Card
+                                                <div class="col-md-4">
+                                                    <div class="form-group mb-2">
+                                                        <label class="label-control" for="card_title">Card
                                                             Title</label>
-                                                        <div class="col-md-9">
-                                                            <select v-model="project.card_title"
-                                                                class="form-select border-primary"
-                                                                aria-label="Default select example" required>
-                                                                <option selected :value="project.card_title">{{
-                                                                    project.card_title }}</option>
-                                                                <option>Projects</option>
-                                                                <option>Personal Projects</option>
-                                                            </select>
-                                                            <span class="invalid-feedback">Please Select Card
-                                                                Title</span>
-                                                        </div>
+                                                        <select v-model="project.card_title"
+                                                            class="form-select border-primary"
+                                                            aria-label="Default select example" required>
+                                                            <option selected :value="project.card_title">{{
+                                                                project.card_title }}</option>
+                                                            <option>Projects</option>
+                                                            <option>Personal Projects</option>
+                                                        </select>
+                                                        <span class="invalid-feedback">Please Select Card
+                                                            Title</span>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row mb-2">
-                                                        <label class="col-md-3 label-control" for="project_url">Project url
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group mb-2">
+                                                        <label class="label-control" for="project_url">Project url
                                                             link</label>
-                                                        <div class="col-md-9">
-                                                            <input v-model="project.project_url" type="text"
-                                                                id="project_url" class="form-control border-primary"
-                                                                placeholder="Project url link" name="project_url" required>
-                                                            <span class="invalid-feedback">Project url link is
-                                                                required</span>
-                                                        </div>
+                                                        <input v-model="project.project_url" type="text"
+                                                            id="project_url" class="form-control border-primary"
+                                                            placeholder="Project url link" name="project_url" required>
+                                                        <span class="invalid-feedback">Project url link is
+                                                            required</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group row mb-2">
-                                                        <label class="col-md-3 label-control"
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group mb-2">
+                                                        <label class="label-control"
                                                             for="project_description_title">Project Description
                                                             Title</label>
-                                                        <div class="col-md-9">
-                                                            <input v-model="project.project_description_title" type="text"
-                                                                id="project_description_title"
-                                                                class="form-control border-primary"
-                                                                placeholder="Project Description Title"
-                                                                name="project_description_title" required>
-                                                            <span class="invalid-feedback">Project Description Title is
-                                                                required</span>
-                                                        </div>
+                                                        <input v-model="project.project_description_title" type="text"
+                                                            id="project_description_title"
+                                                            class="form-control border-primary"
+                                                            placeholder="Project Description Title"
+                                                            name="project_description_title" required>
+                                                        <span class="invalid-feedback">Project Description Title is
+                                                            required</span>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group row mb-2">
-                                                        <label class="col-md-3 label-control" for="location">Project
+                                                <div class="col-md-4">
+                                                    <div class="form-group mb-2">
+                                                        <label class="label-control" for="location">Project
                                                             Description:</label>
-                                                        <div class="col-md-9">
-                                                            <div class="input-group">
-                                                                <input v-model="newDescription" type="text"
-                                                                    class="form-control border-primary"
-                                                                    placeholder="Type and click (+) to add to list" />
-                                                                <span class="input-group-text"><button
-                                                                        class="btn btn-sm btn-success" type="button"
-                                                                        @click="addDescription(index)"><i
-                                                                            class="bi bi-plus"></i></button></span>
-                                                            </div>
+                                                        <div class="input-group">
+                                                            <input v-model="newDescription" type="text"
+                                                                class="form-control border-primary"
+                                                                placeholder="Type and click (+) to add to list" />
+                                                            <span class="input-group-text"><button
+                                                                    class="btn btn-sm btn-success" type="button"
+                                                                    @click="addDescription(index)"><i
+                                                                        class="bi bi-plus"></i></button></span>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="col-md-6">
-                                                    <div class="card mb-2">
+                                                    <div v-if="project.project_description.length > 0" class="card mb-2">
                                                         <div class="card-content collapse show">
                                                             <div class="card-body card-dashboard">
                                                                 <div class="row">
                                                                     <p>Project descriptions here</p>
-                                                                    <hr class="border border-primary border-2 opacity-50">
+                                                                    <hr
+                                                                        class="border border-primary border-1 opacity-50">
                                                                 </div>
 
                                                                 <ol type="1">
                                                                     <li v-for="(description, descriptionIndex) in project.project_description"
-                                                                        :key="descriptionIndex" class="my-2 mx-2">{{
-                                                                            description }} <button type="button"
-                                                                            class="btn btn-sm btn-danger"
-                                                                            @click="removeDescription(index, descriptionIndex)"><i
-                                                                                class="bi bi-x"></i></button></li>
+                                                                        :key="descriptionIndex" class="my-1">{{
+                                                                            description }} <i
+                                                                            @click="removeDescription(index, descriptionIndex)"
+                                                                            class="bi bi-x bg-danger text-white"></i>
+                                                                    </li>
                                                                 </ol>
 
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="row">
+                                                    <div class="form-actions my-2">
+                                                        <button type="submit"
+                                                            class="btn btn-sm btn-warning mx-2 float-start">
+                                                            <i class="bi bi-pencil-square"></i>{{ ' ' }}Update
+                                                        </button>
+
+                                                        <button @click="deleteProject(project.project_id)"
+                                                            class="btn btn-sm btn-danger float-end mx-2"><i
+                                                                class="bi bi-trash3"></i>
+                                                            {{ ' ' }}Delete
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-
-                                        <div class="row">
-                                            <div class="form-actions my-2">
-                                                <button type="submit" class="btn btn-sm btn-primary mx-2 float-start">
-                                                    <i class="bi bi-pencil-square"></i>{{ ' ' }}Update
-                                                </button>
-
-                                                <button @click="deleteProject(project.project_id)"
-                                                    class="btn btn-sm btn-danger float-end mx-2"><i
-                                                        class="bi bi-trash3"></i>
-                                                    {{ ' ' }}Delete
-                                                </button>
-                                            </div>
-                                        </div>
-
                                     </form>
 
                                 </div>
@@ -162,7 +149,7 @@
         </div>
     </div>
 </template>
-  
+
 <script>
 import { defineComponent, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
@@ -181,7 +168,6 @@ export default defineComponent({
         const router = useRouter();
         const newDescription = ref('');
 
-
         const addDescription = (projectIndex) => {
             if (newDescription.value.trim() !== '') {
                 const projectDescriptionToAdd = projects.value[projectIndex];
@@ -194,6 +180,7 @@ export default defineComponent({
                 newDescription.value = '';
             }
         };
+
         const removeDescription = (projectIndex, descriptionIndex) => {
             const projectDescriptionToRemove = projects.value[projectIndex];
             projectDescriptionToRemove.project_description.splice(descriptionIndex, 1);
@@ -259,6 +246,5 @@ export default defineComponent({
     },
 });
 </script>
-  
+
 <style></style>
-  

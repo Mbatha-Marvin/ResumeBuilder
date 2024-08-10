@@ -1,6 +1,6 @@
 <template>
-    <div class="row py-3">
-        <div class="col-md-12">
+    <div class="row py-4 px-2">
+        <div class="col-xl-12 col-lg-12 col-md-12">
             <div class="card mb-2">
                 <div class="card-body rounded">
                     <h4 class="text-center text-uppercase bold">Language Section</h4>
@@ -23,69 +23,60 @@
                                     <div class="form-body">
                                         <div class="row">
 
-                                            <div class="col-md-6">
-                                                <div class="form-group row mb-2">
-                                                    <label class="col-md-3 label-control" for="card_title">Card
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-2">
+                                                    <label class="label-control" for="card_title">Card
                                                         Title</label>
-                                                    <div class="col-md-9">
-                                                        <select v-model="newLanguage.card_title"
-                                                            class="form-select border-primary"
-                                                            aria-label="Default select example" required>
-                                                            <option disabled value="">Please Select</option>
-                                                            <option>Language</option>
-                                                            <option>Spoken Language</option>
-                                                        </select>
-                                                        <span class="invalid-feedback">Please Select Card
-                                                            Title</span>
-                                                    </div>
+                                                    <select v-model="newLanguage.card_title"
+                                                        class="form-select border-primary"
+                                                        aria-label="Default select example" required>
+                                                        <option disabled value="">Please Select</option>
+                                                        <option>Language</option>
+                                                        <option>Spoken Language</option>
+                                                    </select>
+                                                    <span class="invalid-feedback">Please Select Card
+                                                        Title</span>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6">
-                                                <div class="form-group row mb-2">
-                                                    <label class="col-md-3 label-control" for="language_name">Language
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-2">
+                                                    <label class="label-control" for="language_name">Language
                                                         Name</label>
-                                                    <div class="col-md-9">
-                                                        <input v-model="newLanguage.language_name" type="text"
-                                                            id="language_name" class="form-control border-primary"
-                                                            placeholder="Language Name" name="language_name" required>
-                                                        <span class="invalid-feedback">Language Name is
-                                                            required</span>
-                                                    </div>
+                                                    <input v-model="newLanguage.language_name" type="text"
+                                                        id="language_name" class="form-control border-primary"
+                                                        placeholder="Language Name" name="language_name" required>
+                                                    <span class="invalid-feedback">Language Name is
+                                                        required</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-2">
+                                                    <label class="label-control" for="profeciency_level">Proficiency
+                                                        Level</label>
+                                                    <input v-model="newLanguage.profeciency_level" type="text"
+                                                        id="profeciency_level" class="form-control border-primary"
+                                                        placeholder="Proficiency Level" name="profeciency_level"
+                                                        required>
+                                                    <span class="invalid-feedback">Proficiency Level is
+                                                        required</span>
                                                 </div>
                                             </div>
 
                                         </div>
+
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row mb-2">
-                                                    <label class="col-md-3 label-control"
-                                                        for="profeciency_level">Proficiency Level</label>
-                                                    <div class="col-md-9">
-                                                        <input v-model="newLanguage.profeciency_level" type="text"
-                                                            id="profeciency_level" class="form-control border-primary"
-                                                            placeholder="Proficiency Level" name="profeciency_level"
-                                                            required>
-                                                        <span class="invalid-feedback">Proficiency Level is
-                                                            required</span>
-                                                    </div>
-                                                </div>
+                                            <div class="form-actions my-2">
+                                                <NuxtLink :to="'/resume/language'"
+                                                    class="btn btn-sm btn-danger mx-2 float-start">
+                                                    <i class="bi bi-x-lg"></i>{{ ' ' }}Cancel
+                                                </NuxtLink>
+                                                <button type="submit" class="btn btn-sm btn-success mx-2 float-end">
+                                                    <i class="bi bi-check2-square"></i>{{ ' ' }}Save
+                                                </button>
+
                                             </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="form-actions my-2">
-                                            <NuxtLink :to="'/resume/language'"
-                                                class="btn btn-sm btn-danger mx-2 float-start">
-                                                <i class="bi bi-x-lg"></i>{{ ' ' }}Cancel
-                                            </NuxtLink>
-                                            <button type="submit" class="btn btn-sm btn-primary mx-2 float-end">
-                                                <i class="bi bi-check2-square"></i>{{ ' ' }}Save
-                                            </button>
-
                                         </div>
                                     </div>
                                 </form>
@@ -159,6 +150,5 @@ export default defineComponent({
     },
 });
 </script>
-  
+
 <style></style>
-  
