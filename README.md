@@ -49,7 +49,7 @@ Resume Builder Frontend requirements based on React:
 Usage
 ------------
 
-Clone this repository then create .env for db connection creadentials 
+Clone this repository then create .env for db connection creadentials by navigating to backend first
 
 
 ```bash
@@ -63,7 +63,7 @@ Make .env from copy of example.env
 cp example.env .env
 ```
 
-Replace the credentials of db with your favorite naming to be generated with the postrgres 
+Replace the credentials of db on .env `DB_CONNECTION_STR` with your favorite naming to be generated with the postrgres 
 
 
 ```bash
