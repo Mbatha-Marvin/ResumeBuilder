@@ -1,7 +1,7 @@
 Resume Builder
 ==========
 
-An Open source software founded by [Marvin Mbatha][marvinmbatha], [Ronald Kimeli][ronaldkimeli] and [Robert Kimaiyo][robertkimaiyo] who are aspiring to bring a new phase of Resume builder techs into unlocking jobs with brilliant and ATS friendly Resumes. Your contribution is great inspiration and it is highly encouraged.
+Open source software founded by [Marvin Mbatha][marvinmbatha], [Ronald Kimeli][ronaldkimeli] and [Robert Kimaiyo][robertkimaiyo] who are aspiring to bring a new phase of Resume builder techs into unlocking jobs with brilliant and ATS friendly Resumes. Your contribution is great inspiration and it is highly encouraged.
 
 Frontend Git branches
 -----------------
