@@ -41,7 +41,7 @@ Resume Builder Frontend requirements based on React:
 [react_router_dom]: https://reactrouter.com
 [axios]: https://axios-http.com/docs/intro
 [toastify]: https://fkhadra.github.io/react-toastify/introduction
-[ronaldkimeli]: https://github.com/KimelirR
+[ronaldkimeli]: https://github.com/ronald-kimeli
 [marvinmbatha]: https://github.com/Mbatha-Marvin/
 [robertkimaiyo]: https://github.com/robert5313
 
