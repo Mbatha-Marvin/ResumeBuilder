@@ -134,13 +134,25 @@
 import { defineComponent, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
-definePageMeta({
-    layout: "sidestar",
-});
 
 export default defineComponent({
     name: 'certificationList',
     setup() {
+
+
+        definePageMeta({
+            layout: "sidestar",
+        });
+
+        // Set meta information
+        useHead({
+            title: 'Certification List',
+            meta: [
+                { name: 'description', content: 'View Certification List' },
+                { property: 'og:title', content: 'Certification List' },
+                { property: 'og:description', content: 'View Certification List.' }
+            ]
+        });
 
         const certifications = ref([]);
         const axios = useNuxtApp().$axios;

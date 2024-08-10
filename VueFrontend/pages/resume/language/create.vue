@@ -101,6 +101,16 @@ export default defineComponent({
             layout: "sidestar",
         });
 
+        // Set meta information
+        useHead({
+            title: 'Create Language',
+            meta: [
+                { name: 'description', content: 'Form to Create Language' },
+                { property: 'og:title', content: 'Create Language' },
+                { property: 'og:description', content: 'Form to Create Language.' }
+            ]
+        });
+
         const axios = useNuxtApp().$axios;
         const newLanguage = ref({});
         const router = useRouter();

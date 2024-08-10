@@ -18,19 +18,19 @@
                         </div>
                         <div class="card">
                             <div class="card-body">
-                                <form @submit.prevent="createCertification" class="form form-horizontal needs-validation"
-                                    novalidate>
+                                <form @submit.prevent="createCertification"
+                                    class="form form-horizontal needs-validation" novalidate>
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="certified_on">Certified
                                                         On</label>
-                                                        <input v-model="newCertification.certified_on" type="text"
-                                                            id="certified_on" class="form-control border-primary"
-                                                            placeholder="Certified On" name="certified_on" required>
-                                                        <span class="invalid-feedback">Certified On is
-                                                            required</span>
+                                                    <input v-model="newCertification.certified_on" type="text"
+                                                        id="certified_on" class="form-control border-primary"
+                                                        placeholder="Certified On" name="certified_on" required>
+                                                    <span class="invalid-feedback">Certified On is
+                                                        required</span>
                                                 </div>
                                             </div>
 
@@ -38,15 +38,15 @@
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="card_title">Card
                                                         Title</label>
-                                                        <select v-model="newCertification.card_title"
-                                                            class="form-select border-primary"
-                                                            aria-label="Default select example" required>
-                                                            <option disabled value="">Please Select</option>
-                                                            <option>Certification</option>
-                                                            <option>Awards</option>
-                                                        </select>
-                                                        <span class="invalid-feedback">Please Select Card
-                                                            Title</span>
+                                                    <select v-model="newCertification.card_title"
+                                                        class="form-select border-primary"
+                                                        aria-label="Default select example" required>
+                                                        <option disabled value="">Please Select</option>
+                                                        <option>Certification</option>
+                                                        <option>Awards</option>
+                                                    </select>
+                                                    <span class="invalid-feedback">Please Select Card
+                                                        Title</span>
                                                 </div>
                                             </div>
 
@@ -54,21 +54,21 @@
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="school_name">School
                                                         Name</label>
-                                                        <input v-model="newCertification.school_name" type="text"
-                                                            id="school_name" class="form-control border-primary"
-                                                            placeholder="School Name" name="school_name" required>
-                                                        <span class="invalid-feedback">School Name is
-                                                            required</span>
+                                                    <input v-model="newCertification.school_name" type="text"
+                                                        id="school_name" class="form-control border-primary"
+                                                        placeholder="School Name" name="school_name" required>
+                                                    <span class="invalid-feedback">School Name is
+                                                        required</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="school_type">School
                                                         Type</label>
-                                                        <input v-model="newCertification.school_type" type="text"
-                                                            id="school_type" class="form-control border-primary"
-                                                            placeholder="School Type" name="school_type" required>
-                                                        <span class="invalid-feedback">School Type is required</span>
+                                                    <input v-model="newCertification.school_type" type="text"
+                                                        id="school_type" class="form-control border-primary"
+                                                        placeholder="School Type" name="school_type" required>
+                                                    <span class="invalid-feedback">School Type is required</span>
                                                 </div>
                                             </div>
 
@@ -76,21 +76,21 @@
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="start_date">Start
                                                         Date</label>
-                                                        <input v-model="newCertification.start_date" type="date"
-                                                            id="start_date" class="form-control border-primary" placeholder="Start
+                                                    <input v-model="newCertification.start_date" type="date"
+                                                        id="start_date" class="form-control border-primary" placeholder="Start
                                                             Date" name="start_date" required>
-                                                        <span class="invalid-feedback">Start
-                                                            Date is required</span>
+                                                    <span class="invalid-feedback">Start
+                                                        Date is required</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="end_date">End
                                                         date</label>
-                                                        <input v-model="newCertification.end_date" type="date" id="end_date"
-                                                            class="form-control border-primary" placeholder="End date"
-                                                            name="end_date" required>
-                                                        <span class="invalid-feedback">End date is required</span>
+                                                    <input v-model="newCertification.end_date" type="date" id="end_date"
+                                                        class="form-control border-primary" placeholder="End date"
+                                                        name="end_date" required>
+                                                    <span class="invalid-feedback">End date is required</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -127,6 +127,16 @@ export default defineComponent({
 
         definePageMeta({
             layout: "sidestar",
+        });
+
+        // Set meta information
+        useHead({
+            title: 'Create Certification',
+            meta: [
+                { name: 'description', content: 'Fill in the form and submit to achieve to create new certification' },
+                { property: 'og:title', content: 'Create Certification' },
+                { property: 'og:description', content: 'Page to create new certification.' }
+            ]
         });
 
         const axios = useNuxtApp().$axios;
@@ -178,6 +188,5 @@ export default defineComponent({
     },
 });
 </script>
-  
+
 <style></style>
-  

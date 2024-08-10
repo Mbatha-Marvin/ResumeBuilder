@@ -147,6 +147,16 @@ export default defineComponent({
             layout: "sidestar",
         });
 
+        // Set meta information
+        useHead({
+            title: 'Create Education',
+            meta: [
+                { name: 'description', content: 'Fill in the form and submit to achieve to create new Education' },
+                { property: 'og:title', content: 'Create Education' },
+                { property: 'og:description', content: 'Page to create new Education.' }
+            ]
+        });
+
         const axios = useNuxtApp().$axios;
         const newEducation = ref({ card_title: '', school_name: '', education_level: '', course_title: '', location: '', final_grade: '', start_date: '', end_date: '' });
         const router = useRouter();

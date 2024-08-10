@@ -26,24 +26,24 @@
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="first_name">First
                                                         Name</label>
-                                                    
-                                                        <input v-model="newProfile.first_name" type="text" id="first_name"
-                                                            class="form-control border-primary" placeholder="First Name"
-                                                            name="first_name" required>
-                                                        <span class="invalid-feedback">First Name is
-                                                            required</span>
+
+                                                    <input v-model="newProfile.first_name" type="text" id="first_name"
+                                                        class="form-control border-primary" placeholder="First Name"
+                                                        name="first_name" required>
+                                                    <span class="invalid-feedback">First Name is
+                                                        required</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="last_name">Last
                                                         Name</label>
-                                                    
-                                                        <input v-model="newProfile.last_name" type="text" id="last_name"
-                                                            class="form-control border-primary" placeholder="Last Name"
-                                                            name="last_name" required>
-                                                        <span class="invalid-feedback">Last Name is
-                                                            required</span>
+
+                                                    <input v-model="newProfile.last_name" type="text" id="last_name"
+                                                        class="form-control border-primary" placeholder="Last Name"
+                                                        name="last_name" required>
+                                                    <span class="invalid-feedback">Last Name is
+                                                        required</span>
                                                 </div>
                                             </div>
 
@@ -51,22 +51,22 @@
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="middle_name">Middle
                                                         Name</label>
-                                                    
-                                                        <input v-model="newProfile.middle_name" type="text" id="middle_name"
-                                                            class="form-control border-primary" placeholder="Middle Name"
-                                                            name="middle_name">
+
+                                                    <input v-model="newProfile.middle_name" type="text" id="middle_name"
+                                                        class="form-control border-primary" placeholder="Middle Name"
+                                                        name="middle_name">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="image_url">Image url
                                                         link</label>
-                                                    
-                                                        <input v-model="newProfile.image_url" type="text" id="image_url"
-                                                            class="form-control border-primary" placeholder="Image url link"
-                                                            name="image_url" required>
-                                                        <span class="invalid-feedback">Image url link is
-                                                            required</span>
+
+                                                    <input v-model="newProfile.image_url" type="text" id="image_url"
+                                                        class="form-control border-primary" placeholder="Image url link"
+                                                        name="image_url" required>
+                                                    <span class="invalid-feedback">Image url link is
+                                                        required</span>
                                                 </div>
                                             </div>
 
@@ -74,24 +74,24 @@
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="linkedin_url">linkedIn
                                                         Url</label>
-                                                    
-                                                        <input v-model="newProfile.linkedin_url" type="text"
-                                                            id="linkedin_url" class="form-control border-primary"
-                                                            placeholder="linkedIn Url" name="linkedin_url" required>
-                                                        <span class="invalid-feedback">linkedIn Url is
-                                                            required</span>
+
+                                                    <input v-model="newProfile.linkedin_url" type="text"
+                                                        id="linkedin_url" class="form-control border-primary"
+                                                        placeholder="linkedIn Url" name="linkedin_url" required>
+                                                    <span class="invalid-feedback">linkedIn Url is
+                                                        required</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="github_url">Github
                                                         url link</label>
-                                                    
-                                                        <input v-model="newProfile.github_url" type="text" id="github_url"
-                                                            class="form-control border-primary"
-                                                            placeholder="Github url link" name="github_url" required>
-                                                        <span class="invalid-feedback">Github url link is
-                                                            required</span>
+
+                                                    <input v-model="newProfile.github_url" type="text" id="github_url"
+                                                        class="form-control border-primary"
+                                                        placeholder="Github url link" name="github_url" required>
+                                                    <span class="invalid-feedback">Github url link is
+                                                        required</span>
                                                 </div>
                                             </div>
 
@@ -99,25 +99,25 @@
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="address">Postal
                                                         Address</label>
-                                                    
-                                                        <input v-model="newProfile.address" type="text" id="address"
-                                                            class="form-control border-primary" placeholder="Postal Address"
-                                                            name="address" required>
-                                                        <span class="invalid-feedback">Postal Address is
-                                                            required</span>
+
+                                                    <input v-model="newProfile.address" type="text" id="address"
+                                                        class="form-control border-primary" placeholder="Postal Address"
+                                                        name="address" required>
+                                                    <span class="invalid-feedback">Postal Address is
+                                                        required</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="personal_website">Personal
                                                         Website Url</label>
-                                                    
-                                                        <input v-model="newProfile.personal_website" type="text"
-                                                            id="personal_website" class="form-control border-primary"
-                                                            placeholder="Personal Website Url" name="personal_website"
-                                                            required>
-                                                        <span class="invalid-feedback">Personal Website Url is
-                                                            required</span>
+
+                                                    <input v-model="newProfile.personal_website" type="text"
+                                                        id="personal_website" class="form-control border-primary"
+                                                        placeholder="Personal Website Url" name="personal_website"
+                                                        required>
+                                                    <span class="invalid-feedback">Personal Website Url is
+                                                        required</span>
                                                 </div>
                                             </div>
 
@@ -125,24 +125,24 @@
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="city">City
                                                         Name</label>
-                                                    
-                                                        <input v-model="newProfile.city" type="text" id="city"
-                                                            class="form-control border-primary" placeholder="City Name"
-                                                            name="city" required>
-                                                        <span class="invalid-feedback">City Name is
-                                                            required</span>
+
+                                                    <input v-model="newProfile.city" type="text" id="city"
+                                                        class="form-control border-primary" placeholder="City Name"
+                                                        name="city" required>
+                                                    <span class="invalid-feedback">City Name is
+                                                        required</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="country">Country of
                                                         Residence</label>
-                                                    
-                                                        <input v-model="newProfile.country" type="text" id="country"
-                                                            class="form-control border-primary"
-                                                            placeholder="Country of Residence" name="country" required>
-                                                        <span class="invalid-feedback">Country of Residence is
-                                                            required</span>
+
+                                                    <input v-model="newProfile.country" type="text" id="country"
+                                                        class="form-control border-primary"
+                                                        placeholder="Country of Residence" name="country" required>
+                                                    <span class="invalid-feedback">Country of Residence is
+                                                        required</span>
                                                 </div>
                                             </div>
 
@@ -150,24 +150,24 @@
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="user_work_title">Job
                                                         Title</label>
-                                                    
-                                                        <input v-model="newProfile.user_work_title" type="text"
-                                                            id="user_work_title" class="form-control border-primary"
-                                                            placeholder="Job Title" name="user_work_title" required>
-                                                        <span class="invalid-feedback">Job Title is
-                                                            required</span>
+
+                                                    <input v-model="newProfile.user_work_title" type="text"
+                                                        id="user_work_title" class="form-control border-primary"
+                                                        placeholder="Job Title" name="user_work_title" required>
+                                                    <span class="invalid-feedback">Job Title is
+                                                        required</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="user_summary">Job
                                                         summary</label>
-                                                    
-                                                        <input v-model="newProfile.user_summary" type="text"
-                                                            id="user_summary" class="form-control border-primary"
-                                                            placeholder="Job summary" name="user_summary" required>
-                                                        <span class="invalid-feedback">Job summary is
-                                                            required</span>
+
+                                                    <input v-model="newProfile.user_summary" type="text"
+                                                        id="user_summary" class="form-control border-primary"
+                                                        placeholder="Job summary" name="user_summary" required>
+                                                    <span class="invalid-feedback">Job summary is
+                                                        required</span>
                                                 </div>
                                             </div>
 
@@ -175,30 +175,30 @@
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="objectives">Job
                                                         Objective</label>
-                                                    
-                                                        <input v-model="newProfile.objectives" type="text" id="objectives"
-                                                            class="form-control border-primary" placeholder="Job Objective"
-                                                            name="objectives" required>
-                                                        <span class="invalid-feedback">Job Objective is
-                                                            required</span>
+
+                                                    <input v-model="newProfile.objectives" type="text" id="objectives"
+                                                        class="form-control border-primary" placeholder="Job Objective"
+                                                        name="objectives" required>
+                                                    <span class="invalid-feedback">Job Objective is
+                                                        required</span>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-4">
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="location">Skills:</label>
-                                                    
-                                                        <div class="input-group">
-                                                            <input v-model="newSkill" type="text"
-                                                                class="form-control border-primary"
-                                                                placeholder="Type and click (+) to add to list" />
-                                                            <span class="input-group-text"><button
-                                                                    class="btn btn-sm btn-success" type="button"
-                                                                    @click="addSkill"><i
-                                                                        class="bi bi-plus"></i></button></span>
-                                                        </div>
+
+                                                    <div class="input-group">
+                                                        <input v-model="newSkill" type="text"
+                                                            class="form-control border-primary"
+                                                            placeholder="Type and click (+) to add to list" />
+                                                        <span class="input-group-text"><button
+                                                                class="btn btn-sm btn-success" type="button"
+                                                                @click="addSkill"><i
+                                                                    class="bi bi-plus"></i></button></span>
                                                     </div>
-                                                
+                                                </div>
+
                                                 <div v-if="newProfile.skills.length > 0" class="card mb-2">
                                                     <div class="card-content collapse show">
                                                         <div class="card-body card-dashboard">
@@ -211,7 +211,8 @@
                                                                 <li v-for="(skill, skillIndex) in newProfile.skills"
                                                                     :key="skillIndex" class="my-1">{{
                                                                         skill }} <i @click="removeSkill(skillIndex)"
-                                                                            class="bi bi-x bg-danger text-white rounded"></i></li>
+                                                                        class="bi bi-x bg-danger text-white rounded"></i>
+                                                                </li>
                                                             </ol>
 
                                                         </div>
@@ -222,18 +223,18 @@
                                             <div class="col-md-4">
                                                 <div class="form-group mb-2">
                                                     <label class="label-control" for="location">Hobbies:</label>
-                                                    
-                                                        <div class="input-group">
-                                                            <input v-model="newHobby" type="text"
-                                                                class="form-control border-primary"
-                                                                placeholder="Type and click (+) to add to list" />
-                                                            <span class="input-group-text"><button
-                                                                    class="btn btn-sm btn-success" type="button"
-                                                                    @click="addHobby"><i
-                                                                        class="bi bi-plus"></i></button></span>
-                                                        </div>
+
+                                                    <div class="input-group">
+                                                        <input v-model="newHobby" type="text"
+                                                            class="form-control border-primary"
+                                                            placeholder="Type and click (+) to add to list" />
+                                                        <span class="input-group-text"><button
+                                                                class="btn btn-sm btn-success" type="button"
+                                                                @click="addHobby"><i
+                                                                    class="bi bi-plus"></i></button></span>
                                                     </div>
-                                                
+                                                </div>
+
 
                                                 <div v-if="newProfile.hobbies.length > 0" class="card mb-2">
                                                     <div class="card-content collapse show">
@@ -247,7 +248,8 @@
                                                                 <li v-for="(hobby, hobbyIndex) in newProfile.hobbies"
                                                                     :key="hobbyIndex" class="my-1">{{
                                                                         hobby }} <i @click="removeHobby(hobbyIndex)"
-                                                                            class="bi bi-x bg-danger text-white rounded"></i></li>
+                                                                        class="bi bi-x bg-danger text-white rounded"></i>
+                                                                </li>
                                                             </ol>
                                                         </div>
                                                     </div>
@@ -291,6 +293,16 @@ export default defineComponent({
 
         definePageMeta({
             layout: "sidestar",
+        });
+
+        // Set meta information
+        useHead({
+            title: 'Create Profile',
+            meta: [
+                { name: 'description', content: 'View Create Profile' },
+                { property: 'og:title', content: 'Create Profile' },
+                { property: 'og:description', content: 'View Create Profile.' }
+            ]
         });
 
         const axios = useNuxtApp().$axios;
@@ -390,6 +402,5 @@ export default defineComponent({
     },
 });
 </script>
-  
+
 <style></style>
-  

@@ -164,6 +164,17 @@ export default defineComponent({
         definePageMeta({
             layout: "sidestar",
         });
+
+                  // Set meta information
+                  useHead({
+            title: 'Education List',
+            meta: [
+                { name: 'description', content: 'View Education List' },
+                { property: 'og:title', content: 'Education List' },
+                { property: 'og:description', content: 'View Education List.' }
+            ]
+        });
+
         const educations = ref([]);
         const axios = useNuxtApp().$axios;
         const user_id = 1;

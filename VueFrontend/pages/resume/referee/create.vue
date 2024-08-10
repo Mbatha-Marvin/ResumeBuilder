@@ -132,6 +132,15 @@ export default defineComponent({
             layout: "sidestar",
         });
 
+        // Set meta information
+        useHead({
+            title: 'Create Referee',
+            meta: [
+                { name: 'description', content: 'Form to Create Referee' },
+                { property: 'og:title', content: 'Create Referee' },
+                { property: 'og:description', content: 'Form to Create Referee.' }
+            ]
+        });
         const axios = useNuxtApp().$axios;
         const newReferee = ref({});
         const router = useRouter();

@@ -147,6 +147,15 @@ export default defineComponent({
             layout: "sidestar",
         });
 
+        // Set meta information
+        useHead({
+            title: 'Create Project',
+            meta: [
+                { name: 'description', content: 'Form to Create Project' },
+                { property: 'og:title', content: 'Create Project' },
+                { property: 'og:description', content: 'Form to Create Project.' }
+            ]
+        });
 
         const axios = useNuxtApp().$axios;
         const newProject = ref({ card_title: '', project_name: '', project_description_title: '', project_url: '', project_description: [] });

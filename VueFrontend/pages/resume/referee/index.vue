@@ -134,14 +134,24 @@
 import { defineComponent, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
-definePageMeta({
-    layout: "sidestar",
-});
-
 export default defineComponent({
     name: 'refereeList',
 
     setup() {
+
+        definePageMeta({
+            layout: "sidestar",
+        });
+
+        // Set meta information
+        useHead({
+            title: 'Referee List',
+            meta: [
+                { name: 'description', content: 'View Referee List' },
+                { property: 'og:title', content: 'Referee List' },
+                { property: 'og:description', content: 'View Referee List.' }
+            ]
+        });
 
         const referees = ref([]);
         const axios = useNuxtApp().$axios;

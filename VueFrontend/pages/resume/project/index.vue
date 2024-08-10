@@ -154,13 +154,25 @@
 import { defineComponent, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
-definePageMeta({
-    layout: "sidestar",
-});
 
 export default defineComponent({
     name: 'ProjectList',
     setup() {
+
+
+        definePageMeta({
+            layout: "sidestar",
+        });
+
+        // Set meta information
+        useHead({
+            title: 'Project',
+            meta: [
+                { name: 'description', content: 'View Project' },
+                { property: 'og:title', content: 'Project' },
+                { property: 'og:description', content: 'View Project.' }
+            ]
+        });
 
         const projects = ref([]);
         const axios = useNuxtApp().$axios;

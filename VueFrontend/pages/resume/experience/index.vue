@@ -1,11 +1,11 @@
 <template>
     <div class="row py-4 px-2">
         <div class="col-xl-12 col-lg-12 col-md-12">
-                <div class="card mb-2">
-                    <div class="card-body rounded">
-                        <h4 class="text-center text-uppercase bold">Experience Section</h4>
-                    </div>
+            <div class="card mb-2">
+                <div class="card-body rounded">
+                    <h4 class="text-center text-uppercase bold">Experience Section</h4>
                 </div>
+            </div>
             <div class="card mb-2">
                 <div class="card-content collapse show">
                     <div class="card-body card-dashboard">
@@ -131,12 +131,14 @@
                                                         </div>
                                                     </div>
 
-                                                    <div v-if="experience.job_descriptions.length > 0" class="card mb-2">
+                                                    <div v-if="experience.job_descriptions.length > 0"
+                                                        class="card mb-2">
                                                         <div class="card-content collapse show">
                                                             <div class="card-body card-dashboard">
                                                                 <div class="row">
                                                                     <p>job descriptions here</p>
-                                                                    <hr class="border border-primary border-1 opacity-50">
+                                                                    <hr
+                                                                        class="border border-primary border-1 opacity-50">
                                                                     <!-- <Bold_hr /> -->
                                                                 </div>
 
@@ -186,9 +188,7 @@ import { defineComponent, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import Bold_hr from '../../../components/Helpers/Bold_hr.vue';
 
-definePageMeta({
-    layout: "sidestar",
-});
+
 
 export default defineComponent({
     name: 'experienceList',
@@ -198,6 +198,20 @@ export default defineComponent({
         const user_id = 1;
         const router = useRouter();
         const newDescription = ref('');
+
+        definePageMeta({
+            layout: "sidestar",
+        });
+        
+        // Set meta information
+        useHead({
+            title: 'Experience List',
+            meta: [
+                { name: 'description', content: 'View Experience List' },
+                { property: 'og:title', content: 'Experience List' },
+                { property: 'og:description', content: 'View Experience List.' }
+            ]
+        });
 
         const getExperience = async () => {
             try {

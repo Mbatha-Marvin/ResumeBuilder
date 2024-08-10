@@ -104,13 +104,24 @@
 import { defineComponent, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
-definePageMeta({
-    layout: "sidestar",
-});
-
 export default defineComponent({
     name: 'languageList',
     setup() {
+
+
+        definePageMeta({
+            layout: "sidestar",
+        });
+
+        // Set meta information
+        useHead({
+            title: 'Language List',
+            meta: [
+                { name: 'description', content: 'View Language List' },
+                { property: 'og:title', content: 'Language List' },
+                { property: 'og:description', content: 'View Language List.' }
+            ]
+        });
 
         const languages = ref([]);
         const axios = useNuxtApp().$axios;

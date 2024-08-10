@@ -300,13 +300,26 @@
 import { defineComponent, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
-definePageMeta({
-    layout: "sidestar",
-});
 
 export default defineComponent({
     name: 'profileList',
     setup() {
+
+        definePageMeta({
+            layout: "sidestar",
+        });
+
+        // Set meta information
+        useHead({
+            title: 'Profile List',
+            meta: [
+                { name: 'description', content: 'View Profile List' },
+                { property: 'og:title', content: 'Profile List' },
+                { property: 'og:description', content: 'View Profile List.' }
+            ]
+        });
+
+
         const profiles = ref([]);
         const axios = useNuxtApp().$axios;
         const user_id = 1;

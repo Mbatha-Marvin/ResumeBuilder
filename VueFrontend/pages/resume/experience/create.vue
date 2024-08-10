@@ -180,6 +180,16 @@ export default defineComponent({
             layout: "sidestar",
         });
 
+        // Set meta information
+        useHead({
+            title: 'Create Experience',
+            meta: [
+                { name: 'description', content: 'Form to Create Experience' },
+                { property: 'og:title', content: 'Create Experience' },
+                { property: 'og:description', content: 'Form to Create Experience.' }
+            ]
+        });
+
         const axios = useNuxtApp().$axios;
         const newExperience = ref({ card_title: '', job_title: '', company_name: '', company_url: '', location: '', job_description_title: '', job_descriptions: [], start_date: '', end_date: '' });
         const newDescription = ref('');
