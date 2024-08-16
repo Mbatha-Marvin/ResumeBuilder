@@ -1,6 +1,6 @@
 <template>
-    <div class="row py-3">
-        <div class="col-md-12">
+    <div class="row py-4 px-2">
+        <div class="col-xl-12 col-lg-12 col-md-12">
             <div class="card mb-2">
                 <div class="card-body rounded">
                     <h4 class="text-center text-uppercase bold">Experience Section</h4>
@@ -22,145 +22,123 @@
                                     class="form form-horizontal needs-validation" novalidate>
                                     <div class="form-body">
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row mb-2">
-                                                    <label class="col-md-3 label-control" for="job_title">Job
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-2">
+                                                    <label class="label-control" for="job_title">Job
                                                         Title</label>
-                                                    <div class="col-md-9">
-                                                        <input v-model="newExperience.job_title" type="text" id="job_title"
-                                                            class="form-control border-primary" placeholder="Job title"
-                                                            name="job_title" required>
-                                                        <span class="invalid-feedback">Job title is
-                                                            required</span>
-                                                    </div>
+                                                    <input v-model="newExperience.job_title" type="text" id="job_title"
+                                                        class="form-control border-primary" placeholder="Job title"
+                                                        name="job_title" required>
+                                                    <span class="invalid-feedback">Job title is
+                                                        required</span>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6">
-                                                <div class="form-group row mb-2">
-                                                    <label class="col-md-3 label-control" for="card_title">Card
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-2">
+                                                    <label class="label-control" for="card_title">Card
                                                         Title</label>
-                                                    <div class="col-md-9">
-                                                        <select v-model="newExperience.card_title"
-                                                            class="form-select border-primary"
-                                                            aria-label="Default select example" required>
-                                                            <option disabled value="">Please Select</option>
-                                                            <option>Education</option>
-                                                            <option>Academics</option>
-                                                        </select>
-                                                        <span class="invalid-feedback">Please Select Card
-                                                            Title</span>
-                                                    </div>
+                                                    <select v-model="newExperience.card_title"
+                                                        class="form-select border-primary"
+                                                        aria-label="Default select example" required>
+                                                        <option disabled value="">Please Select</option>
+                                                        <option>Education</option>
+                                                        <option>Academics</option>
+                                                    </select>
+                                                    <span class="invalid-feedback">Please Select Card
+                                                        Title</span>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row mb-2">
-                                                    <label class="col-md-3 label-control" for="company_name">Company
+
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-2">
+                                                    <label class="label-control" for="company_name">Company
                                                         Name</label>
-                                                    <div class="col-md-9">
-                                                        <input v-model="newExperience.company_name" type="text"
-                                                            id="company_name" class="form-control border-primary"
-                                                            placeholder="Company Name" name="company_name" required>
-                                                        <span class="invalid-feedback">Company Name is
-                                                            required</span>
-                                                    </div>
+                                                    <input v-model="newExperience.company_name" type="text"
+                                                        id="company_name" class="form-control border-primary"
+                                                        placeholder="Company Name" name="company_name" required>
+                                                    <span class="invalid-feedback">Company Name is
+                                                        required</span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group row mb-2">
-                                                    <label class="col-md-3 label-control" for="company_url">Company
+
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-2">
+                                                    <label class="label-control" for="company_url">Company
                                                         Url</label>
-                                                    <div class="col-md-9">
-                                                        <input v-model="newExperience.company_url" type="text"
-                                                            id="company_url" class="form-control border-primary"
-                                                            placeholder="Company Url" name="company_url" required>
-                                                        <span class="invalid-feedback">Company Url is
-                                                            required</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row mb-2">
-                                                    <label class="col-md-3 label-control" for="location">Location</label>
-                                                    <div class="col-md-9">
-                                                        <input v-model="newExperience.location" type="text" id="location"
-                                                            class="form-control border-primary" placeholder="Location"
-                                                            name="location" required>
-                                                        <span class="invalid-feedback">Location is
-                                                            required</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row mb-2">
-                                                    <label class="col-md-3 label-control"
-                                                        for="location">Description:</label>
-                                                    <div class="col-md-9">
-                                                        <div class="input-group">
-                                                            <input v-model="newDescription" type="text"
-                                                                class="form-control border-primary"
-                                                                placeholder="Type and click (+) to add to list" />
-                                                            <span class="input-group-text"><button
-                                                                    class="btn btn-sm btn-success" type="button"
-                                                                    @click="addDescription"><i
-                                                                        class="bi bi-plus"></i></button></span>
-                                                        </div>
-                                                    </div>
+                                                    <input v-model="newExperience.company_url" type="text"
+                                                        id="company_url" class="form-control border-primary"
+                                                        placeholder="Company Url" name="company_url" required>
+                                                    <span class="invalid-feedback">Company Url is
+                                                        required</span>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6">
-                                                <div class="card mb-2">
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-2">
+                                                    <label class="label-control" for="location">Location</label>
+                                                    <input v-model="newExperience.location" type="text" id="location"
+                                                        class="form-control border-primary" placeholder="Location"
+                                                        name="location" required>
+                                                    <span class="invalid-feedback">Location is
+                                                        required</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-2">
+                                                    <label class="label-control" for="start_date">Start
+                                                        Date</label>
+                                                    <input v-model="newExperience.start_date" type="date"
+                                                        id="start_date" class="form-control border-primary" placeholder="Start
+                                                            Date" name="start_date" required>
+                                                    <span class="invalid-feedback">Start
+                                                        Date is required</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-2">
+                                                    <label class="label-control" for="end_date">End
+                                                        date</label>
+                                                    <input v-model="newExperience.end_date" type="date" id="end_date"
+                                                        class="form-control border-primary" placeholder="End date"
+                                                        name="end_date" required>
+                                                    <span class="invalid-feedback">End date is required</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group mb-2">
+                                                    <label class="label-control" for="location">Description:</label>
+                                                    <div class="input-group">
+                                                        <input v-model="newDescription" type="text"
+                                                            class="form-control border-primary"
+                                                            placeholder="Type and click (+) to add to list" />
+                                                        <span class="input-group-text"><button
+                                                                class="btn btn-sm btn-success" type="button"
+                                                                @click="addDescription"><i
+                                                                    class="bi bi-plus"></i></button></span>
+                                                    </div>
+                                                </div>
+
+                                                <div v-if="newExperience.job_descriptions.length > 0" class="card mb-2">
                                                     <div class="card-content collapse show">
                                                         <div class="card-body card-dashboard">
                                                             <div class="row">
                                                                 <p>job descriptions here</p>
-                                                                <hr class="border border-primary border-2 opacity-50">
+                                                                <hr class="border border-primary border-1 opacity-50">
                                                             </div>
 
                                                             <ol type="1">
                                                                 <li v-for="(description, descriptionIndex) in newExperience.job_descriptions"
-                                                                    :key="descriptionIndex" class="my-2 mx-2">{{ description
-                                                                    }} <button type="button" class="btn btn-sm btn-danger"
-                                                                        @click="removeDescription(index, descriptionIndex)"><i
-                                                                            class="bi bi-x"></i></button></li>
+                                                                    :key="descriptionIndex" class="my-1">{{
+                                                                        description
+                                                                    }} <i
+                                                                        @click="removeDescription(index, descriptionIndex)"
+                                                                        class="bi bi-x bg-danger text-white"></i></li>
                                                             </ol>
-
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row mb-2">
-                                                    <label class="col-md-3 label-control" for="start_date">Start
-                                                        Date</label>
-                                                    <div class="col-md-9">
-                                                        <input v-model="newExperience.start_date" type="date"
-                                                            id="start_date" class="form-control border-primary" placeholder="Start
-                                                            Date" name="start_date" required>
-                                                        <span class="invalid-feedback">Start
-                                                            Date is required</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group row mb-2">
-                                                    <label class="col-md-3 label-control" for="end_date">End
-                                                        date</label>
-                                                    <div class="col-md-9">
-                                                        <input v-model="newExperience.end_date" type="date" id="end_date"
-                                                            class="form-control border-primary" placeholder="End date"
-                                                            name="end_date" required>
-                                                        <span class="invalid-feedback">End date is required</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -173,7 +151,7 @@
                                                 class="btn btn-sm btn-danger mx-2 float-start">
                                                 <i class="bi bi-x-lg"></i>{{ ' ' }}Cancel
                                             </NuxtLink>
-                                            <button type="submit" class="btn btn-sm btn-primary mx-2 float-end">
+                                            <button type="submit" class="btn btn-sm btn-success mx-2 float-end">
                                                 <i class="bi bi-check2-square"></i>{{ ' ' }}Save
                                             </button>
 
@@ -200,6 +178,16 @@ export default defineComponent({
 
         definePageMeta({
             layout: "sidestar",
+        });
+
+        // Set meta information
+        useHead({
+            title: 'Create Experience',
+            meta: [
+                { name: 'description', content: 'Form to Create Experience' },
+                { property: 'og:title', content: 'Create Experience' },
+                { property: 'og:description', content: 'Form to Create Experience.' }
+            ]
         });
 
         const axios = useNuxtApp().$axios;
@@ -274,6 +262,5 @@ export default defineComponent({
     },
 });
 </script>
-  
+
 <style></style>
-  
