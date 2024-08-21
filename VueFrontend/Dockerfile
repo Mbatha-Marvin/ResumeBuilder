@@ -1,13 +1,17 @@
-FROM node:18.16.0-alpine3.18
 
+FROM node:22.5-alpine3.20
+
+# Set the working directory inside the container
 WORKDIR /app
+# Copy the output from the build stage to the working directory
+COPY .output .
 
-COPY package.json .
+# Define environment variables
+ENV HOST=0.0.0.0 NODE_ENV=production
+ENV NODE_ENV=production
 
-RUN yarn install
+# Expose the port the application will run on
+EXPOSE 3000
 
-COPY . .
-
-EXPOSE 5173
-
-# CMD ["npm", "run", "dev"]
+# Start the application
+CMD ["node","/app/server/index.mjs"]
