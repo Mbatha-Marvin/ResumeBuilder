@@ -19,6 +19,7 @@ services:
   vue_frontend:
     build:
       context: ./VueFrontend
+      dockerfile: Prod.Dockerfile
     image: vuefrontend
     container_name: vue_frontend
     restart: unless-stopped
