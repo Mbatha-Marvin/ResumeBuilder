@@ -157,25 +157,21 @@ export default defineComponent({
             ]
         });
 
-        const axios = useNuxtApp().$axios;
+        const { $axios, $showToast } = useNuxtApp();
         const newEducation = ref({ card_title: '', school_name: '', education_level: '', course_title: '', location: '', final_grade: '', start_date: '', end_date: '' });
         const router = useRouter();
 
         const createEducation = async () => {
             const user_id = 1;
-            await axios({
-                method: 'post',
-                url: `/user/${user_id}/education/`,
-                headers: { 'Content-Type': 'application/json' },
-                data: JSON.stringify(newEducation.value),
-            })
-                .then(function (response) {
-                    router.push('/resume/education');
-                    console.log(response);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+            try {
+                await $axios.post(`/user/${user_id}/education/`, newEducation.value);
+                $showToast("Education updated!");
+                router.push('/resume/education');
+                console.log(response);
+            } catch (error) {
+                console.log(error);
+            }
+
         };
 
         onMounted(() => {

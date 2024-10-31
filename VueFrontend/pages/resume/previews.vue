@@ -105,7 +105,6 @@ export default defineComponent({
 });
 </script> -->
 
-
 <!-- <script>
 import { defineComponent, ref, onMounted } from 'vue';
 import axiosT from 'axios';
@@ -224,7 +223,6 @@ export default defineComponent({
 });
 </script> -->
 
-
 <!-- <template>
   <div>
     <div ref="pdfContent" class="template3" v-for="(user, index) in users" :key="index">
@@ -315,8 +313,6 @@ export default defineComponent({
   }
 });
 </script>  -->
-
-
 
 <!-- <template>
   <div>
@@ -412,7 +408,6 @@ export default defineComponent({
 });
 </script> -->
 
-
 <!-- <template>
   <div>
     <div ref="pdfContent" class="template3" v-for="(user, index) in users" :key="index">
@@ -443,9 +438,13 @@ export default defineComponent({
 
 <template>
   <div>
-
     <div class="d-flex justify-content-center mb-2">
-      <i class="bi bi-file-earmark-pdf export-icon" @click="generatePDF" :class="{ 'disabled': isDownloading }"></i>
+      <i
+        class="bi bi-file-earmark-pdf export-icon"
+        @click="generatePDF"
+        :class="{ disabled: isDownloading }"
+      >{{ isDownloading ? 'Exporting...' : 'Export to pdf' }}</i>
+      
     </div>
 
     <div ref="pdfContent" class="template3" v-for="(user, index) in users" :key="index">
@@ -470,69 +469,76 @@ export default defineComponent({
 </template>
 
 <script>
-import { defineComponent, ref, onMounted } from 'vue';
-import { useNuxtApp } from '#app';
+import { defineComponent, ref, onMounted } from "vue";
+import { useNuxtApp } from "#app";
 
 export default defineComponent({
-  name: 'fetchData',
+  name: "fetchData",
   setup() {
-    // Define reactive properties
     const users = ref([]);
     const pdfContent = ref(null);
     const isDownloading = ref(false);
 
-    // Set meta information
-    useHead({
-      title: 'Preview',
-      meta: [
-        { name: 'description', content: 'Generate and export a PDF of the user profile with ease. Click the icon to download the resume in PDF format.' },
-        { property: 'og:title', content: 'Resume Preview - Export PDF' },
-        { property: 'og:description', content: 'Generate and export a PDF of the user profile with ease. Click the icon to download the resume in PDF format.' }
-      ]
+    definePageMeta({
+      layout: "sidestar",
     });
 
-    // Method to generate PDF
+    useHead({
+      title: "Preview",
+      meta: [
+        {
+          name: "description",
+          content:
+            "Generate and export a PDF of the user profile with ease. Click the icon to download the resume in PDF format.",
+        },
+        { property: "og:title", content: "Resume Preview - Export PDF" },
+        {
+          property: "og:description",
+          content:
+            "Generate and export a PDF of the user profile with ease. Click the icon to download the resume in PDF format.",
+        },
+      ],
+    });
+
     const generatePDF = async () => {
       if (process.client) {
         isDownloading.value = true;
         try {
-          // Dynamically import html2pdf.js
-          const { default: html2pdf } = await import('html2pdf.js');
+          const { default: html2pdf } = await import("html2pdf.js");
           const content = pdfContent.value[0];
 
           if (content) {
             const options = {
               margin: [0.5, 0.5, 0.5, 0.5],
-              filename: 'resume.pdf',
-              image: { type: 'jpeg', quality: 0.98 },
+              filename: "resume.pdf",
+              image: { type: "jpeg", quality: 0.98 },
               html2canvas: { scale: 2 },
-              jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+              jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
               // jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } // Set format to A4
             };
 
             await html2pdf().from(content).set(options).save();
           } else {
-            console.error('Content element not found');
+            console.error("Content element not found");
           }
         } catch (error) {
-          console.error('PDF generation error:', error);
+          console.error("PDF generation error:", error);
         } finally {
           isDownloading.value = false;
         }
       } else {
-        console.error('Code is not running on the client side');
+        console.error("Code is not running on the client side");
       }
     };
 
-    // Fetch user data
     const fetchData = async () => {
       try {
         const response = await useNuxtApp().$axios.get(`/user/1/full_profile`, {
-          headers: { 'Content-Type': 'application/json' }
+          headers: { "Content-Type": "application/json" },
         });
         users.value = [response.data];
       } catch (error) {
-        console.error('Error fetching users:', error);
+        console.error("Error fetching users:", error);
       }
     };
 
@@ -544,9 +550,9 @@ export default defineComponent({
       users,
       pdfContent,
       generatePDF,
-      isDownloading
+      isDownloading,
     };
-  }
+  },
 });
 </script>
 
@@ -557,21 +563,17 @@ export default defineComponent({
 
 .export-icon {
   font-size: 36px;
-  /* Adjust size as needed */
   color: #28a745;
-  /* Bootstrap success color */
   cursor: pointer;
   transition: color 0.3s;
 }
 
 .export-icon:hover {
   color: #218838;
-  /* Darker shade on hover */
 }
 
 .export-icon.disabled {
   color: #6c757d;
-  /* Bootstrap muted color for disabled state */
   cursor: not-allowed;
 }
 
@@ -585,6 +587,5 @@ export default defineComponent({
 
 .mb-2 {
   margin-bottom: 0.5rem !important;
-  /* Reduced bottom margin */
 }
 </style>

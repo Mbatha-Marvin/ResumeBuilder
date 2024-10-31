@@ -161,7 +161,7 @@ function handleSidebarToggle() {
 
 function updateStyles(currentUrl) {
   navbarColor.value = currentUrl.includes('/resume') ? 'bg-purple' : 'bg-primary'
-  sidebarColor.value = currentUrl.includes('/resume') ? 'bg-gradient-cool' : 'bg-dark'
+  sidebarColor.value = currentUrl.includes('/resume') ? 'bg-dark' : 'bg-dark'
 }
 
 // Function to close sidebar on mobile when a link is clicked
@@ -370,12 +370,12 @@ p {
 }
 
 /* Add a border to active links */
-.nav-link.router-link-active:not(.nav-profile) {
+/* .nav-link.router-link-active:not(.nav-profile) {
   color: #ffffff;
   border: 2px solid #12b488;
   border-radius: 4px;
   padding: 4px 8px;
-}
+} */
 
 /* Add a shadow to exactly active links */
 .nav-link.router-link-exact-active:not(.nav-profile) {

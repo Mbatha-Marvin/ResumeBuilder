@@ -188,13 +188,11 @@ import { defineComponent, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import Bold_hr from '../../../components/Helpers/Bold_hr.vue';
 
-
-
 export default defineComponent({
     name: 'experienceList',
     setup() {
         const experiences = ref([]);
-        const axios = useNuxtApp().$axios;
+        const { $axios, $showToast } = useNuxtApp();
         const user_id = 1;
         const router = useRouter();
         const newDescription = ref('');
@@ -215,7 +213,7 @@ export default defineComponent({
 
         const getExperience = async () => {
             try {
-                const response = await axios.get(`/user/${user_id}/experience/`);
+                const response = await $axios.get(`/user/${user_id}/experience/`);
                 experiences.value = response.data;
             }
             catch (error) {
@@ -224,8 +222,9 @@ export default defineComponent({
         };
         const updateExperience = async (experienceIndex) => {
             try {
-                await axios.patch(`/user/${experienceIndex.user_id}/experience/${experienceIndex.experience_id}`, experienceIndex).then(function (response) {
+                await $axios.patch(`/user/${experienceIndex.user_id}/experience/${experienceIndex.experience_id}`, experienceIndex).then(function (response) {
                     console.log(response);
+                    $showToast("Experience updated!");
                     router.push('/resume/experience');
                 });
             }
@@ -235,7 +234,8 @@ export default defineComponent({
         };
         const deleteExperience = async (experience_id) => {
             try {
-                await axios.delete(`/user/${user_id}/experience/${experience_id}`);
+                await $axios.delete(`/user/${user_id}/experience/${experience_id}`);
+                $showToast("Experience deleted!");
                 getExperience();
             }
             catch (error) {

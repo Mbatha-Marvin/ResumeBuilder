@@ -139,7 +139,8 @@ export default defineComponent({
             ]
         });
 
-        const axios = useNuxtApp().$axios;
+        const { $axios, $showToast } = useNuxtApp();
+
         const newCertification = ref({ card_title: '', school_name: '', education_level: '', course_title: '', location: '', final_grade: '', start_date: '', end_date: '' });
         const router = useRouter();
 
@@ -147,19 +148,15 @@ export default defineComponent({
             const form = document.querySelector('.needs-validation');
             const user_id = 1;
             if (form.checkValidity()) {
-                await axios({
-                    method: 'post',
-                    url: `/user/${user_id}/certification/`,
-                    headers: { 'Content-Type': 'application/json' },
-                    data: JSON.stringify(newCertification.value),
-                })
-                    .then(function (response) {
-                        router.push('/resume/certification');
-                        console.log(response);
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+                try {
+                    await $axios.post(`/user/${user_id}/certification/`, newCertification.value);
+                    $showToast("Certification created!");
+                    router.push('/resume/certification');
+                    console.log(response);
+                } catch (error) {
+                    console.log(error);
+                }
+
             } else {
                 form.classList.add('was-validated');
             };

@@ -190,7 +190,7 @@ export default defineComponent({
             ]
         });
 
-        const axios = useNuxtApp().$axios;
+        const { $axios, $showToast } = useNuxtApp();
         const newExperience = ref({ card_title: '', job_title: '', company_name: '', company_url: '', location: '', job_description_title: '', job_descriptions: [], start_date: '', end_date: '' });
         const newDescription = ref('');
         const router = useRouter();
@@ -218,19 +218,15 @@ export default defineComponent({
             const form = document.querySelector('.needs-validation');
             const user_id = 1;
             if (form.checkValidity()) {
-                await axios({
-                    method: 'post',
-                    url: `/user/${user_id}/experience/`,
-                    headers: { 'Content-Type': 'application/json' },
-                    data: JSON.stringify(newExperience.value),
-                })
-                    .then(function (response) {
-                        router.push('/resume/experience');
-                        // console.log(response);
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+                try {
+                    await $axios.post(`/user/${user_id}/experience/`, newExperience.value);
+                    $showToast("Experience created!");
+                    router.push('/resume/experience');
+                    // console.log(response);
+                } catch (error) {
+                    console.log(error);
+                }
+
             } else {
                 form.classList.add('was-validated');
             };

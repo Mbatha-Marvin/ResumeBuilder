@@ -26,11 +26,6 @@
 import { defineComponent, ref, onMounted } from 'vue';
 import axiosT from 'axios';
 
-definePageMeta({
-  layout: "template3",
-})
-
-
 export default defineComponent({
   name: 'fetchData',
   setup() {
@@ -38,6 +33,11 @@ export default defineComponent({
     const pdfContent = ref(null);
     const user_id = 1;
     const axios = useNuxtApp().$axios;
+
+
+    definePageMeta({
+  layout: "template3",
+})
 
     const generatePDF = async () => {
 
