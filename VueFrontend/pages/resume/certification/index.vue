@@ -139,29 +139,27 @@ export default defineComponent({
     name: 'certificationList',
     setup() {
 
+        const certifications = ref([]);
+        const { $axios, $showToast } = useNuxtApp();
+        const user_id = 1;
+        const router = useRouter();
 
         definePageMeta({
             layout: "sidestar",
         });
 
-        // Set meta information
         useHead({
             title: 'Certifications',
             meta: [
-                { name: 'description', content: 'View Certification' }, 
+                { name: 'description', content: 'View Certification' },
                 { property: 'og:title', content: 'Certification' },
                 { property: 'og:description', content: 'View Certification.' }
             ]
         });
 
-        const certifications = ref([]);
-        const axios = useNuxtApp().$axios;
-        const user_id = 1;
-        const router = useRouter();
-
-        const getertification = async () => {
+        const getCertification = async () => {
             try {
-                const response = await axios.get(`/user/${user_id}/certification/`);
+                const response = await $axios.get(`/user/${user_id}/certification/`);
                 certifications.value = response.data;
             } catch (error) {
                 console.error('Error fetching certifications:', error);
@@ -170,11 +168,12 @@ export default defineComponent({
 
         const updateCertification = async (certificationIndex) => {
             try {
-                await axios.patch(
+                await $axios.patch(
                     `/user/${certificationIndex.user_id}/certification/${certificationIndex.certification_id}`,
                     certificationIndex
                 ).then(function (response) {
                     console.log(response);
+                    $showToast("Certification updated!");
                     router.push('/resume/certification');
                 });
             } catch (error) {
@@ -184,8 +183,9 @@ export default defineComponent({
 
         const deleteCertification = async (certification_id) => {
             try {
-                await axios.delete(`/user/${user_id}/certification/${certification_id}`);
-                getertification();
+                await $axios.delete(`/user/${user_id}/certification/${certification_id}`);
+                $showToast("Certification deleted!");
+                getCertification();
             } catch (error) {
                 console.error('Error deleting certification:', error);
             }
@@ -204,7 +204,7 @@ export default defineComponent({
         };
 
         onMounted(() => {
-            getertification();
+            getCertification();
         });
 
         return {

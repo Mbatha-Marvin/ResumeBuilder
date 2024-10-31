@@ -10,51 +10,51 @@
                 <div class="card-content collapse show">
                     <div class="card-body card-dashboard">
                         <div class="row">
-                            <p class="d-inline">Language List
-                                <NuxtLink :to="'/resume/language/create'" class="btn btn-sm btn-success float-end"><i
-                                        class="bi bi-plus-square"></i>{{ ' ' }}Create
+                            <p class="d-inline">
+                                Language List
+                                <NuxtLink :to="'/resume/language/create'" class="btn btn-sm btn-success float-end">
+                                    <i class="bi bi-plus-square"></i>{{ " " }}Create
                                 </NuxtLink>
                             </p>
+                        </div>
+                        <div v-if="languages.length === 0" class="text-center">
+                            <p>Loading languages...</p>
                         </div>
                         <div v-for="(language, index) in languages" :key="index" class="card mt-2">
                             <div class="card-content collapse show">
                                 <div class="card-body card-dashboard">
-
                                     <div class="row">
-                                        <p class="float-start"><strong>{{ index + 1 }}</strong></p>
+                                        <p class="float-start">
+                                            <strong>{{ index + 1 }}</strong>
+                                        </p>
                                     </div>
 
                                     <form @submit.prevent="submitLanguageForm(index)"
                                         class="form form-horizontal needs-validation" novalidate>
                                         <div class="form-body">
                                             <div class="row">
-
                                                 <div class="col-md-4">
                                                     <div class="form-group mb-2">
-                                                        <label class="label-control" for="card_title">Card
-                                                            Title</label>
+                                                        <label class="label-control" for="card_title">Card Title</label>
                                                         <select v-model="language.card_title"
-                                                            class="form-select border-primary"
-                                                            aria-label="Default select example" required>
+                                                            class="form-select border-primary" required>
                                                             <option selected :value="language.card_title">{{
                                                                 language.card_title }}</option>
                                                             <option>Language</option>
                                                             <option>Spoken Language</option>
                                                         </select>
-                                                        <span class="invalid-feedback">Please Select Card
-                                                            Title</span>
+                                                        <span class="invalid-feedback">Please Select Card Title</span>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <div class="form-group mb-2">
-                                                        <label class="label-control" for="language_name">language
+                                                        <label class="label-control" for="language_name">Language
                                                             Name</label>
                                                         <input v-model="language.language_name" type="text"
                                                             id="language_name" class="form-control border-primary"
-                                                            placeholder="language Name" name="language_name" required>
-                                                        <span class="invalid-feedback">language Name is
-                                                            required</span>
+                                                            placeholder="Language Name" required />
+                                                        <span class="invalid-feedback">Language Name is required</span>
                                                     </div>
                                                 </div>
 
@@ -64,30 +64,31 @@
                                                             Level</label>
                                                         <input v-model="language.profeciency_level" type="text"
                                                             id="profeciency_level" class="form-control border-primary"
-                                                            placeholder="Proficiency Level" name="profeciency_level"
-                                                            required>
+                                                            placeholder="Proficiency Level" required />
                                                         <span class="invalid-feedback">Proficiency Level is
                                                             required</span>
                                                     </div>
                                                 </div>
-
                                             </div>
 
                                             <div class="row">
                                                 <div class="form-actions my-2">
                                                     <button type="submit"
-                                                        class="btn btn-sm btn-warning mx-2 float-start">
-                                                        <i class="bi bi-pencil-square"></i>{{ ' ' }}Update
+                                                        class="btn btn-sm btn-warning mx-2 float-start"
+                                                        :disabled="loadingStates[index]?.updating">
+                                                        <i class="bi bi-pencil-square"></i>{{
+                                                            loadingStates[index]?.updating ? " Updating..." : " Update" }}
                                                     </button>
 
-                                                    <button @click="deleteLanguage(language.language_id)"
-                                                        class="btn btn-sm btn-danger float-end mx-2"><i
-                                                            class="bi bi-trash3"></i>
-                                                        {{ ' ' }}Delete
+                                                    <button type="button"
+                                                        @click="deleteLanguage(language.language_id, index)"
+                                                        class="btn btn-sm btn-danger float-end mx-2"
+                                                        :disabled="loadingStates[index]?.deleting">
+                                                        <i class="bi bi-trash3"></i>{{ loadingStates[index]?.deleting ?
+                                                            " Deleting..." : " Delete" }}
                                                     </button>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </form>
                                 </div>
@@ -101,75 +102,76 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+import { defineComponent, ref, onMounted } from "vue";
 
 export default defineComponent({
-    name: 'languageList',
+    name: "languageList",
     setup() {
-
+        const languages = ref([]);
+        const loadingStates = ref([]);
+        const { $showToast, $axios } = useNuxtApp();
+        const user_id = 1;
 
         definePageMeta({
             layout: "sidestar",
         });
 
-        // Set meta information
         useHead({
-            title: 'Languages',
+            title: "Languages",
             meta: [
-                { name: 'description', content: 'View Languages' },
-                { property: 'og:title', content: 'Languages' },
-                { property: 'og:description', content: 'View Languages.' }
-            ]
+                { name: "description", content: "View Languages" },
+                { property: "og:title", content: "Languages" },
+                { property: "og:description", content: "View Languages." },
+            ],
         });
-
-        const languages = ref([]);
-        const axios = useNuxtApp().$axios;
-        const user_id = 1;
-        const router = useRouter();
 
         const getLanguage = async () => {
             try {
-                const response = await axios.get(`/user/${user_id}/language/`);
+                const response = await $axios.get(`/user/${user_id}/language/`);
                 languages.value = response.data;
+                loadingStates.value = new Array(response.data.length).fill(null);
             } catch (error) {
-                console.error('Error fetching languages:', error);
+                console.error("Error fetching languages:", error);
             }
         };
 
         const updateLanguage = async (languageIndex) => {
+            loadingStates.value[languageIndex] = { updating: true };
+            const languageToUpdate = languages.value[languageIndex];
             try {
-                await axios.patch(
-                    `/user/${languageIndex.user_id}/language/${languageIndex.language_id}`,
-                    languageIndex
-                ).then(function (response) {
-                    console.log(response);
-                    router.push('/resume/language');
-                });
+                await $axios.patch(`/user/${languageToUpdate.user_id}/language/${languageToUpdate.language_id}`, languageToUpdate);
+                $showToast("Language updated!");
             } catch (error) {
-                console.error('Error updating:', error);
+                console.error("Error updating:", error);
+            } finally {
+                loadingStates.value[languageIndex] = { updating: false };
             }
         };
 
-        const deleteLanguage = async (language_id) => {
+        const deleteLanguage = async (language_id, languageIndex) => {
+            loadingStates.value[languageIndex] = { deleting: true };
             try {
-                await axios.delete(`/user/${user_id}/language/${language_id}`);
-                getLanguage();
+                const response = await $axios.delete(`/user/${user_id}/language/${language_id}`);
+                if (response.status === 200) {
+                    $showToast("Language deleted!");
+                    await getLanguage();
+                }
             } catch (error) {
-                console.error('Error deleting language:', error);
+                console.error("Error deleting language:", error);
+            } finally {
+                loadingStates.value[languageIndex] = { deleting: false };
             }
         };
 
         const submitLanguageForm = async (languageIndex) => {
-            const languageToUpdate = languages.value[languageIndex];
-            const form = document.querySelector('.needs-validation');
+            const form = document.querySelector(".needs-validation");
 
             if (!form.checkValidity()) {
-                form.classList.add('was-validated');
+                form.classList.add("was-validated");
                 return;
             }
 
-            updateLanguage(languageToUpdate);
+            await updateLanguage(languageIndex);
         };
 
         onMounted(() => {
@@ -178,8 +180,9 @@ export default defineComponent({
 
         return {
             languages,
+            loadingStates,
             deleteLanguage,
-            submitLanguageForm
+            submitLanguageForm,
         };
     },
 });

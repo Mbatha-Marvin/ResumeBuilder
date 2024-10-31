@@ -141,7 +141,7 @@ export default defineComponent({
                 { property: 'og:description', content: 'Form to Create Referee.' }
             ]
         });
-        const axios = useNuxtApp().$axios;
+        const { $axios, $showToast } = useNuxtApp();
         const newReferee = ref({});
         const router = useRouter();
 
@@ -155,19 +155,16 @@ export default defineComponent({
                 if (!form.checkValidity()) {
                     form.classList.add('was-validated');
                 } else {
-                    axios({
-                        method: 'post',
-                        url: `/user/${user_id}/referee/`,
-                        headers: { 'Content-Type': 'application/json' },
-                        data: JSON.stringify(newReferee.value),
-                    })
-                        .then(function (response) {
+                    $axios.post(`/user/${user_id}/referee/`, newReferee.value)
+                        .then((response) => {
+                            $showToast("Referee created!");
                             router.push('/resume/referee');
                             console.log(response);
                         })
-                        .catch(function (error) {
+                        .catch((error) => {
                             console.log(error);
                         });
+
                 }
             }, false);
         };

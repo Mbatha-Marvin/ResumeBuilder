@@ -99,7 +99,8 @@
                                                         </div>
                                                     </div>
 
-                                                    <div v-if="project.project_description.length > 0" class="card mb-2">
+                                                    <div v-if="project.project_description.length > 0"
+                                                        class="card mb-2">
                                                         <div class="card-content collapse show">
                                                             <div class="card-body card-dashboard">
                                                                 <div class="row">
@@ -174,7 +175,7 @@ export default defineComponent({
         });
 
         const projects = ref([]);
-        const axios = useNuxtApp().$axios;
+        const { $axios, $showToast } = useNuxtApp();
         const user_id = 1;
         const router = useRouter();
         const newDescription = ref('');
@@ -199,7 +200,7 @@ export default defineComponent({
 
         const getProjects = async () => {
             try {
-                const response = await axios.get(`/user/${user_id}/project/`);
+                const response = await $axios.get(`/user/${user_id}/project/`);
                 projects.value = response.data;
             } catch (error) {
                 console.error('Error fetching projects:', error);
@@ -208,11 +209,12 @@ export default defineComponent({
 
         const updateProject = async (projectIndex) => {
             try {
-                await axios.patch(
+                await $axios.patch(
                     `/user/${projectIndex.user_id}/project/${projectIndex.project_id}`,
                     projectIndex
                 ).then(function (response) {
                     console.log(response);
+                    $showToast("Project updated!");
                     router.push('/resume/project');
                 });
             } catch (error) {
@@ -222,7 +224,8 @@ export default defineComponent({
 
         const deleteProject = async (project_id) => {
             try {
-                await axios.delete(`/user/${user_id}/project/${project_id}`);
+                await $axios.delete(`/user/${user_id}/project/${project_id}`);
+                $showToast("Project deleted!");
                 getProjects();
             } catch (error) {
                 console.error('Error deleting project:', error);

@@ -154,13 +154,13 @@ export default defineComponent({
         });
 
         const referees = ref([]);
-        const axios = useNuxtApp().$axios;
+        const { $axios, $showToast } = useNuxtApp();
         const user_id = 1;
         const router = useRouter();
 
         const getReferee = async () => {
             try {
-                const response = await axios.get(`/user/${user_id}/referee/`);
+                const response = await $axios.get(`/user/${user_id}/referee/`);
                 referees.value = response.data;
             } catch (error) {
                 console.error('Error fetching referees:', error);
@@ -169,11 +169,12 @@ export default defineComponent({
 
         const updateReferee = async (refereeIndex) => {
             try {
-                await axios.patch(
+                await $axios.patch(
                     `/user/${refereeIndex.user_id}/referee/${refereeIndex.referee_id}`,
                     refereeIndex
                 ).then(function (response) {
                     console.log(response);
+                    $showToast("Referee updated!");
                     router.push('/resume/referee');
                 });
             } catch (error) {
@@ -183,7 +184,8 @@ export default defineComponent({
 
         const deleteReferee = async (referee_id) => {
             try {
-                await axios.delete(`/user/${user_id}/referee/${referee_id}`);
+                await $axios.delete(`/user/${user_id}/referee/${referee_id}`);
+                $showToast("Referee deleted!");
                 getReferee();
             } catch (error) {
                 console.error('Error deleting referee:', error);

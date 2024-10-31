@@ -157,7 +157,7 @@ export default defineComponent({
             ]
         });
 
-        const axios = useNuxtApp().$axios;
+        const { $axios, $showToast } = useNuxtApp();
         const newProject = ref({ card_title: '', project_name: '', project_description_title: '', project_url: '', project_description: [] });
         const newDescription = ref('');
         const router = useRouter();
@@ -185,19 +185,15 @@ export default defineComponent({
             const form = document.querySelector('.needs-validation');
             const user_id = 1;
             if (form.checkValidity()) {
-                await axios({
-                    method: 'post',
-                    url: `/user/${user_id}/project/`,
-                    headers: { 'Content-Type': 'application/json' },
-                    data: JSON.stringify(newProject.value),
-                })
-                    .then(function (response) {
-                        router.push('/resume/project');
-                        // console.log(response);
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+                try {
+                    await $axios.post(`/user/${user_id}/project/`, newProject.value);
+                    $showToast("Project created!");
+                    router.push('/resume/project');
+                    // console.log(response);
+                } catch (error) {
+                    console.log(error);
+                }
+
             } else {
                 form.classList.add('was-validated');
             };

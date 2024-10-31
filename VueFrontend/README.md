@@ -81,3 +81,10 @@ this will create  all the files and folders we deleted in the first command
 
 Now you can run 
 docker compose up -d or docker compose up --build -d 
+
+
+# We need rate limitting
+# Language Name to be unique
+# Proficiency Level 1 - 10 (frontend static selection)
+
+# Language Done - Reusability in future

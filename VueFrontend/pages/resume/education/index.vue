@@ -176,13 +176,13 @@ export default defineComponent({
         });
 
         const educations = ref([]);
-        const axios = useNuxtApp().$axios;
+        const { $axios, $showToast } = useNuxtApp();
         const user_id = 1;
         const router = useRouter();
 
         const getEducation = async () => {
             try {
-                const response = await axios.get(`/user/${user_id}/education/`);
+                const response = await $axios.get(`/user/${user_id}/education/`);
                 educations.value = response.data;
             } catch (error) {
                 console.error('Error fetching educations:', error);
@@ -191,11 +191,12 @@ export default defineComponent({
 
         const updateEducation = async (educationIndex) => {
             try {
-                await axios.patch(
+                await $axios.patch(
                     `/user/${educationIndex.user_id}/education/${educationIndex.education_id}`,
                     educationIndex
                 ).then(function (response) {
                     console.log(response);
+                    $showToast("Education updated!");
                     router.push('/resume/education');
                 });
             } catch (error) {
@@ -205,7 +206,8 @@ export default defineComponent({
 
         const deleteEducation = async (education_id) => {
             try {
-                await axios.delete(`/user/${user_id}/education/${education_id}`);
+                await $axios.delete(`/user/${user_id}/education/${education_id}`);
+                $showToast("Education deleted!");
                 getEducation();
             } catch (error) {
                 console.error('Error deleting education:', error);

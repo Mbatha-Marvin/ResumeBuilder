@@ -321,7 +321,7 @@ export default defineComponent({
 
 
         const profiles = ref([]);
-        const axios = useNuxtApp().$axios;
+        const { $axios, $showToast } = useNuxtApp();
         const user_id = 1;
         const router = useRouter();
         const newSkill = ref('');
@@ -366,7 +366,7 @@ export default defineComponent({
 
         const getProfiles = async () => {
             try {
-                const response = await axios.get(`/user/${user_id}/profile/`);
+                const response = await $axios.get(`/user/${user_id}/profile/`);
                 profiles.value = response.data;
             } catch (error) {
                 console.error('Error fetching profiles:', error);
@@ -375,10 +375,11 @@ export default defineComponent({
 
         const updateProfile = async (profileIndex) => {
             try {
-                await axios.patch(
+                await $axios.patch(
                     `/user/${profileIndex.user_id}/profile/${profileIndex.profile_id}`,
                     profileIndex
                 ).then(function (response) {
+                    $showToast("Profile  updated!");
                     console.log(response);
                     router.push('/resume/profile');
                 });
@@ -389,7 +390,8 @@ export default defineComponent({
 
         const deleteProfile = async (profile_id) => {
             try {
-                await axios.delete(`/user/${user_id}/profile/${profile_id}`);
+                await $axios.delete(`/user/${user_id}/profile/${profile_id}`);
+                $showToast("Profile deleted!");
                 getProfiles();
             } catch (error) {
                 console.error('Error deleting profile:', error);

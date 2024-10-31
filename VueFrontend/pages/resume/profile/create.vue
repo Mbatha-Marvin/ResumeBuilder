@@ -305,7 +305,7 @@ export default defineComponent({
             ]
         });
 
-        const axios = useNuxtApp().$axios;
+        const { $axios, $showToast } = useNuxtApp();
         const newProfile = ref({ first_name: '', last_name: '', middle_name: '', image_url: '', linkedin_url: '', github_url: '', personal_website: '', city: '', country: '', address: '', user_work_title: '', user_summary: '', objectives: '', hobbies: [], skills: [] });
         const newSkill = ref('');
         const newHobby = ref('');
@@ -355,19 +355,15 @@ export default defineComponent({
             const form = document.querySelector('.needs-validation');
             const user_id = 1;
             if (form.checkValidity()) {
-                await axios({
-                    method: 'post',
-                    url: `/user/${user_id}/profile/`,
-                    headers: { 'Content-Type': 'application/json' },
-                    data: JSON.stringify(newProfile.value),
-                })
-                    .then(function (response) {
-                        router.push('/resume/profile');
-                        // console.log(response);
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+                try {
+                    await $axios.post(`/user/${user_id}/profile/`, newProfile.value);
+                    $showToast("Profile created!");
+                    router.push('/resume/profile');
+                    // console.log(response);
+                } catch (error) {
+                    console.log(error);
+                }
+
             } else {
                 form.classList.add('was-validated');
             };
