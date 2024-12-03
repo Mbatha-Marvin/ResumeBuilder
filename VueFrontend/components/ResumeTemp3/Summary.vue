@@ -1,7 +1,9 @@
 <template>
    <div class="child summary">
       <div id="section-title">
-        <h4><strong>{{ summary.card_title }}</strong></h4>
+        <!-- <h4><strong>{{ summary.card_title }}</strong></h4> -->
+        <h4><strong>{{ `Summary` }}</strong></h4>
+
         <Helpers.Bold_hr />
       </div>
       <span class="summary description">
@@ -11,8 +13,7 @@
 </template>
 
 <script setup>
-const { summary } = defineProps(['summary'])
-
+const { summary } = defineProps(['summary']);
 </script>
 
 <style scoped>

@@ -1,6 +1,5 @@
-FROM node:22.5-alpine3.20
+FROM node:20-alpine3.19
 
-# Set the working directory inside the container
 WORKDIR /app
 
 COPY package.json .
@@ -11,4 +10,4 @@ COPY . .
 
 EXPOSE 5173
 
-CMD ["yarn" "dev" "-o"]
+# CMD ["yarn" "dev" "-o"]

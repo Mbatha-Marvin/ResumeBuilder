@@ -11,18 +11,20 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@types/node": "^18.16.19",
-    "nuxt": "^3.7.0",
+    "@types/puppeteer": "^7.0.4",
+    "nuxt": "^3.14.1592",
+    "sass-loader": "^16.0.3",
     "vite": "^5.4.1"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "axios": "^1.5.0",
-    "bootstrap": "^5.3.1",
+    "bootstrap": "^5.3.3",
     "html2pdf.js": "^0.10.2",
     "jspdf": "^2.5.1",
     "pinia": "^2.2.2",
-    "puppeteer": "^23.5.0",
-    "sass": "^1.66.1",
+    "puppeteer": "^23.9.0",
+    "sass": "^1.81.0",
     "vue3-toastify": "^0.2.3"
   }
 }

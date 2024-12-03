@@ -1,3 +1,5 @@
 // Import all of Bootstrap's CSS
-@import "bootstrap/scss/bootstrap";
+@use "bootstrap/scss/bootstrap" as *;
+
+
 
