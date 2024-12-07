@@ -107,35 +107,5 @@ export default {
   margin-left: 1rem;
 }
 
-/* Media Query for Mobile Navigation */
-@media screen and (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .navbar-menu {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #333;
-    width: 100%;
-  }
-
-  .navbar-open .navbar-menu {
-    display: flex;
-  }
-
-  .navbar-item {
-    margin: 0;
-    width: 100%;
-  }
-
-  .navbar-toggle {
-    display: block;
-  }
-}
 </style>
   

@@ -33,7 +33,7 @@ export default defineNuxtConfig({
     }
   },
 
-  css: ['~/assets/css/main.css', '~/assets/scss/styles.scss','~/assets/css/dashboard.css'],
+  css: ['~/assets/css/main.css', '~/assets/scss/styles.scss'],
 
   runtimeConfig: {
     public: {
