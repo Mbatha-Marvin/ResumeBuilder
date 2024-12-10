@@ -1,5 +1,6 @@
 <template>
-    <div class="row py-4 px-2">
+     <div class="container py-4">
+        <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12">
             <div class="card mb-2">
                 <div class="card-body rounded">
@@ -281,6 +282,7 @@
             </div>
         </div>
     </div>
+     </div>
 </template>
 
 <script>

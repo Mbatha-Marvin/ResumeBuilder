@@ -1,14 +1,5 @@
 <template>
-    <div class="row py-4 px-2">
-        <div class="col-xl-12 col-lg-12 col-md-12">
-            <div class="card mb-2">
-                <div class="card-body rounded">
-                    <h4 class="text-center text-uppercase bold">Create Education Section</h4>
-                </div>
-            </div>
-            <div class="card mb-2">
-                <div class="card-content collapse show">
-                    <div class="card-body card-dashboard">
+    <PartialsHeader title="Education Section">
                         <div class="row">
                             <p class="d-inline">Create New Education
                                 <NuxtLink :to="'/resume/education'" class="btn btn-sm btn-success float-end"><i
@@ -128,11 +119,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </PartialsHeader>
 </template>
 
 <script>

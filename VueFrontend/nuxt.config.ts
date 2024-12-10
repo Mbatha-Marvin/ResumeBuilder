@@ -33,13 +33,16 @@ export default defineNuxtConfig({
     }
   },
 
-  css: ['~/assets/css/main.css', '~/assets/scss/styles.scss','~/assets/css/dashboard.css'],
+  css: ['~/assets/css/main.css', '~/assets/scss/styles.scss'],
 
   runtimeConfig: {
     public: {
       BASE_URL: process.env.BASE_URL
     }
   },
+  plugins: [
+    '~/plugins/useAxios.ts',
+  ],
 
   compatibilityDate: '2024-10-06'
 })

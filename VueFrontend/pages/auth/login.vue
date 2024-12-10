@@ -31,7 +31,7 @@
     </div>
 </template>
   
-<script >
+<script>
 import { defineComponent, ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 

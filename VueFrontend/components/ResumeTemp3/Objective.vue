@@ -1,7 +1,9 @@
 <template>
    <div class="child objective">
       <div id="section-title">
-        <h4><strong>{{ objective.card_title }}</strong></h4>
+        <!-- <h4><strong>{{ objective.card_title }}</strong></h4> -->
+        <h4><strong>{{ `Objective` }}</strong></h4>
+
         <Helpers.Bold_hr />
       </div>
       <span class="objective description">

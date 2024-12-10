@@ -1,19 +1,16 @@
 <template>
-
         <div class="footer">
             <blockquote class="blockquote mb-2">
                 <p>Designed by</p>
                 <footer class="blockquote-footer">
-                    <NuxtLink>Daring Coders</NuxtLink>
+                    <NuxtLink>Daring Coder</NuxtLink>
                 </footer>
             </blockquote>
         </div>
-
 </template>
 
 <script>
 export default {
-
 }
 </script>
 
